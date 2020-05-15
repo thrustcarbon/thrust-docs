@@ -1,0 +1,176 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Thrust Calculator",
+    "version": "1.0",
+    "description": "",
+    "contact": {
+      "name": "Kit Brennan",
+      "email": "kit@thrustcarbon.com",
+      "url": "https://www.thrustcarbon.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://app.thrustcarbon.com/api/1/calculator"
+    }
+  ],
+  "paths": {
+    "/projects": {
+      "get": {
+        "summary": "Get a list of projects",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "per_page": {
+                      "type": "integer"
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    },
+                    "last_page": {
+                      "type": "integer"
+                    },
+                    "first_page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "last_page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "next_page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "prev_page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "path": {
+                      "type": "string",
+                      "description": "Path to this request, without pagination.",
+                      "format": "uri"
+                    },
+                    "from": {
+                      "type": "integer"
+                    },
+                    "to": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "./models/project.v1.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "per_page",
+                    "current_page",
+                    "last_page",
+                    "first_page_url",
+                    "last_page_url",
+                    "next_page_url",
+                    "prev_page_url",
+                    "path",
+                    "from",
+                    "to"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "Results are paginated. By default we will return the first page."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create a new project",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/project.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-projects",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "Must be a valid ISO 4217 currency code."
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "API Key": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Your API Key must be provided as a bearer token. To do this, create an 'Authorization' header with a value of 'Bearer {your-api-key}' (e.g. \"Authorization: Bearer xcvboy23idvh\")."
+      }
+    }
+  },
+  "security": [
+    {
+      "API Key": []
+    }
+  ]
+}
