@@ -391,10 +391,23 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/segment-request.v1.yaml"
+                "allOf": [
+                  {
+                    "$ref": "../models/segment-request.v1.yaml"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
               }
             }
-          }
+          },
+          "description": "Please ignore the fields that say they are required. These fields are not required on a PUT operation."
         }
       }
     }
