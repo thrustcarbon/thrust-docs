@@ -1,0 +1,43 @@
+title: 'Segment Request: Air'
+allOf:
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - air
+        description: ''
+      locations:
+        type: array
+        items:
+          anyOf:
+            - type: string
+              description: Three letter IATA airport code
+              example: LHR
+            - type: number
+              description: 'Latitude & longitude coordinate'
+              example: 51.4700 0.4543
+      passengers:
+        type: integer
+        default: 1
+      travel_class:
+        type: string
+        enum:
+          - economy
+          - premium
+          - business
+          - first
+      carrier:
+        type: string
+        default: BA
+        description: 2 letter IATA carrier code
+      aircraft_type:
+        type: string
+        description: Must be a valid ICAO type designator
+        example: B748
+        maxLength: 4
+    required:
+      - type
+      - locations
+  - $ref: ./segment-request-base.v1.yaml
+description: Air segment request.

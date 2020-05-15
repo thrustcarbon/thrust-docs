@@ -1,0 +1,18 @@
+title: 'Segment Request: Base'
+type: object
+x-tags:
+  - Segments
+description: |-
+  A segment is a thing that can have a carbon impact, for example this might be a flight, a hotel stay, or a delivery.
+
+  This base is extended by each segment request...
+
+  **We suggest looking at the documentation for each segment request to learn the correct structure for that segment.**
+properties:
+  type:
+    type: string
+    enum:
+      - air
+      - hotel
+required:
+  - type

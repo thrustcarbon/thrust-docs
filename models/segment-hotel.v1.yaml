@@ -1,0 +1,17 @@
+title: 'Segment: Hotel'
+x-tags:
+  - Segments
+  - Calculator
+x-examples:
+  example-1: {}
+description: Hotel segment.
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - hotel
+    required:
+      - type

@@ -1,0 +1,10 @@
+title: 'Segment: Air'
+x-tags:
+  - Segments
+  - Calculator
+description: Air segment.
+x-examples:
+  example-1: {}
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - $ref: ./segment-request-air.v1.yaml

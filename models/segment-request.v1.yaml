@@ -1,0 +1,6 @@
+title: segment-request
+x-tags:
+  - Segments
+oneOf:
+  - $ref: ./segment-request-air.v1.yaml
+  - $ref: ./segment-request-hotel.v1.yaml

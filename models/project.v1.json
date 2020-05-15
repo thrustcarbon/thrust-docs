@@ -1,0 +1,44 @@
+{
+  "required": [
+    "id",
+    "name",
+    "currency",
+    "created_at",
+    "updated_at",
+    "description"
+  ],
+  "description": "The project is the heart of the ThrustCalculator. Once you have a project, you can attach segments, offsets, and generate reports.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd",
+      "description": "Must be a valid ISO 4217 currency code."
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "title": "Calculator Project",
+  "x-tags": [
+    "Calculator"
+  ]
+}

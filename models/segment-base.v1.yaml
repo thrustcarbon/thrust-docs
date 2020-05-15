@@ -1,0 +1,26 @@
+title: 'Segment: Base'
+description: |-
+  A segment is a thing that can have a carbon impact, for example this might be a flight, a hotel stay, or a delivery.
+
+  This base is extended by each segment type...
+
+  **We suggest looking at the documentation for each segment type to learn the correct structure for that segment.**
+x-tags:
+  - Segments
+  - Calculator
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+    required:
+      - id
+      - created_at
+      - updated_at
+  - $ref: ./segment-request-base.v1.yaml

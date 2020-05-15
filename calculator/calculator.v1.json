@@ -18,7 +18,7 @@
   "paths": {
     "/projects": {
       "get": {
-        "summary": "Get a list of projects",
+        "summary": "Project: Get",
         "tags": [
           "Projects"
         ],
@@ -72,8 +72,9 @@
                     },
                     "data": {
                       "type": "array",
+                      "description": "Returns an array of Project objects",
                       "items": {
-                        "$ref": "./models/project.v1.json"
+                        "$ref": "../segment models/project.v1.json"
                       }
                     }
                   },
@@ -108,7 +109,7 @@
         ]
       },
       "post": {
-        "summary": "Create a new project",
+        "summary": "Project: Post",
         "tags": [
           "Projects"
         ],
@@ -118,7 +119,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./models/project.v1.json"
+                  "$ref": "#/components/schemas/project"
                 }
               }
             }
@@ -157,6 +158,239 @@
           "description": ""
         }
       }
+    },
+    "/projects/{projectId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "put": {
+        "summary": "Project: Update",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {},
+        "operationId": "put-projects-projectId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "example": "USD",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "description": "Must be a 3 letter ISO currency code"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Project: Delete",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "delete-projects-projectId"
+      },
+      "get": {
+        "summary": "Project: Get",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId",
+        "description": ""
+      }
+    },
+    "/projects/{projectId}/segments": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Segment: List",
+        "tags": [
+          "Projects",
+          "Segments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../models/response-paginated.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "../models/segment.v1.yaml"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-segments",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Segment: Add",
+        "tags": [
+          "Projects",
+          "Segments"
+        ],
+        "responses": {},
+        "operationId": "post-projects-projectId-segments",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/segment-request.v1.yaml"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/segments/{segmentId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "segmentId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Segment: Get",
+        "tags": [
+          "Projects",
+          "Segments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/segment.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-segments-segmentId"
+      },
+      "delete": {
+        "summary": "Segment: Delete",
+        "tags": [
+          "Projects",
+          "Segments"
+        ],
+        "responses": {},
+        "operationId": "delete-projects-projectId-segments-segmentId"
+      },
+      "put": {
+        "summary": "Segment: Update",
+        "tags": [
+          "Projects",
+          "Segments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/segment.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "put-projects-projectId-segments-segmentId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/segment-request.v1.yaml"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -166,7 +400,8 @@
         "scheme": "bearer",
         "description": "Your API Key must be provided as a bearer token. To do this, create an 'Authorization' header with a value of 'Bearer {your-api-key}' (e.g. \"Authorization: Bearer xcvboy23idvh\")."
       }
-    }
+    },
+    "schemas": {}
   },
   "security": [
     {

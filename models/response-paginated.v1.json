@@ -1,0 +1,66 @@
+{
+  "title": "Paginated response",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "to": {
+      "type": "integer"
+    },
+    "from": {
+      "type": "integer"
+    },
+    "path": {
+      "type": "string",
+      "description": "Path to this request, without pagination.",
+      "format": "uri"
+    },
+    "prev_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "next_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "last_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "first_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "last_page": {
+      "type": "integer"
+    },
+    "current_page": {
+      "type": "integer"
+    },
+    "per_page": {
+      "type": "integer"
+    },
+    "total": {
+      "type": "integer"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "required": [
+    "to",
+    "from",
+    "path",
+    "prev_page_url",
+    "next_page_url",
+    "last_page_url",
+    "first_page_url",
+    "last_page",
+    "current_page",
+    "per_page",
+    "total",
+    "data"
+  ]
+}

@@ -1,0 +1,28 @@
+title: 'Segment Request: Hotel'
+x-tags:
+  - Segments
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - hotel
+      rooms:
+        type: integer
+        default: '1'
+      nights:
+        type: integer
+        default: 1
+      locations:
+        type: array
+        description: |
+          An array containing a single location.
+        items:
+          oneOf:
+            - description: 2 digit ISO 3166 country code
+          type: string
+    required:
+      - type
+description: Hotel segment request.
