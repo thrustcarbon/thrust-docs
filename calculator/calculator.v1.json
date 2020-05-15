@@ -306,7 +306,6 @@
       "post": {
         "summary": "Segment: Add",
         "tags": [
-          "Projects",
           "Segments"
         ],
         "responses": {},
@@ -365,7 +364,6 @@
       "delete": {
         "summary": "Segment: Delete",
         "tags": [
-          "Projects",
           "Segments"
         ],
         "responses": {},
@@ -374,7 +372,6 @@
       "put": {
         "summary": "Segment: Update",
         "tags": [
-          "Projects",
           "Segments"
         ],
         "responses": {
