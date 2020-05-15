@@ -37,8 +37,5 @@
     }
   },
   "type": "object",
-  "title": "Calculator Project",
-  "x-tags": [
-    "Calculator"
-  ]
+  "title": "Calculator Project"
 }

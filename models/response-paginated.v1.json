@@ -62,5 +62,8 @@
     "per_page",
     "total",
     "data"
+  ],
+  "x-tags": [
+    "Common"
   ]
 }

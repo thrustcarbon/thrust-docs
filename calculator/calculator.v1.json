@@ -3,7 +3,7 @@
   "info": {
     "title": "Thrust Calculator",
     "version": "1.0",
-    "description": "",
+    "description": "API for the ThrustCalculator",
     "contact": {
       "name": "Kit Brennan",
       "email": "kit@thrustcarbon.com",
@@ -74,7 +74,7 @@
                       "type": "array",
                       "description": "Returns an array of Project objects",
                       "items": {
-                        "$ref": "../segment models/project.v1.json"
+                        "$ref": "../models/project.v1.json"
                       }
                     }
                   },
@@ -119,7 +119,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/project"
+                  "$ref": "../models/project.v1.json"
                 }
               }
             }
@@ -177,7 +177,18 @@
         "tags": [
           "Projects"
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/project.v1.json"
+                }
+              }
+            }
+          }
+        },
         "operationId": "put-projects-projectId",
         "requestBody": {
           "content": {
@@ -227,7 +238,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/project"
+                  "$ref": "../models/project.v1.json"
                 }
               }
             }
@@ -252,7 +263,6 @@
       "get": {
         "summary": "Segment: List",
         "tags": [
-          "Projects",
           "Segments"
         ],
         "responses": {
@@ -336,7 +346,6 @@
       "get": {
         "summary": "Segment: Get",
         "tags": [
-          "Projects",
           "Segments"
         ],
         "responses": {

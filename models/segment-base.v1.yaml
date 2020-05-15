@@ -7,7 +7,6 @@ description: |-
   **We suggest looking at the documentation for each segment type to learn the correct structure for that segment.**
 x-tags:
   - Segments
-  - Calculator
 allOf:
   - type: object
     properties:

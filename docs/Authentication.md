@@ -1,7 +1,3 @@
----
-tags: [Common]
----
-
 # Authentication
 
 We use HTTP header authentication using Bearer tokens. To get started, visit the [API credentials section of your ThrustCarbon account](https://www.thrustcarbon.com/account/api-credential) to obtain your API key.

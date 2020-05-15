@@ -41,3 +41,5 @@ allOf:
       - locations
   - $ref: ./segment-request-base.v1.yaml
 description: Air segment request.
+x-tags:
+  - Segments

@@ -1,7 +1,6 @@
 title: 'Segment: Hotel'
 x-tags:
   - Segments
-  - Calculator
 x-examples:
   example-1: {}
 description: Hotel segment.
