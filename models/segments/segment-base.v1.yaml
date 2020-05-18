@@ -22,4 +22,4 @@ allOf:
       - id
       - created_at
       - updated_at
-  - $ref: ./segment-request-base.v1.yaml
+  - $ref: ../segment requests/segment-request-base.v1.yaml

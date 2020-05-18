@@ -105,6 +105,18 @@
             "in": "query",
             "name": "page",
             "description": "Results are paginated. By default we will return the first page."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ]
+            },
+            "in": "header",
+            "name": "Accept",
+            "description": "",
+            "required": true
           }
         ]
       },
@@ -281,7 +293,7 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "../models/segment.v1.yaml"
+                            "$ref": "../models/segments/segment.v1.yaml"
                           }
                         }
                       }
@@ -308,13 +320,24 @@
         "tags": [
           "Segments"
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/segments/segment.v1.yaml"
+                }
+              }
+            }
+          }
+        },
         "operationId": "post-projects-projectId-segments",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/segment-request.v1.yaml"
+                "$ref": "../models/segment requests/segment-request.v1.yaml"
               }
             }
           }
@@ -353,7 +376,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/segment.v1.yaml"
+                  "$ref": "../models/segments/segment.v1.yaml"
                 }
               }
             }
@@ -380,7 +403,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/segment.v1.yaml"
+                  "$ref": "../models/segments/segment.v1.yaml"
                 }
               }
             }
@@ -393,7 +416,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "../models/segment-request.v1.yaml"
+                    "$ref": "../models/segment requests/segment-request.v1.yaml"
                   },
                   {
                     "type": "object",

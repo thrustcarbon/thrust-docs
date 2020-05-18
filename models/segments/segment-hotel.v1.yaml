@@ -6,11 +6,4 @@ x-examples:
 description: Hotel segment.
 allOf:
   - $ref: ./segment-base.v1.yaml
-  - type: object
-    properties:
-      type:
-        type: string
-        enum:
-          - hotel
-    required:
-      - type
+  - $ref: ../segment requests/segment-request-hotel.v1.yaml
