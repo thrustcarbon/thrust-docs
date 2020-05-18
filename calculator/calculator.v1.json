@@ -13,6 +13,10 @@
   "servers": [
     {
       "url": "https://app.thrustcarbon.com/api/1/calculator"
+    },
+    {
+      "url": "http://thrust.test/api/1/calculator",
+      "description": ""
     }
   ],
   "paths": {
@@ -150,7 +154,7 @@
                   "description": {
                     "type": "string"
                   },
-                  "currency": {
+                  "currency_symbol": {
                     "type": "string",
                     "description": "Must be a valid ISO 4217 currency code."
                   }
@@ -225,7 +229,8 @@
               }
             }
           }
-        }
+        },
+        "description": "NOT IMPLEMENTED YET"
       },
       "delete": {
         "summary": "Project: Delete",
@@ -237,7 +242,8 @@
             "description": "OK"
           }
         },
-        "operationId": "delete-projects-projectId"
+        "operationId": "delete-projects-projectId",
+        "description": "NOT IMPLEMENTED YET"
       },
       "get": {
         "summary": "Project: Get",
@@ -382,14 +388,31 @@
             }
           }
         },
-        "operationId": "get-projects-projectId-segments-segmentId"
+        "operationId": "get-projects-projectId-segments-segmentId",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ]
+            },
+            "in": "header",
+            "name": "Accept",
+            "required": true
+          }
+        ]
       },
       "delete": {
         "summary": "Segment: Delete",
         "tags": [
           "Segments"
         ],
-        "responses": {},
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
         "operationId": "delete-projects-projectId-segments-segmentId"
       },
       "put": {
@@ -431,7 +454,8 @@
             }
           },
           "description": "Please ignore the fields that say they are required. These fields are not required on a PUT operation."
-        }
+        },
+        "description": "NOT IMPLEMENTED YET"
       }
     }
   },
