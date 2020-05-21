@@ -22,7 +22,7 @@
   "paths": {
     "/projects": {
       "get": {
-        "summary": "Project: Get",
+        "summary": "Project: List",
         "tags": [
           "Projects"
         ],
