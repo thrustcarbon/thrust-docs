@@ -1,7 +1,7 @@
 {
   "title": "Paginated response",
   "type": "object",
-  "description": "",
+  "description": "When you request a list of responses, we will return a paginated response.",
   "properties": {
     "to": {
       "type": "integer"
@@ -65,5 +65,30 @@
   ],
   "x-tags": [
     "Common"
-  ]
+  ],
+  "x-examples": {
+    "Example of 'Project: List'": {
+      "current_page": 1,
+      "data": [
+        {
+          "id": "30135cb2-a16f-4ff0-84e9-b1dd8ec01a87",
+          "created_at": "2020-04-01 13:21:56",
+          "updated_at": "2020-04-01 13:21:56",
+          "name": "Family trip to Denmark",
+          "description": "",
+          "currency_symbol": "GBP"
+        }
+      ],
+      "first_page_url": "https://app.thrustcarbon.com/api/1/calculator/projects?page=1",
+      "from": 1,
+      "last_page": 1,
+      "last_page_url": "https://app.thrustcarbon.com/api/1/calculator/projects?page=1",
+      "next_page_url": null,
+      "path": "https://app.thrustcarbon.com/api/1/calculator/projects",
+      "per_page": 15,
+      "prev_page_url": null,
+      "to": 1,
+      "total": 1
+    }
+  }
 }

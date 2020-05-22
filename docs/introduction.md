@@ -8,8 +8,11 @@ Once you have an API key, please try sending requests directly from the document
 
 ### Ready to get started?
 
-Terrific. First get your API Token from your Thrust Carbon account (once you are logged in, click the menu in the top right hand corner and select 'API Credentials').
 
-Now head on over to the [Project: Create](https://stoplight.io/p/docs/gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects/post?srn=gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects/post) endpoint, click 'Try It' and create your first endpoint.
+Head over to the **[Getting Started documentation](./Getting-started.md).**
 
-Using the ID of your created project, you can add some segments using the [Segment: Create](https://stoplight.io/p/docs/gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects~1%7BprojectId%7D~1segments/post?srn=gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects~1{projectId}~1segments/post) endpoint.
+Alternatively: directly visit the documentation for the endpoints you would like to use:
+* [List projects](https://stoplight.io/p/docs/gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects/get?srn=gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects/get)
+* [Create a project](https://stoplight.io/p/docs/gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects/post?srn=gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects/post)
+* [List segments](https://stoplight.io/p/docs/gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects~1%7BprojectId%7D~1segments/get?srn=gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects~1{projectId}~1segments/get)
+* [Create a segment](https://stoplight.io/p/docs/gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects~1%7BprojectId%7D~1segments/post?srn=gh/kitbrennan90/thrust-docs/calculator/calculator.v1.json/paths/~1projects~1{projectId}~1segments/post)

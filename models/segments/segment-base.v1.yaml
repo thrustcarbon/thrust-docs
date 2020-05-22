@@ -4,7 +4,8 @@ description: |-
 
   This base is extended by each segment type...
 
-  **We suggest looking at the documentation for each segment type to learn the correct structure for that segment.**
+  <!-- theme: warning -->
+  > **We suggest looking at the documentation for each segment type to learn the correct structure for that segment.**
 x-tags:
   - Segments
 allOf:
@@ -22,4 +23,4 @@ allOf:
       - id
       - created_at
       - updated_at
-  - $ref: ../segment requests/segment-request-base.v1.yaml
+  - $ref: ../segment-requests/segment-request-base.v1.yaml

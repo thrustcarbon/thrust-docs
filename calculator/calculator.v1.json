@@ -3,7 +3,7 @@
   "info": {
     "title": "Thrust Calculator",
     "version": "1.0",
-    "description": "API for the ThrustCalculator",
+    "description": "The Thrust Calculator is our industry leading product to creating complex carbon calculations, and generating beautiful reports.\n\n#### Getting Started\n**If it is your first time here, we suggest visiting the [Getting Started guide](../docs/Getting-started.md).**\n\n#### Resources\n* **Projects** - a project is the container for your calculation. Any reports you create are made on a project level.\n* **Segments** - a segment is something that generates an emission (e.g. flight, hotel stay, delivery, raw material purchase). ",
     "contact": {
       "name": "Kit Brennan",
       "email": "kit@thrustcarbon.com",
@@ -12,11 +12,12 @@
   },
   "servers": [
     {
-      "url": "https://app.thrustcarbon.com/api/1/calculator"
+      "url": "https://app.thrustcarbon.com/api/1/calculator",
+      "description": "Production"
     },
     {
       "url": "http://thrust.test/api/1/calculator",
-      "description": ""
+      "description": "Internal"
     }
   ],
   "paths": {
@@ -122,7 +123,8 @@
             "description": "",
             "required": true
           }
-        ]
+        ],
+        "description": "Gets an existing project in your ThrustCalculator account."
       },
       "post": {
         "summary": "Project: Add",
@@ -162,6 +164,15 @@
                 "required": [
                   "name"
                 ]
+              },
+              "examples": {
+                "Example Payload": {
+                  "value": {
+                    "name": "My example project",
+                    "description": "A simply description",
+                    "currency_symbol": "GBP"
+                  }
+                }
               }
             },
             "application/xml": {
@@ -172,7 +183,19 @@
             }
           },
           "description": ""
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "required": true,
+            "description": "application/json"
+          }
+        ],
+        "description": "Creates a new project in your Thrust Calculator account."
       }
     },
     "/projects/{projectId}": {
@@ -230,7 +253,7 @@
             }
           }
         },
-        "description": "NOT IMPLEMENTED YET"
+        "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
       },
       "delete": {
         "summary": "Project: Delete",
@@ -243,7 +266,7 @@
           }
         },
         "operationId": "delete-projects-projectId",
-        "description": "NOT IMPLEMENTED YET"
+        "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
       },
       "get": {
         "summary": "Project: Get",
@@ -263,7 +286,7 @@
           }
         },
         "operationId": "get-projects-projectId",
-        "description": ""
+        "description": "Gets an existing Thrust Calculator project."
       }
     },
     "/projects/{projectId}/segments": {
@@ -319,7 +342,8 @@
             "in": "query",
             "name": "page"
           }
-        ]
+        ],
+        "description": "Gets a list of all segments belonging to a project."
       },
       "post": {
         "summary": "Segment: Add",
@@ -343,11 +367,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/segment requests/segment-request.v1.yaml"
+                "$ref": "../models/segment-requests/segment-request.v1.yaml"
               }
             }
           }
-        }
+        },
+        "description": "Adds a new segment to a project."
       }
     },
     "/projects/{projectId}/segments/{segmentId}": {
@@ -401,7 +426,8 @@
             "name": "Accept",
             "required": true
           }
-        ]
+        ],
+        "description": "Gets an existing segment."
       },
       "delete": {
         "summary": "Segment: Delete",
@@ -413,7 +439,8 @@
             "description": "No Content"
           }
         },
-        "operationId": "delete-projects-projectId-segments-segmentId"
+        "operationId": "delete-projects-projectId-segments-segmentId",
+        "description": "Deletes an existing segment on a project."
       },
       "put": {
         "summary": "Segment: Update",
@@ -439,7 +466,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "../models/segment requests/segment-request.v1.yaml"
+                    "$ref": "../models/segment-requests/segment-request.v1.yaml"
                   },
                   {
                     "type": "object",
@@ -455,7 +482,7 @@
           },
           "description": "Please ignore the fields that say they are required. These fields are not required on a PUT operation."
         },
-        "description": "NOT IMPLEMENTED YET"
+        "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
       }
     }
   },

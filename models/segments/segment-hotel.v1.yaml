@@ -6,4 +6,4 @@ x-examples:
 description: Hotel segment.
 allOf:
   - $ref: ./segment-base.v1.yaml
-  - $ref: ../segment requests/segment-request-hotel.v1.yaml
+  - $ref: ../segment-requests/segment-request-hotel.v1.yaml

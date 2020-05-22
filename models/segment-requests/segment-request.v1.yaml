@@ -1,0 +1,11 @@
+title: Segment Request
+x-tags:
+  - Segments
+oneOf:
+  - $ref: ./segment-request-air.v1.yaml
+  - $ref: ./segment-request-hotel.v1.yaml
+description: |-
+  * This is the model for creating or updating a segment, *if you are getting an already created segment from the API, please the [Segment](../segments/segment.v1.yaml) documentation*
+  * Every segment request extends the [same base](./segment-request-base.v1.yaml), we recommend reading the documentation for the segment type you are trying to create:
+      * [Air segment](./segment-request-air.v1.yaml)
+      * [Hotel segment](./segment-request-hotel.v1.yaml)
