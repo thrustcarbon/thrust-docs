@@ -10,7 +10,7 @@ tags: [Guides]
 
 ## 1. Obtain an API Token
 
-- Visit the [API Credentials](https://www.thrustcarbon.com/account/api-credential) page and copy your API token.
+- Visit the [API Credentials](https://app.thrustcarbon.com/account/api-credential) page and copy your API token.
 - You will need to include your API Token in all requests in the Authentication header as a Bearer token.
 
 ## 2. Create a project
