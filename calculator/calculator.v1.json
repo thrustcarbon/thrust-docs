@@ -3,7 +3,7 @@
   "info": {
     "title": "Thrust Calculator",
     "version": "1.0",
-    "description": "The Thrust Calculator is our industry leading product to creating complex carbon calculations, and generating beautiful reports.\n\n#### Getting Started\n**If it is your first time here, we suggest visiting the [Getting Started guide](../docs/Getting-started.md).**\n\n#### Resources\n* **Projects** - a project is the container for your calculation. Any reports you create are made on a project level.\n* **Segments** - a segment is something that generates an emission (e.g. flight, hotel stay, delivery, raw material purchase). ",
+    "description": "The Thrust Calculator is our industry leading product to creating complex carbon calculations, and generating beautiful reports.\n\n#### Getting Started\n**If it is your first time here, we suggest visiting the [Getting Started guide](../docs/Getting-started.md).**\n\n#### Resources\n* **Projects** - a project is the container for your calculation. Any reports you create are made on a project level.\n* **Segments** - a segment is something that generates an emission (e.g. flight, hotel stay, delivery, raw material purchase). \n* **Offset Options** - an offset option represents a carbon offset that may be attached to your project.\n* **Offset** - a carbon offset which has been added to an offset. This may be in a state of pending, completed (i.e. purchased), or expired.",
     "contact": {
       "name": "Kit Brennan",
       "email": "kit@thrustcarbon.com",
