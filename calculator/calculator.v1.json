@@ -253,7 +253,7 @@
             }
           }
         },
-        "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access."
       },
       "delete": {
         "summary": "Project: Delete",
@@ -266,7 +266,7 @@
           }
         },
         "operationId": "delete-projects-projectId",
-        "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access."
       },
       "get": {
         "summary": "Project: Get",
@@ -482,7 +482,7 @@
           },
           "description": "Please ignore the fields that say they are required. These fields are not required on a PUT operation."
         },
-        "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access."
       }
     },
     "/projects/{projectId}/offset-options": {
@@ -499,9 +499,23 @@
       "get": {
         "summary": "Get offset options",
         "tags": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../models/offset-option.v1.yaml"
+                  }
+                }
+              }
+            }
+          }
+        },
         "operationId": "get-projects-projectId-offset-options",
-        "description": "Provides a list of offset options available for this project. You can use this list to:\n* Display a list of offset opportunities to your users.\n* Take a returned offset option and attach it to your project. Once an offset is attached, you can purchase the offset by finalising the project.\n\nPlease note: at this time, you will need to contact ThrustCarbon directly to purchase more than 1,000 tonnes in a single purchase."
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nProvides a list of offset options available for this project. You can use this list to:\n* Display a list of offset opportunities to your users.\n* Take a returned offset option and attach it to your project. Once an offset is attached, you can purchase the offset by finalising the project.\n\nPlease note: at this time, you will need to contact ThrustCarbon directly to purchase more than 1,000 tonnes in a single purchase."
       }
     },
     "/projects/{projectId}/offsets": {
@@ -518,8 +532,51 @@
       "post": {
         "summary": "Add new offset",
         "tags": [],
-        "responses": {},
-        "operationId": "post-projects-projectId-offsets"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/offset.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-projects-projectId-offsets",
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nAttach an offset option to this project",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "offset_option_id": {
+                    "type": "string"
+                  },
+                  "tonnes_of_co2": {
+                    "type": "string",
+                    "description": "Number of tonnes of co2 you would like to purchase."
+                  },
+                  "price_per_tonne": {
+                    "type": "string",
+                    "description": "Optional. If you provide a price-per-tonne, your request will be validated against the current price-per-tonne and return an error if that price is no longer valid.\n\nWe recommend providing this parameter to verify that the price hasn't moved between requesting an offset option and attaching an offset."
+                  },
+                  "price_currency": {
+                    "type": "string",
+                    "default": "GBP",
+                    "description": "Used in conjunction with price_per_tonne"
+                  }
+                },
+                "required": [
+                  "offset_option_id",
+                  "tonnes_of_co2"
+                ]
+              }
+            }
+          }
+        }
       }
     },
     "/projects/{projectId}/offsets/{offsetId}": {
@@ -544,14 +601,35 @@
       "get": {
         "summary": "Get offset",
         "tags": [],
-        "responses": {},
-        "operationId": "get-projects-projectId-offsets-offsetId"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "../models/offset.v1.yaml"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-offsets-offsetId",
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nGets an offset that you have already attached to a project."
       },
       "delete": {
         "summary": "Delete offset",
         "tags": [],
-        "responses": {},
-        "operationId": "delete-projects-projectId-offsets-offsetId"
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "operationId": "delete-projects-projectId-offsets-offsetId",
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nRemoves an offset that was attached to a project."
       }
     },
     "/projects/{projectId}/finalise": {
@@ -568,9 +646,20 @@
       "put": {
         "summary": "Finalise a project",
         "tags": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/project.v1.json"
+                }
+              }
+            }
+          }
+        },
         "operationId": "put-projects-projectId-finalise",
-        "description": "Finalising a project will convert all the offsets from 'pending' to 'confirmed', and change the project status to 'complete'.\n\n**Usage of this endpoint will cost you money.** Offsets will be purchased on your behalf, removing carbon from the atmosphere."
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nFinalising a project will convert all the offsets from 'pending' to 'confirmed', and change the project status to 'complete'.\n\n**Usage of this endpoint will cost you money.** Offsets will be purchased on your behalf, removing carbon from the atmosphere."
       }
     }
   },

@@ -18,12 +18,9 @@ properties:
   price_per_tonne:
     type: string
     description: Returned in base units of the currency.
-  price_total:
-    type: string
-    description: Returned in base units of the currency (e.g. $1 is returned as 100).
   price_currency:
     type: string
-  tonnes_of_co2:
+  tonnes_of_co2_available:
     type: string
 required:
   - id
@@ -33,5 +30,4 @@ required:
   - location_area
   - location_country
   - price_per_tonne
-  - price_total
   - price_currency

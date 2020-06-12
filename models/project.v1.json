@@ -1,7 +1,7 @@
 {
   "description": "The project is the heart of the ThrustCalculator. Once you have a project, you can attach segments, offsets, and generate reports.",
   "type": "object",
-  "title": "Calculator Project",
+  "title": "Calculator project",
   "properties": {
     "id": {
       "type": "string",
