@@ -484,6 +484,94 @@
         },
         "description": "<!-- theme: danger -->\n\n> ### NOT YET IMPLEMENTED"
       }
+    },
+    "/projects/{projectId}/offset-options": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get offset options",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-projects-projectId-offset-options",
+        "description": "Provides a list of offset options available for this project. You can use this list to:\n* Display a list of offset opportunities to your users.\n* Take a returned offset option and attach it to your project. Once an offset is attached, you can purchase the offset by finalising the project.\n\nPlease note: at this time, you will need to contact ThrustCarbon directly to purchase more than 1,000 tonnes in a single purchase."
+      }
+    },
+    "/projects/{projectId}/offsets": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Add new offset",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-projects-projectId-offsets"
+      }
+    },
+    "/projects/{projectId}/offsets/{offsetId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "offsetId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get offset",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-projects-projectId-offsets-offsetId"
+      },
+      "delete": {
+        "summary": "Delete offset",
+        "tags": [],
+        "responses": {},
+        "operationId": "delete-projects-projectId-offsets-offsetId"
+      }
+    },
+    "/projects/{projectId}/finalise": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Finalise a project",
+        "tags": [],
+        "responses": {},
+        "operationId": "put-projects-projectId-finalise",
+        "description": "Finalising a project will convert all the offsets from 'pending' to 'confirmed', and change the project status to 'complete'.\n\n**Usage of this endpoint will cost you money.** Offsets will be purchased on your behalf, removing carbon from the atmosphere."
+      }
     }
   },
   "components": {
