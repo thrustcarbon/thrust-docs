@@ -1,8 +1,7 @@
 title: 'Segment: Hotel'
 x-tags:
   - Segments
-x-examples:
-  example-1: {}
+x-examples: {}
 description: Hotel segment.
 allOf:
   - $ref: ./segment-base.v1.yaml
