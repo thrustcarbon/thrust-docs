@@ -9,5 +9,5 @@ description: |-
 allOf:
   - $ref: ./segment-base.v1.yaml
   - oneOf:
-      - $ref: ./segment-hotel.v1.yaml
-      - $ref: ./segment-air.v1.yaml
+    - $ref: ./segment-air.v1.yaml
+    - $ref: ./segment-hotel.v1.yaml
