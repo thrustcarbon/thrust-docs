@@ -628,7 +628,9 @@
       },
       "delete": {
         "summary": "Delete offset",
-        "tags": [],
+        "tags": [
+          "Offsets"
+        ],
         "responses": {
           "204": {
             "description": "No Content"
