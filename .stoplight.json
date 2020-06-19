@@ -16,6 +16,5 @@
       "rootDir": "models",
       "include": ["**"]
     }
-  },
-  "exclude": ["models/segment-requests"]
+  }
 }
