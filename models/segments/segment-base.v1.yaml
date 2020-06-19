@@ -19,8 +19,11 @@ allOf:
       updated_at:
         type: string
         format: date-time
+      tonnes_of_emissions:
+        type: number
     required:
       - id
       - created_at
       - updated_at
+      - tonnes_of_emissions
   - $ref: ../segment-requests/segment-request-base.v1.yaml
