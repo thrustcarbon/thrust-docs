@@ -79,7 +79,7 @@
                       "type": "array",
                       "description": "Returns an array of Project objects",
                       "items": {
-                        "$ref": "../models/project.v1.json"
+                        "$ref": "../models/common-models/project.v1.json"
                       }
                     }
                   },
@@ -137,7 +137,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/project.v1.json"
+                  "$ref": "../models/common-models/project.v1.json"
                 }
               }
             }
@@ -222,7 +222,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/project.v1.json"
+                  "$ref": "../models/common-models/project.v1.json"
                 }
               }
             }
@@ -279,7 +279,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/project.v1.json"
+                  "$ref": "../models/common-models/project.v1.json"
                 }
               }
             }
@@ -314,7 +314,7 @@
                 "schema": {
                   "allOf": [
                     {
-                      "$ref": "../models/response-paginated.v1.json"
+                      "$ref": "../models/common-models/response-paginated.v1.json"
                     },
                     {
                       "type": "object",
@@ -498,7 +498,9 @@
       ],
       "get": {
         "summary": "Get offset options",
-        "tags": [],
+        "tags": [
+          "Offsets"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -507,7 +509,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "../models/offset-option.v1.yaml"
+                    "$ref": "../models/common-models/offset-option.v1.yaml"
                   }
                 }
               }
@@ -531,14 +533,16 @@
       ],
       "post": {
         "summary": "Add new offset",
-        "tags": [],
+        "tags": [
+          "Offsets"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/offset.v1.yaml"
+                  "$ref": "../models/common-models/offset.v1.yaml"
                 }
               }
             }
@@ -600,7 +604,9 @@
       ],
       "get": {
         "summary": "Get offset",
-        "tags": [],
+        "tags": [
+          "Offsets"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -609,7 +615,7 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "../models/offset.v1.yaml"
+                      "$ref": "../models/common-models/offset.v1.yaml"
                     }
                   ]
                 }
@@ -645,14 +651,16 @@
       ],
       "put": {
         "summary": "Finalise a project",
-        "tags": [],
+        "tags": [
+          "Finalise"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/project.v1.json"
+                  "$ref": "../models/common-models/project.v1.json"
                 }
               }
             }
@@ -676,6 +684,14 @@
   "security": [
     {
       "API Key": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Offsets"
+    },
+    {
+      "name": "Finalise"
     }
   ]
 }
