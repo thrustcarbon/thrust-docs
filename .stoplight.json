@@ -13,7 +13,15 @@
       "include": ["**"]
     },
     "json_schema": {
-      "rootDir": "models",
+      "rootDir": "models/common-models",
+      "include": ["**"]
+    },
+    "json_schema": {
+      "rootDir": "models/segment-requests",
+      "include": ["**"]
+    },
+    "json_schema": {
+      "rootDir": "models/segments",
       "include": ["**"]
     }
   }
