@@ -17,7 +17,8 @@ paths:
     parameters: []
     get:
       summary: 'Sub organisation: list'
-      tags: []
+      tags:
+        - Sub organisations
       responses:
         '200':
           description: OK
@@ -44,6 +45,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-models/organisation.v1.yaml
       description: |-
         > ### This endpoint is only accessible by partner accounts
         > Please contact your account manager for access.
@@ -51,6 +56,19 @@ paths:
         This endpoint will create a new sub-organisation under this organisation.
 
         **Usage of this endpoint will cost you money.** Each new partner account is billed as a new Thrust Carbon license. Please contact your account manager for pricing.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                is_partner:
+                  type: boolean
+                  description: 'If this organisation is a partner account, it will be able to have further sub-organisations below it. *Note: you will be billed for these sub-organisations*.'
+              required:
+                - name
     delete:
       summary: 'Sub organisation: delete'
       operationId: delete-organisationId-organisations
@@ -81,3 +99,5 @@ components:
       description: 'Your API Key must be provided as a bearer token. To do this, create an ''Authorization'' header with a value of ''Bearer {your-api-key}'' (e.g. "Authorization: Bearer xcvboy23idvh").'
 security:
   - API Key: []
+tags:
+  - name: Sub organisations
