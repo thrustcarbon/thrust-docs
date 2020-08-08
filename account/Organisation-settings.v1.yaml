@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: Organisation settings
+  version: '1.0'
+  description: |-
+    The organisation settings endpoints enable you to manage your Thrust Carbon's organisational settings.
+
+    #### Getting Started
+    **If it is your first time here, we suggest visiting the [Getting Started guide](../docs/Getting-started.md).**
+servers:
+  - url: 'https://app.thrustcarbon.com/api/1/setting/organisation'
+    description: Production
+  - url: 'http://thrust.test/api/1/setting/organisation'
+    description: Internal
+paths:
+  /sub-organisations:
+    parameters: []
+    get:
+      summary: 'Sub organisation: list'
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../models/common-models/response-paginated.v1.json
+                  - properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: ../models/common-models/organisation.v1.yaml
+                    type: object
+      operationId: get-organisationId-organisations
+      description: |-
+        > ### This endpoint is only accessible by partner accounts
+        > Please contact your account manager for access.
+
+        This endpoint will list all the sub-organisation's belonging to this organisation. 
+    post:
+      summary: 'Sub organisation: add'
+      operationId: post-organisationId-organisations
+      responses:
+        '200':
+          description: OK
+      description: |-
+        > ### This endpoint is only accessible by partner accounts
+        > Please contact your account manager for access.
+
+        This endpoint will create a new sub-organisation under this organisation.
+
+        **Usage of this endpoint will cost you money.** Each new partner account is billed as a new Thrust Carbon license. Please contact your account manager for pricing.
+    delete:
+      summary: 'Sub organisation: delete'
+      operationId: delete-organisationId-organisations
+      responses:
+        '204':
+          description: No Content
+      description: |-
+        > ### This endpoint is only accessible by partner accounts
+        > Please contact your account manager for access.
+
+        This endpoint will delete the organisation, using the organisation ID in the path.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organisation_id:
+                  type: string
+                  description: ID of the sub-organisation to delete.
+        description: ''
+components:
+  schemas: {}
+  securitySchemes:
+    API Key:
+      type: http
+      scheme: bearer
+      description: 'Your API Key must be provided as a bearer token. To do this, create an ''Authorization'' header with a value of ''Bearer {your-api-key}'' (e.g. "Authorization: Bearer xcvboy23idvh").'
+security:
+  - API Key: []

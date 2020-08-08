@@ -1,0 +1,10 @@
+title: Organisation
+type: object
+description: ''
+properties:
+  id:
+    type: string
+  is_partner:
+    type: boolean
+  name:
+    type: string
