@@ -69,6 +69,8 @@ paths:
                   description: 'If this organisation is a partner account, it will be able to have further sub-organisations below it. *Note: you will be billed for these sub-organisations*.'
               required:
                 - name
+      tags:
+        - Sub organisations
     delete:
       summary: 'Sub organisation: delete'
       operationId: delete-organisationId-organisations
@@ -90,6 +92,8 @@ paths:
                   type: string
                   description: ID of the sub-organisation to delete.
         description: ''
+      tags:
+        - Sub organisations
 components:
   schemas: {}
   securitySchemes:
