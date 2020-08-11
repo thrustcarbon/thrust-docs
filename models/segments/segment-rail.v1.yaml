@@ -1,0 +1,5 @@
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - $ref: ../segment-requests/segment-request-rail.v1.yaml
+title: 'Segment: Rail'
+description: ''

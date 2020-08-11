@@ -6,8 +6,11 @@ description: |-
   * Every segment extends the [same base](./segment-base.v1.yaml), we recommend reading the documentation for the segment type you are trying to get:
       * [Air segment](./segment-air.v1.yaml)
       * [Hotel segment](./segment-hotel.v1.yaml)
+      * [Rail segment](./segment-rail.v1.yaml)
 allOf:
   - $ref: ./segment-base.v1.yaml
   - oneOf:
-    - $ref: ./segment-air.v1.yaml
-    - $ref: ./segment-hotel.v1.yaml
+      - $ref: ./segment-air.v1.yaml
+      - $ref: ./segment-hotel.v1.yaml
+      - properties: {}
+        $ref: ./segment-rail.v1.yaml

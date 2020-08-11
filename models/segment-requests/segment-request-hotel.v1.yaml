@@ -25,4 +25,7 @@ allOf:
           type: string
     required:
       - type
-description: Hotel segment request.
+description: |-
+  Hotel segment request.
+
+  *Note: for hotel emissions you should only send one location in the locations array.*

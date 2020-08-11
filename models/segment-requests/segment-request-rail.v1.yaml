@@ -1,0 +1,19 @@
+title: 'Segment Request: Rail'
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      distance:
+        type: number
+      passengers:
+        type: integer
+      rail_type:
+        type: string
+        enum:
+          - NATIONAL_RAIL
+          - INTERNATIONAL_RAIL
+          - LIGHT_RAIL
+          - TRAM
+          - SUBWAY
+          - LONDON_UNDERGROUND
+description: Rail segment request

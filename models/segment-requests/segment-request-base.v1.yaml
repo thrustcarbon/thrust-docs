@@ -14,5 +14,23 @@ properties:
     enum:
       - air
       - hotel
+  departments:
+    type: array
+    description: Optional array of departments to assign the emission to.
+    items:
+      type: string
+  emitted_at:
+    type: string
+    description: ''
+    format: date
+    example: '2019-07-09'
+  locations:
+    type: array
+    description: 'Array of: 2-letter ISO 3166 country code, or 3 letter IATA airport code'
+    items:
+      type: string
+  traveller_ref:
+    type: string
+    description: Optional reference identifying the traveller in the segment.
 required:
   - type

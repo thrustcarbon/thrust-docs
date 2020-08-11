@@ -67,10 +67,11 @@ paths:
                 is_partner:
                   type: boolean
                   description: 'If this organisation is a partner account, it will be able to have further sub-organisations below it. *Note: you will be billed for these sub-organisations*.'
-                parent_id:
+                organisation_id:
                   type:
                     - string
                     - 'null'
+                  description: 'Organisation that the sub-organisation will be placed under. If not supplied, it will default to your root organisation.'
               required:
                 - name
       tags:
