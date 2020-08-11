@@ -241,7 +241,7 @@
                   "description": {
                     "type": "string"
                   },
-                  "currency": {
+                  "currency_symbol": {
                     "type": "string",
                     "example": "USD",
                     "minLength": 3,
@@ -253,7 +253,7 @@
             }
           }
         },
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access."
+        "description": ""
       },
       "delete": {
         "summary": "Project: Delete",
@@ -261,12 +261,12 @@
           "Projects"
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           }
         },
         "operationId": "delete-projects-projectId",
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access."
+        "description": "**Please note: you cannot remove a project that has offsets attached**. This is because an offset represents a purchase. You should remove the offsets from the project if the project is not finalised."
       },
       "get": {
         "summary": "Project: Get",
