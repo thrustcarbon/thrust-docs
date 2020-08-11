@@ -8,12 +8,10 @@ info:
     #### Getting Started
     **If it is your first time here, we suggest visiting the [Getting Started guide](../docs/Getting-started.md).**
 servers:
-  - url: 'https://app.thrustcarbon.com/api/1/setting/organisation'
+  - url: 'https://app.thrustcarbon.com/'
     description: Production
-  - url: 'http://thrust.test/api/1/setting/organisation'
-    description: Internal
 paths:
-  /sub-organisations:
+  api/1/setting/organisation/sub-organisations:
     parameters: []
     get:
       summary: 'Sub organisation: list'
