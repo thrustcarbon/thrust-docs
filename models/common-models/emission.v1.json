@@ -1,0 +1,25 @@
+{
+  "title": "emission",
+  "type": "object",
+  "description": "An object identifying a quantity of emissions.",
+  "properties": {
+    "tonnes_of_emissions": {
+      "type": "number"
+    },
+    "equivalencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "tonnes_of_emissions": 1.203,
+      "equivalencies": [
+        "This is equivalent to burning 1 mature oak tree.",
+        "This is equivalent to driving 10% of the way to the moon"
+      ]
+    }
+  }
+}

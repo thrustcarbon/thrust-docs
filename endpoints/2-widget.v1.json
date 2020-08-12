@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Endpoints (2): Thrust Widget",
+    "version": "1.0",
+    "description": "",
+    "contact": {
+      "name": "Kit Brennan",
+      "email": "kit@thrustcarbon.com",
+      "url": "https://www.thrustcarbon.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://app.thrustcarbon.com/api/1/widget",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/emissions": {
+      "get": {
+        "summary": "Emissions: Get",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/emission.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-emissions",
+        "description": "> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nA standalone endpoint to calculate emissions.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/segment-requests/segment-request.v1.yaml"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "API Key ": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Your API Key must be provided as a bearer token. To do this, create an 'Authorization' header with a value of 'Bearer {your-api-key}' (e.g. \"Authorization: Bearer xcvboy23idvh\")."
+      }
+    }
+  },
+  "security": [
+    {
+      "API Key ": []
+    }
+  ]
+}

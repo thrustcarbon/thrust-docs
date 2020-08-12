@@ -14,10 +14,6 @@
     {
       "url": "https://app.thrustcarbon.com/api/1/calculator",
       "description": "Production"
-    },
-    {
-      "url": "http://thrust.test/api/1/calculator",
-      "description": "Internal"
     }
   ],
   "paths": {
