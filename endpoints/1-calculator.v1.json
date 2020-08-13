@@ -667,6 +667,170 @@
         "operationId": "put-projects-projectId-finalise",
         "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nFinalising a project will convert all the offsets from 'pending' to 'confirmed', and change the project status to 'complete'.\n\n**Usage of this endpoint will cost you money.** Offsets will be purchased on your behalf, removing carbon from the atmosphere."
       }
+    },
+    "/projects/{projectId}/segments/batch": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the calculator project"
+        }
+      ],
+      "get": {
+        "summary": "Segment: Batch add",
+        "tags": [
+          "Segments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created_segments": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../models/segments/segment.v1.yaml"
+                      }
+                    },
+                    "invalid_segments": {
+                      "type": "array",
+                      "description": "Each invalid segment object is keyed to the same segment key that was passed into the request. *For example, the third segment will be under the '3' key in the invalid_segments array.*",
+                      "items": {
+                        "$ref": "../reference/common/models/validation-error.v1.yaml"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example with air segments": {
+                    "value": {
+                      "created_segments": {
+                        "0": {
+                          "id": "30a9d544-03c9-42b1-8d89-52b8c6a88196",
+                          "created_at": "2020-08-13T09:26:56.000000Z",
+                          "updated_at": "2020-08-13T09:26:56.000000Z",
+                          "type": "air",
+                          "tonnes_of_emissions": 0.8485803993418809,
+                          "locations": [
+                            "LHR",
+                            "JFK"
+                          ]
+                        },
+                        "1": {
+                          "id": "44bfb576-acb9-4f70-9200-e89ad4b4b8e0",
+                          "created_at": "2020-08-13T09:26:56.000000Z",
+                          "updated_at": "2020-08-13T09:26:56.000000Z",
+                          "type": "air",
+                          "tonnes_of_emissions": 0.9458074863536594,
+                          "locations": [
+                            "CPH",
+                            "JFK"
+                          ]
+                        },
+                        "3": {
+                          "id": "74727b13-4fa7-4a15-b0be-bc3abeb263cb",
+                          "created_at": "2020-08-13T09:26:56.000000Z",
+                          "updated_at": "2020-08-13T09:26:56.000000Z",
+                          "type": "air",
+                          "tonnes_of_emissions": 0.9458074863536594,
+                          "locations": [
+                            "CPH",
+                            "JFK"
+                          ]
+                        }
+                      },
+                      "invalid_segments": {
+                        "2": {
+                          "passengers": [
+                            "The passengers must be an integer."
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-segments-batch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../models/segment-requests/segment-request.v1.yaml"
+                    }
+                  }
+                },
+                "required": [
+                  "segments"
+                ]
+              },
+              "examples": {
+                "Example with air segments": {
+                  "value": {
+                    "segments": [
+                      {
+                        "type": "air",
+                        "locations": [
+                          "LHR",
+                          "JFK"
+                        ]
+                      },
+                      {
+                        "type": "air",
+                        "locations": [
+                          "CPH",
+                          "JFK"
+                        ]
+                      },
+                      {
+                        "type": "air",
+                        "locations": [
+                          "LHR",
+                          "JFK"
+                        ],
+                        "passengers": "invalid"
+                      },
+                      {
+                        "type": "air",
+                        "locations": [
+                          "CPH",
+                          "JFK"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "This endpoint will batch add segments.\n\nThe fully qualified URI for this request is: `https://app.thrustcarbon.com/api/1/calculator/projects/{projectId}`"
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-projects-projectId-segments-batch",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": ""
+      }
     }
   },
   "components": {
@@ -690,6 +854,9 @@
     },
     {
       "name": "Finalise"
+    },
+    {
+      "name": "Segments"
     }
   ]
 }
