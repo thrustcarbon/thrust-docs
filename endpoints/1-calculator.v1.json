@@ -681,7 +681,7 @@
           "description": "ID of the calculator project"
         }
       ],
-      "get": {
+      "post": {
         "summary": "Segment: Batch add",
         "tags": [
           "Segments"
@@ -820,16 +820,6 @@
           }
         },
         "description": "This endpoint will batch add segments.\n\nThe fully qualified URI for this request is: `https://app.thrustcarbon.com/api/1/calculator/projects/{projectId}`"
-      },
-      "post": {
-        "summary": "",
-        "operationId": "post-projects-projectId-segments-batch",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": ""
       }
     }
   },
