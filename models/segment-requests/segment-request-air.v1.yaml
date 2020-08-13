@@ -15,7 +15,7 @@ allOf:
               description: Three letter IATA airport code
               example: LHR
             - type: number
-              description: 'Latitude & longitude coordinate'
+              description: Latitude & longitude coordinate
               example: 51.4700 0.4543
       passengers:
         type: integer
@@ -33,7 +33,7 @@ allOf:
         description: 2 letter IATA carrier code
       aircraft_type:
         type: string
-        description: Must be a valid ICAO type designator
+        description: Must be a valid ICAO/IATA type designator
         example: B748
         maxLength: 4
     required:
