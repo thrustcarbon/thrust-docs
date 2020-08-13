@@ -1,0 +1,21 @@
+title: Validation error
+type: object
+description: |-
+  A validation error will contain an object with each key matching a field with a validation error. The value for each key will be an array of validation errors.
+
+  We recommend viewing the examples.
+properties:
+  field_name_1:
+    type: array
+    items:
+      type: string
+  field_name_2:
+    type: array
+    items:
+      type: string
+x-examples:
+  Invalid air segment example:
+    locations:
+      - The locations must be an array
+    passengers:
+      - The passengers must be an integer

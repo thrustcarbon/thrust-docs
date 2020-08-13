@@ -28,6 +28,47 @@
               "application/json": {
                 "schema": {
                   "$ref": "../models/common-models/emission.v1.json"
+                },
+                "examples": {
+                  "Example with 2 errors": {
+                    "value": {
+                      "emissions": 0.8485803993418809,
+                      "invalidSegments": {
+                        "2": {
+                          "type": [
+                            "The selected type is invalid."
+                          ]
+                        },
+                        "5": {
+                          "rooms": [
+                            "The rooms must be an integer."
+                          ]
+                        }
+                      },
+                      "equivalencies": [
+                        {
+                          "type": "tree",
+                          "values": [
+                            "This is equivalent to burning a forest containing",
+                            "0.56 mature oak trees."
+                          ]
+                        },
+                        {
+                          "type": "video-call",
+                          "values": [
+                            "This is equivalent to 8486 days of video conferencing."
+                          ]
+                        },
+                        {
+                          "type": "moon",
+                          "values": [
+                            "This is equivalent to driving a small car 7708 kilometers.",
+                            "You could also drive 0.02% of the way to the moon."
+                          ]
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -48,10 +89,30 @@
                     }
                   }
                 }
+              },
+              "examples": {
+                "Air segment example": {
+                  "value": {
+                    "segments": [
+                      {
+                        "type": "air",
+                        "locations": [
+                          "LHR",
+                          "JFK"
+                        ],
+                        "passengers": 1,
+                        "travel_class": "economy",
+                        "carrier": "BA",
+                        "aircraft_type": "B748"
+                      }
+                    ]
+                  }
+                }
               }
             }
           }
-        }
+        },
+        "parameters": []
       },
       "parameters": []
     }
