@@ -27,6 +27,34 @@ allOf:
           - premium
           - business
           - first
+          - A
+          - B
+          - C
+          - D
+          - E
+          - F
+          - G
+          - H
+          - I
+          - J
+          - K
+          - L
+          - M
+          - 'N'
+          - O
+          - P
+          - Q
+          - R
+          - S
+          - T
+          - U
+          - V
+          - W
+          - X
+          - 'Y'
+          - Z
+        example: economy
+        description: 'Travel class as a string. You can either enter the name of the class (e.g. `economy`), or a fare basis code (e.g. `Y`). If you have both pieces of data you should use the name of the class instead of the fare basis code, as fare basis codes can vary by airline.'
       carrier:
         type: string
         default: BA
