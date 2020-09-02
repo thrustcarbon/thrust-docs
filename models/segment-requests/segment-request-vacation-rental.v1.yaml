@@ -1,0 +1,38 @@
+title: 'Segment Request: Vacation Rental (e.g. Airbnb)'
+x-tags:
+  - Segments
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+      travellers:
+        type: integer
+        default: '1'
+      nights:
+        type: integer
+        default: 1
+      locations:
+        type: array
+        description: |
+          An array containing a single location.
+        items:
+          oneOf:
+            - description: 2 digit ISO 3166 country code
+              example: US
+          type: string
+    required:
+      - type
+description: |-
+  Vacation rental segment request.
+
+  *Note: for vacation rentals, you should only send one location in the locations array.*
+x-examples:
+  'Example: US stay':
+    type: vacation-rental
+    emitted_at: '2019-07-09'
+    locations:
+      - US
+    travellers: 2
+    nights: 4

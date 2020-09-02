@@ -1,0 +1,8 @@
+title: 'Segment: Vacation Rental'
+x-tags:
+  - Segments
+x-examples: {}
+description: Vacation rental segment.
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - $ref: ../segment-requests/segment-request-vacation-rental.v1.yaml

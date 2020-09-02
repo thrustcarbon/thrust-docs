@@ -14,3 +14,5 @@ allOf:
       - $ref: ./segment-hotel.v1.yaml
       - properties: {}
         $ref: ./segment-rail.v1.yaml
+      - properties: {}
+        $ref: ../segment-requests/segment-request-vacation-rental.v1.yaml
