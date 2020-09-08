@@ -1,0 +1,70 @@
+title: Report
+type: object
+description: |-
+  A report can be generated via the Thrust Calculator. If you have white-labeling setup on your account, this report will be shown in your company's own branding.
+
+  At present, you can create reports for:
+  * **Impact** - displaying charts and graphs of the calculation's CO2 impact.
+  * **Offset Options** - displaying a list of potential offset options that can be purchased to offset the calculation's CO2 impact.
+  * **Offset Certificates** - a PDF containing all certificates for the offsets purchased.
+
+  <!-- theme: info -->
+
+  > ### Report validity
+  >
+  > Your reports are static documents that will become invalid as soon as the calculation they are based upon is updated. We indicate validity with the `is_valid` field. How you wish to deal with invalid reports is up to you.
+  >
+  > *Note: you can still download an invalid report until it reaches its expiry date. This enables you to download reports for calculations that you are updating constantly.*
+
+  <!-- theme: info -->
+
+  > ### Reports are no longer accessible after their expiry date
+  >
+  > By default, all Thrust Carbon reports will expire after 7 days, after which time the report cannot be downloaded.
+  > 
+  > The report may become invalid before this time
+
+  <!-- theme: info -->
+
+  > ### Reports are generated asynchronously
+  >
+  > Our reports take 10 to 60 seconds to generate. You should subscribe to Thrust Carbon webhooks to ensure your system is updated when the status of a report changes.
+properties:
+  id:
+    type: string
+    format: uuid
+  project_id:
+    type: string
+    format: uuid
+  created_at:
+    type: string
+    format: date-time
+  completed_at:
+    type: string
+    description: Date time when the report completed its generation.
+    format: date-time
+  expires_at:
+    type: string
+    description: 'Date when the report expires (7 days after the report was requested). After this time, the report''s generated file will no longer be accessible and the report will need to be regenerated.'
+    format: date-time
+  is_valid:
+    type: boolean
+    description: 'Indicates whether the project has changed since this report was generated, making the report invalid.'
+  report_url:
+    type:
+      - string
+      - 'null'
+    description: URL where the report may be downloaded. Will be null until the report finishes generation.
+    format: uri
+  state:
+    type: string
+    enum:
+      - requested
+      - completed
+      - errored
+  options:
+    type: object
+    properties:
+      markup:
+        type: number
+        description: Only used for type `offset_options`. Markups the generated prices by the percentage provided. E.g. a value of 10 will markup the prices by 10% in the generated report.

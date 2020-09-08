@@ -821,6 +821,183 @@
         },
         "description": "This endpoint will batch add segments.\n\nThe fully qualified URI for this request is: `https://app.thrustcarbon.com/api/1/calculator/projects/{projectId}`"
       }
+    },
+    "/projects/{projectId}/reports": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Reports: list",
+        "tags": [
+          "Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../models/common-models/response-paginated.v1.json"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "../models/common-models/report.v1.yaml"
+                          }
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-reports",
+        "description": "Lists all of the reports that have been generated on this account.\n\n<!-- theme: warning -->\n\n> ### Considerations when using reports\n>\n> Reports are asynchronous, limited validity and will expire after a period of time. [Please read the report model documentation which explains these caveats in more detail](../models/common-models/report.v1.yaml).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "report_type": {
+                    "type": "string",
+                    "enum": [
+                      "impact",
+                      "offset_options",
+                      "certificates"
+                    ],
+                    "example": "impact",
+                    "description": "Filter the reports"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page",
+            "description": "Results are paginated. By default we will return the first page."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "impact",
+                "offset_options",
+                "certificates"
+              ],
+              "example": "impact"
+            },
+            "in": "query",
+            "name": "report_type",
+            "description": "Filter the reports to only display reports of a specific type."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Reports: new",
+        "operationId": "post-projects-projectId-reports",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/report.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new report. This will return a report in a 'requested' state, you will then need to wait for the report to finish generating (10-60 seconds); we recommend using webhooks to wait for changes.\n\n<!-- theme: warning -->\n\n> ### Considerations when using reports\n>\n> Reports are asynchronous, limited validity and will expire after a period of time. [Please read the report model documentation which explains these caveats in more detail](../models/common-models/report.v1.yaml).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "impact",
+                      "offset_options",
+                      "certificates"
+                    ]
+                  },
+                  "options": {
+                    "type": "object",
+                    "properties": {
+                      "markup": {
+                        "type": "number",
+                        "description": "Only used on type `offset_options`. It will markup the generated prices by the requested percentage (e.g. 10 will markup the prices 10%).",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/reports/{reportId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "reportId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Report: get",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/report.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-reports-reportId",
+        "description": "Gets a specific report.\n\n<!-- theme: warning -->\n\n> ### Considerations when using reports\n>\n> Reports are asynchronous, limited validity and will expire after a period of time. [Please read the report model documentation which explains these caveats in more detail](../models/common-models/report.v1.yaml)."
+      }
     }
   },
   "components": {
@@ -847,6 +1024,9 @@
     },
     {
       "name": "Segments"
+    },
+    {
+      "name": "Reports"
     }
   ]
 }
