@@ -958,7 +958,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Reports"
+        ]
       }
     },
     "/projects/{projectId}/reports/{reportId}": {
@@ -982,7 +985,9 @@
       ],
       "get": {
         "summary": "Report: get",
-        "tags": [],
+        "tags": [
+          "Reports"
+        ],
         "responses": {
           "200": {
             "description": "OK",
