@@ -4,31 +4,27 @@ description: The offset models represents a pending/successful carbon offset pur
 properties:
   id:
     type: string
-  name:
-    type: string
-  description:
-    type: string
-  location:
-    type: string
-  location_area:
-    type: string
-  location_country:
-    type: string
-  price_per_tonne:
-    type: string
-  price_total:
-    type: string
-  price_currency:
-    type: string
-  tonnes_of_co2:
-    type: string
-  status:
-    type: string
   created_at:
     type: string
   updated_at:
     type: string
   confirmed_at:
     type: string
+  offset_project_id:
+    type: integer
   is_sandbox:
+    type: boolean
+  purchase_currency:
     type: string
+  purchase_price:
+    type: integer
+  purchase_tonnes:
+    type: number
+  state:
+    type: string
+    enum:
+      - PENDING
+      - CONFIRMED
+      - PAID
+  offset_project:
+    $ref: ./offset-project.v1.yaml

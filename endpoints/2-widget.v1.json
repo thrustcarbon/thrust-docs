@@ -115,6 +115,67 @@
         "parameters": []
       },
       "parameters": []
+    },
+    "/offsets/{offsetId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "offsetId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Offset: Get",
+        "tags": [
+          "Offsets"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/offset.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-offset-offsetId",
+        "description": "Returns an offset that you have already created. This endpoint returns offsets created by both the Thrust Widget and the Thrust Calculator."
+      }
+    },
+    "/offsets/{offsetId}/confirm": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "offsetId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Offset: confirm",
+        "operationId": "post-offset-offsetId-confirm",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/offset.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "description": "<!-- theme: warning -->\n\n> ### Confirming offsets may cost money\n>\n> Confirming an offset outside of the sandbox environment will result in a real offset being purchased, and your account incurring a charge. While developing, please your sandbox developer key to ensure you are only confirming sandbox offsets.\n\nConfirming an offset will result in Thrust Carbon purchasing a carbon credit on your behalf in order to reduce carbon from the atmosphere."
+      }
     }
   },
   "components": {
@@ -130,6 +191,11 @@
   "security": [
     {
       "API Key ": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Offsets"
     }
   ]
 }

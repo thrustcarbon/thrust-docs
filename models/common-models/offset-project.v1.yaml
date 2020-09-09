@@ -1,0 +1,21 @@
+title: Offset project
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  description:
+    type: string
+  location:
+    type: object
+    properties:
+      latitude:
+        type: number
+      longitude:
+        type: number
+      area:
+        type: string
+      country:
+        type: string
+description: ''
