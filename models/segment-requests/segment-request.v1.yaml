@@ -16,5 +16,6 @@ description: |-
       * [Air segment](./segment-request-air.v1.yaml)
       * [Hotel segment](./segment-request-hotel.v1.yaml)
       * [Rail segment](./segment-request-rail.v1.yaml)
+      * [Vacation rental segment](./segment-request-vacation-rental.v1.yaml)
       
   *Note: we are constantly adding more segment request types all the time, and our documentation may lag this. Please reach out to your account manager if you believe a segment type is missing.*
