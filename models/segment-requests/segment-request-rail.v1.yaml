@@ -16,4 +16,10 @@ allOf:
           - TRAM
           - SUBWAY
           - LONDON_UNDERGROUND
+      type:
+        type: string
+        enum:
+          - rail
+    required:
+      - type
 description: Rail segment request

@@ -7,6 +7,9 @@ allOf:
     properties:
       type:
         type: string
+        enum:
+          - vacation-rental
+        example: vacation-rental
       travellers:
         type: integer
         default: '1'
