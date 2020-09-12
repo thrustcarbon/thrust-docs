@@ -18,6 +18,13 @@ properties:
     type: string
   purchase_price:
     type: integer
+    description: 'Price before fees, in base units.'
+  purchase_fee:
+    type: integer
+    description: 'Thrust Carbon fee, in base units.'
+  purchase_total_price:
+    type: integer
+    description: 'Total price of the purchase, inclusive of offset price and Thrust Carbon fee, in base units.'
   purchase_tonnes:
     type: number
   state:
