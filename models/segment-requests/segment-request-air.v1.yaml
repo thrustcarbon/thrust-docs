@@ -64,6 +64,10 @@ allOf:
         description: Must be a valid ICAO/IATA type designator
         example: B748
         maxLength: 4
+      flight_number:
+        type: string
+        example: BA 112
+        description: 'If a flight number is provided, we will attempt to find the aircraft type for the purpose of calculating emissions.'
     required:
       - type
       - locations
