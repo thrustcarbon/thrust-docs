@@ -1,0 +1,39 @@
+title: 'Segment Request: Car'
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      distance:
+        type: number
+        description: Distance travelled in KM
+      type:
+        type: string
+        enum:
+          - car
+      days:
+        type: number
+        description: 'If distance is not supplied, we will use an average distance for the number of days travelled.'
+      car_type:
+        type: string
+        enum:
+          - MINI
+          - SUPERMINI
+          - LOWER_MEDIUM
+          - UPPER_MEDIUM
+          - EXECUTIVE
+          - LUXURY
+          - SPORTS
+          - DUAL_PURPOSE_4X4
+          - MPV
+          - SMALL_CAR
+          - MEDIUM_CAR
+          - LARGE_CAR
+          - AVERAGE_CAR
+          - SMALL_MOTORBIKE
+          - MEDIUM_MOTORBIKE
+          - LARGE_MOTORBIKE
+          - AVERAGE_MOTORBIKE
+        default: AVERAGE_CAR
+    required:
+      - type
+description: Car segment request

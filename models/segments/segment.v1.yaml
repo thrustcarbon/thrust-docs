@@ -7,6 +7,8 @@ description: |-
       * [Air segment](./segment-air.v1.yaml)
       * [Hotel segment](./segment-hotel.v1.yaml)
       * [Rail segment](./segment-rail.v1.yaml)
+      * [Vacation rental (e.g. Airbnb) segment](./segment-vacation-rental.v1.yaml)
+      * [Car segment](./segment-car.v1.yaml)
 allOf:
   - $ref: ./segment-base.v1.yaml
   - oneOf:
@@ -15,4 +17,6 @@ allOf:
       - properties: {}
         $ref: ./segment-rail.v1.yaml
       - properties: {}
-        $ref: ../segment-requests/segment-request-vacation-rental.v1.yaml
+        $ref: ./segment-vacation-rental.v1.yaml
+      - properties: {}
+        $ref: ./segment-car.v1.yaml
