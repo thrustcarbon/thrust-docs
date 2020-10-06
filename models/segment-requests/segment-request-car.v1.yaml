@@ -33,7 +33,30 @@ allOf:
           - MEDIUM_MOTORBIKE
           - LARGE_MOTORBIKE
           - AVERAGE_MOTORBIKE
+          - A
+          - B
+          - C
+          - D
+          - E
+          - F
+          - G
+          - H
+          - I
+          - K
+          - L
+          - O
+          - P
+          - Q
+          - R
+          - S
+          - T
+          - V
+          - W
+          - X
+          - 'Y'
+          - Z
         default: AVERAGE_CAR
+        description: Accepts a car type enum or car rental agency code
     required:
       - type
 description: Car segment request
