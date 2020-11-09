@@ -1003,6 +1003,161 @@
         "operationId": "get-projects-projectId-reports-reportId",
         "description": "Gets a specific report.\n\n<!-- theme: warning -->\n\n> ### Considerations when using reports\n>\n> Reports are asynchronous, limited validity and will expire after a period of time. [Please read the report model documentation which explains these caveats in more detail](../models/common-models/report.v1.yaml)."
       }
+    },
+    "/projects/{projectId}/statistics/total-emissions": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Statistics: GET total emissions",
+        "tags": [
+          "Statistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tonnes_of_co2": {
+                      "type": "number"
+                    },
+                    "equivalencies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "strings": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "amount": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-statistics",
+        "description": "Fetches the 'total emission' statistics for this project.",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "start_date": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "traveller_ref": {
+                    "type": "string"
+                  },
+                  "departments": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/statistics/types": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Statistics: GET types of emissions",
+        "tags": [
+          "Statistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "examples": {
+                  "Example of project with air, hotel and car.": {
+                    "value": [
+                      "air",
+                      "hotel",
+                      "car"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-statistics-types",
+        "description": "Returns an array of the types of emissions saved within a project."
+      }
+    },
+    "/projects/{projectId}/statistics/data/{segmentType}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "segmentType",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Statistics: GET statistics for segment type",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-projects-projectId-statistics-data-segmentType",
+        "description": "Returns detailed statistics and graph data for a segment type. \n\nPlease note that not all segment types have detailed data breakdowns. If you feel an analysis is missing, please contact your account manager."
+      }
     }
   },
   "components": {
@@ -1032,6 +1187,9 @@
     },
     {
       "name": "Reports"
+    },
+    {
+      "name": "Statistics"
     }
   ]
 }
