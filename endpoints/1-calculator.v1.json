@@ -1088,7 +1088,7 @@
         }
       }
     },
-    "/projects/{projectId}/statistics/types": {
+    "/projects/{projectId}/statistics/metadata": {
       "parameters": [
         {
           "schema": {
@@ -1100,7 +1100,7 @@
         }
       ],
       "get": {
-        "summary": "Statistics: GET types of emissions",
+        "summary": "Statistics: GET metedata of emissions",
         "tags": [
           "Statistics"
         ],
@@ -1126,10 +1126,34 @@
                 }
               }
             }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "segment_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "start_date": {
+                      "type": "string"
+                    },
+                    "end_date": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
           }
         },
         "operationId": "get-projects-projectId-statistics-types",
-        "description": "Returns an array of the types of emissions saved within a project."
+        "description": "Returns the metadata for a project:\n\n* Types of segments within the project\n* Start date of the earliest emission\n* End date of the latest emission"
       }
     },
     "/projects/{projectId}/statistics/data/{segmentType}": {
