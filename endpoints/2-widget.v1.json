@@ -19,7 +19,7 @@
   "paths": {
     "/emission": {
       "get": {
-        "summary": "Emission: Get",
+        "summary": "Emission: GET",
         "tags": [],
         "responses": {
           "200": {
@@ -179,7 +179,7 @@
     },
     "/emission/batch": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "Emission: GET batch",
         "tags": [],
         "responses": {
           "200": {
