@@ -63,9 +63,7 @@ paths:
                   description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
                   type: string
                 department_id:
-                  type:
-                    - string
-                    - number
+                  type: string
                   description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
             examples: {}
 components:
