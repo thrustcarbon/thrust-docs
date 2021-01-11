@@ -60,33 +60,14 @@ paths:
                   items:
                     $ref: ../models/segment-requests/segment-request.v1.yaml
                 employee_id:
-                  type:
-                    - string
-                    - integer
                   description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
+                  type: string
                 department_id:
                   type:
                     - string
                     - number
                   description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
-            examples:
-              example-1:
-                value:
-                  segments:
-                    - type: air
-                      departments:
-                        - string
-                      emitted_at: '2019-07-09'
-                      locations:
-                        - string
-                      traveller_ref: string
-                      passengers: 1
-                      travel_class: economy
-                      carrier: BA
-                      aircraft_type: B748
-                      flight_number: BA 112
-                  employee_id: null
-                  department_id: null
+            examples: {}
 components:
   schemas: {}
   securitySchemes:
