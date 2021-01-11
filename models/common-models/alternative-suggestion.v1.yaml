@@ -1,0 +1,50 @@
+title: Alternative suggestion
+type: object
+description: 'Provides a suggestion of alternative arrangements for a given request. For example, if you sent through a flight segment, it may suggest a high speed train on the same route.'
+properties:
+  type:
+    type: string
+    description: 'Indicates the suggestion type (e.g. air, rail). This list is not currently defined while this endpoint is in an alpha stage. Please do not use the type at this time.'
+  order:
+    type: integer
+    description: Suggestions are ranked by order of importance.
+  heading:
+    type: string
+    description: A one line summary of the suggestion.
+    example: Have you considered high speed rail?
+  body:
+    type: string
+    description: A one paragraph description of the suggestion.
+  links:
+    type: array
+    items:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+        order:
+          type: integer
+          description: Links are ranked by order of importance.
+        title:
+          type: string
+      required:
+        - uri
+        - order
+        - title
+required:
+  - type
+  - order
+  - heading
+  - body
+  - links
+x-examples:
+  High speed rail:
+    type: rail
+    order: 1
+    heading: Have you considered a high speed train?
+    body: 'The carbon emissions of trains are 1/100th that of flying. Many passengers also find them more comfortable, and faster once you factor in airport security and waiting.'
+    links:
+      - uri: 'http://trainline.com'
+        order: 1
+        title: Search for high speed rail tickets

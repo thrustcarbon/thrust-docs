@@ -101,6 +101,145 @@ paths:
         description: ''
       tags:
         - Sub organisations
+  /api/1/setting/organisation/departments:
+    get:
+      summary: 'Departments: List'
+      tags:
+        - Departments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../models/common-models/response-paginated.v1.json
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: ../models/common-models/department.v1.yaml
+                    required:
+                      - data
+      operationId: get-api-1-setting-organisation-departments
+      description: |-
+        This list endpoint will provide a paginated list of all departments in your organisation.
+
+        ---
+        #### Description of department endpoints
+
+        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+
+        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+
+        --- 
+        #### Online interface
+
+        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+    post:
+      summary: 'Departments: Add'
+      operationId: post-api-1-setting-organisation-departments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-models/department.v1.yaml
+              examples:
+                Parent department:
+                  value:
+                    key: '123'
+                    parent_key: null
+                    name: US HR
+                    description: Human Resources for the United States
+                Child department:
+                  value:
+                    key: '456'
+                    parent_key: '123'
+                    name: US East Coast HR
+                    description: Human Resources for the Eastern seaboard of the United States
+      description: |-
+        This add endpoint will create or overwrite a department.
+
+        ---
+        #### Description of department endpoints
+
+        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+
+        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+
+        --- 
+        #### Online interface
+
+        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+                parent_key:
+                  type: string
+                name:
+                  type: string
+                  maxLength: 250
+                description:
+                  type: string
+                  maxLength: 2000
+              required:
+                - key
+                - name
+            examples:
+              Parent department:
+                value:
+                  key: '123'
+                  name: US HR
+                  description: Human Resources for the United States
+              Child department:
+                value:
+                  key: '456'
+                  parent_key: '123'
+                  name: US East Coast HR
+                  description: Human Resources for the Eastern seaboard of the United States
+      tags:
+        - Departments
+    delete:
+      summary: 'Departments: Remove'
+      operationId: delete-api-1-setting-organisation-departments
+      responses:
+        '204':
+          description: No Content
+      description: |-
+        This delete endpoint will remove a department definition.
+
+        ---
+        #### Description of department endpoints
+
+        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+
+        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+
+        --- 
+        #### Online interface
+
+        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+              required:
+                - key
+        description: ''
+      tags:
+        - Departments
 components:
   schemas: {}
   securitySchemes:
@@ -112,3 +251,4 @@ security:
   - API Key: []
 tags:
   - name: Sub organisations
+  - name: Departments

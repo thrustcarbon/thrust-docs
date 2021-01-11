@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: 'Endpoints (4): Thrust Engage'
+  version: '1.0'
+  description: |-
+    > ### ALPHA ENDPOINT
+    > Please contact your account manager for access. 
+    <!-- theme: warning -->
+    > ### ACTIVE DEVELOPMENT
+    > We are proud to be actively developing the Thrust Engagement feature. These endpoints are likely to change, and/or may be discontinued. We advise against using these endpoints for any production workloads.
+
+    The Thrust Engage endpoints enable you to build tools that bring about behaviour change to lower emissions. If you are looking for tools that calculate emissions, or enable you to offset emissions, you should look at other Thrust Carbon endpoints.
+  contact: {}
+servers:
+  - url: 'https://app.thrustcarbon.com/api/1/engage'
+paths:
+  /suggestions/journey:
+    get:
+      summary: 'Suggestions: Journey'
+      tags:
+        - Suggestions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  emission_summary:
+                    $ref: ../models/common-models/emission.v1.json
+                  alternative_suggestions:
+                    type: array
+                    items:
+                      $ref: ../models/common-models/alternative-suggestion.v1.yaml
+                  carbon_tax:
+                    description: 'Carbon tax is unavailable, please ignore at this time or speak to your account manager.'
+                required:
+                  - emission_summary
+      operationId: get-suggestions-journey
+      description: |-
+        > ### ALPHA ENDPOINT
+        > Please contact your account manager for access. 
+
+        This endpoint will fetch sustainability suggestions for a given journey. Depending on the segments supplied, there will be one or more suggestion:
+        * _Carbon budget suggestions_: provides information about the usage of a user's carbon budget, and the remaining carbon budget.
+        * _Alternative suggestions_: which will tell you lower carbon alternativest to reach the same destination.
+        * _Summary of emissions_: which will tell you the amount emitted and give 'equivalencies' to the CO2 impact.
+
+        A _Summary of emissions_ will be provided with every request, however other suggestion types may not be. You should **use descending priority** if you receive two or more suggestion types (e.g. display carbon tax, rather than summary of emissions).
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                segments:
+                  type: array
+                  items:
+                    $ref: ../models/segment-requests/segment-request.v1.yaml
+                employee_id:
+                  type:
+                    - string
+                    - integer
+                  description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
+                department_id:
+                  type:
+                    - string
+                    - number
+                  description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
+components:
+  schemas: {}
+  securitySchemes:
+    API Key:
+      type: http
+      scheme: bearer
+      description: 'Your API key can be found in your account. To learn how to use your token, please see '
+security:
+  - API Key: []
+tags:
+  - name: Suggestions
