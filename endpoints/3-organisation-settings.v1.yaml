@@ -214,7 +214,7 @@ paths:
         '204':
           description: No Content
       description: |-
-        This delete endpoint will remove a department definition.
+        This delete endpoint will remove a department definition. If the department has children, it will also remove those child definitions.
 
         ---
         #### Description of department endpoints
