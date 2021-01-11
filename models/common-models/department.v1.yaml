@@ -4,20 +4,6 @@ description: |-
   A department represents a descriptive name for a given department_id that is saved within the Thrust Calculator.
 
   When department details are saved, these will be used in reports and other Thrust Carbon products.
-properties:
-  key:
-    type: string
-    example: '123'
-  parent_key:
-    type:
-      - string
-      - 'null'
-  name:
-    type: string
-    example: US HR
-  description:
-    type: string
-    example: Human Resources for the United States
 x-examples:
   Parent department:
     key: '123'
@@ -29,3 +15,17 @@ x-examples:
     parent_key: '123'
     name: US East Coast HR
     description: Human Resources for the East Coast of the United States
+properties:
+  key:
+    type: string
+    example: '123'
+  parent_key:
+    type:
+      - string
+      - 'null'
+  title:
+    type: string
+    example: US HR
+  description:
+    type: string
+    example: Human Resources for the United States

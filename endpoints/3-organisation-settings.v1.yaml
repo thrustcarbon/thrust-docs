@@ -184,7 +184,8 @@ paths:
                   type: string
                 parent_key:
                   type: string
-                name:
+                  description: The department's parent key must already be saved.
+                title:
                   type: string
                   maxLength: 250
                 description:
@@ -192,7 +193,7 @@ paths:
                   maxLength: 2000
               required:
                 - key
-                - name
+                - title
             examples:
               Parent department:
                 value:
