@@ -33,10 +33,69 @@ paths:
                     type: array
                     items:
                       $ref: ../models/common-models/alternative-suggestion.v1.yaml
-                  carbon_tax:
+                  carbon_budget:
                     description: 'Carbon tax is unavailable, please ignore at this time or speak to your account manager.'
+                    type: object
+                    properties:
+                      budget_available:
+                        type: number
+                        description: Indicates the carbon budget available to the user before they create their emission.
+                      budget_remaining:
+                        type: number
+                        description: 'Indicates the carbon budget available to their user after they make the emission. Note: budget_remaining is simply the budget_available, minus the tonnes_of_emissions in the emission_summary section.'
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            uri:
+                              type: string
+                              format: uri
+                            order:
+                              type: number
+                              description: Links are ranked by order of importance.
+                          required:
+                            - title
+                            - uri
+                            - order
+                    required:
+                      - budget_available
+                      - budget_remaining
+                      - links
                 required:
                   - emission_summary
+              examples:
+                example-1:
+                  value:
+                    emission_summary:
+                      tonnes_of_emissions: 14.28420582
+                      equivalencies:
+                        - type: string
+                          values:
+                            - string
+                      invalid_segments:
+                        - '3':
+                            - The class of travel was invalid.
+                          '5':
+                            - 'The locations[1] was invalid.'
+                    alternative_suggestions:
+                      - type: rail
+                        order: 1
+                        heading: Have you considered high speed rail?
+                        body: 'You can take the same journey with less stress, and far less polution, using a high speed train.'
+                        links:
+                          - uri: 'https://example.com'
+                            order: 1
+                            title: Explore high speed rail options
+                    carbon_budget:
+                      budget_available: 38
+                      budget_remaining: 23.71579418
+                      links:
+                        - title: View your carbon budget
+                          uri: 'https://example.com'
+                          order: 1
       operationId: get-suggestions-journey
       description: |-
         > ### ALPHA ENDPOINT
@@ -48,23 +107,39 @@ paths:
         * _Summary of emissions_: which will tell you the amount emitted and give 'equivalencies' to the CO2 impact.
 
         A _Summary of emissions_ will be provided with every request, however other suggestion types may not be. You should **use descending priority** if you receive two or more suggestion types (e.g. display carbon tax, rather than summary of emissions).
-      parameters: []
+
+        ### Testing
+
+        White the _Summary of emissions_ is always provided, the _Alternate suggestions_ depends on the route searched, and the _Summary of emissions_ depends on the end-client. For this reason, you can force these suggestions by supplying the following input:
+
+        * To test _Alternative Suggestions_ please pass through a flight segment, with locations `LHR` and `CDG`. This will return a high speed rail suggestion
+        * To test _Carbon budget suggestions_ please pass through an employee_id and/or department_id of `THRUST_CARBON_TEST`.
+      parameters:
+        - in: unknown
+        - schema:
+            type: string
+            example: en-US
+          in: header
+          name: Accept-Language
+          description: 'Enables us to return responses in the client''s language and localisation. This header is very important to providing a great end-user experience. More info at: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language'
+          required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                segments:
-                  type: array
-                  items:
-                    $ref: ../models/segment-requests/segment-request.v1.yaml
                 employee_id:
-                  description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
+                  description: 'Not required, but when provided this is useful for calculating an employee''s carbon budget.'
                   type: string
                 department_id:
                   type: string
                   description: 'Not required, but if provided it. may be used to calculate a department''s carbon budget.'
+                segments:
+                  type: array
+                  items:
+                    allOf:
+                      - $ref: ../models/segment-requests/segment-request.v1.yaml
             examples: {}
 components:
   schemas: {}
