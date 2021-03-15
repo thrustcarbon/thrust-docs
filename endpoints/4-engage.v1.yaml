@@ -12,9 +12,9 @@ info:
     The Thrust Engage endpoints enable you to build tools that bring about behaviour change to lower emissions. If you are looking for tools that calculate emissions, or enable you to offset emissions, you should look at other Thrust Carbon endpoints.
   contact: {}
 servers:
-  - url: 'https://app.thrustcarbon.com/api/1/engage'
+  - url: 'https://app.thrustcarbon.com/'
 paths:
-  /suggestions/journey:
+  api/1/engage/suggestions/journey:
     get:
       summary: 'Suggestions: Journey'
       tags:
@@ -114,6 +114,10 @@ paths:
 
         * To test _Alternative Suggestions_ please pass through a flight segment, with locations `LHR` and `CDG`. This will return a high speed rail suggestion
         * To test _Carbon budget suggestions_ please pass through an employee_id and/or department_id of `THRUST_CARBON_TEST`.
+
+        ### Notes
+
+        * Please ensure you only provide a maximum of **2 locations for each segment**. If you have a return journey, please create two segments, one for the outbound leg, and one for the return leg.
       parameters:
         - in: unknown
         - schema:
@@ -141,6 +145,7 @@ paths:
                     allOf:
                       - $ref: ../models/segment-requests/segment-request.v1.yaml
             examples: {}
+    parameters: []
 components:
   schemas: {}
   securitySchemes:
