@@ -695,16 +695,20 @@
                   "type": "object",
                   "properties": {
                     "created_segments": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "../models/segments/segment.v1.yaml"
+                      "type": "object",
+                      "properties": {
+                        "0": {
+                          "$ref": "../models/segments/segment.v1.yaml"
+                        }
                       }
                     },
                     "invalid_segments": {
-                      "type": "array",
+                      "type": "object",
                       "description": "Each invalid segment object is keyed to the same segment key that was passed into the request. *For example, the third segment will be under the '3' key in the invalid_segments array.*",
-                      "items": {
-                        "$ref": "../reference/common/models/validation-error.v1.yaml"
+                      "properties": {
+                        "1": {
+                          "$ref": "../reference/common/models/validation-error.v1.yaml"
+                        }
                       }
                     }
                   }

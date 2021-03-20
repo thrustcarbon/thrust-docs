@@ -32,5 +32,14 @@ properties:
   traveller_ref:
     type: string
     description: Optional reference identifying the traveller in the segment.
+  metadata:
+    type: object
+    description: |-
+      Metadata enables you to pass in custom values which will be stored with the dataset and returned to you on every request. Thrust Carbon does not use or modify your metadata.
+
+      A use-case may be passing in the ID for the record within your own database.
+    properties:
+      key:
+        type: string
 required:
   - type
