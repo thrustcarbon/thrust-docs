@@ -1,0 +1,24 @@
+title: 'Segment Request: Ferry'
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - ferry
+        description: Must be 'ferry'
+      distance:
+        type: number
+        description: KM travelled
+      passengers:
+        type: integer
+      ferry_passenger_type:
+        type: string
+        enum:
+          - car
+          - coach
+          - foot
+          - average
+        default: average
+description: Ferry segment request

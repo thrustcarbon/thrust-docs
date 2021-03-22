@@ -1,0 +1,11 @@
+title: 'Segment Request: Coach'
+description: Coach segment request
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      distance:
+        type: number
+        description: Distance in KM
+      passengers:
+        type: integer
