@@ -352,7 +352,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/segments/segment.v1.yaml"
+                  "type": "object",
+                  "description": "Please see segment response example payloads: https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml"
                 }
               }
             }
@@ -363,12 +364,13 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/segment-requests/segment-request.v1.yaml"
+                "type": "object",
+                "description": "Please see segment request example payloads: https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml"
               }
             }
           }
         },
-        "description": "Adds a new segment to a project."
+        "description": "Adds a new segment to a project.\n\nYour request should be a 'Segment Request' payload. You can see examples of [all the segment requests here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml).\n\nYour response will be a 'Segment response. You can see examples of [all the segment responses here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml)."
       }
     },
     "/projects/{projectId}/segments/{segmentId}": {
@@ -1130,30 +1132,6 @@
                 }
               }
             }
-          },
-          "": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "segment_types": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "start_date": {
-                      "type": "string"
-                    },
-                    "end_date": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "description": ""
           }
         },
         "operationId": "get-projects-projectId-statistics-types",
