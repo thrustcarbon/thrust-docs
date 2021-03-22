@@ -9,3 +9,10 @@ allOf:
         description: Distance in KM
       passengers:
         type: integer
+      type:
+        type: string
+        default: coach
+        enum:
+          - coach
+    required:
+      - type

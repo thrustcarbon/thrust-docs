@@ -21,4 +21,6 @@ allOf:
           - foot
           - average
         default: average
+    required:
+      - type
 description: Ferry segment request
