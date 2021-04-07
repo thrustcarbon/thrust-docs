@@ -15,7 +15,7 @@ servers:
   - url: 'https://app.thrustcarbon.com/'
     description: Production
 paths:
-  api/1/setting/organisation/sub-organisations:
+  /api/1/setting/organisation/sub-organisations:
     parameters: []
     get:
       summary: 'Sub organisation: list'
@@ -239,6 +239,100 @@ paths:
               required:
                 - key
         description: ''
+      tags:
+        - Departments
+  /api/1/setting/organisation/departments/batch:
+    post:
+      summary: 'Departments: Batch Add'
+      operationId: post-api-1-setting-organisation-departments-batch
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid_departments:
+                    type: array
+                    items:
+                      $ref: ../models/common-models/department.v1.yaml
+                  invalid_departments:
+                    type: array
+                    items:
+                      $ref: ../reference/common/models/validation-error.v1.yaml
+              examples:
+                Batch example:
+                  value:
+                    - valid_departments:
+                        '0':
+                          key: '3852'
+                          title: Marketing
+                          description: Marketing team for worldwide operations
+                          parent_key: null
+                        '1':
+                          key: 3852A
+                          title: EU Marketing
+                          description: Marketing team for EU operations
+                          parent_key: '3852'
+                        '3':
+                          key: 3852B
+                          title: US Marketing
+                          description: Marketing team for US operations
+                          parent_key: '3852'
+                      invalid_departments:
+                        '2':
+                          title:
+                            - The title field is required.
+      description: |-
+        This add endpoint will create or overwrite a batch of departments.
+
+        ---
+        #### Description of department endpoints
+
+        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+
+        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+
+        --- 
+        #### Online interface
+
+        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                departments:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      parent_key:
+                        type: string
+                        description: The department's parent key must be saved prior to the current department. This may be in the same request or a prior request.
+                      title:
+                        type: string
+                      description:
+                        type: string
+                    required:
+                      - key
+                      - title
+            examples:
+              Parent department:
+                value:
+                  key: '123'
+                  name: US HR
+                  description: Human Resources for the United States
+              Child department:
+                value:
+                  key: '456'
+                  parent_key: '123'
+                  name: US East Coast HR
+                  description: Human Resources for the Eastern seaboard of the United States
       tags:
         - Departments
 components:
