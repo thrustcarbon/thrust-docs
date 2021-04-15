@@ -12,10 +12,10 @@ info:
     The Thrust Engage endpoints enable you to build tools that bring about behaviour change to lower emissions. If you are looking for tools that calculate emissions, or enable you to offset emissions, you should look at other Thrust Carbon endpoints.
   contact: {}
 servers:
-  - url: 'https://app.thrustcarbon.com/'
+  - url: 'https://app.thrustcarbon.com'
 paths:
-  api/1/engage/suggestions/journey:
-    get:
+  /api/1/engage/suggestions/journey:
+    post:
       summary: 'Suggestions: Journey'
       tags:
         - Suggestions
@@ -123,6 +123,7 @@ paths:
         - schema:
             type: string
             example: en-US
+            default: en-US
           in: header
           name: Accept-Language
           description: 'Enables us to return responses in the client''s language and localisation. This header is very important to providing a great end-user experience. More info at: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language'
