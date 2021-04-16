@@ -354,6 +354,44 @@
                 "schema": {
                   "type": "object",
                   "description": "Please see segment response example payloads: https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml"
+                },
+                "examples": {
+                  "Flight Example": {
+                    "value": {
+                      "id": "ec34f49e-ab0c-4ffa-854f-5cdfc230cbe1",
+                      "created_at": "2021-04-16T09:23:45.000000Z",
+                      "updated_at": "2021-04-16T09:23:45.000000Z",
+                      "type": "air",
+                      "tonnes_of_emissions": 2.4609454662444006,
+                      "distance": 5539.377540497169,
+                      "distance_adjusted": 5664.377540497169,
+                      "emitted_at": "2020-01-01",
+                      "locations": [
+                        "LHR",
+                        "JFK"
+                      ],
+                      "travel_class": "business"
+                    }
+                  },
+                  "Hotel Example": {
+                    "value": {
+                      "id": "48bdb741-cbcf-4360-943b-ee2f9f584c89",
+                      "created_at": "2021-04-16T09:25:48.000000Z",
+                      "updated_at": "2021-04-16T09:25:48.000000Z",
+                      "type": "hotel",
+                      "tonnes_of_emissions": 0.0214,
+                      "locations": [
+                        "US"
+                      ],
+                      "rooms": 1
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
                 }
               }
             }
@@ -366,9 +404,32 @@
               "schema": {
                 "type": "object",
                 "description": "Please see segment request example payloads: https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml"
+              },
+              "examples": {
+                "Flight Example": {
+                  "value": {
+                    "type": "air",
+                    "locations": [
+                      "LHR",
+                      "JFK"
+                    ],
+                    "travel_class": "business",
+                    "emitted_at": "2020-01-01"
+                  }
+                },
+                "Hotel Example": {
+                  "value": {
+                    "type": "hotel",
+                    "locations": [
+                      "US"
+                    ],
+                    "rooms": 1
+                  }
+                }
               }
             }
-          }
+          },
+          "description": "We have a wide variety of segment request types, [which can be explored here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml)."
         },
         "description": "Adds a new segment to a project.\n\nYour request should be a 'Segment Request' payload. You can see examples of [all the segment requests here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml).\n\nYour response will be a 'Segment response. You can see examples of [all the segment responses here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml)."
       }
