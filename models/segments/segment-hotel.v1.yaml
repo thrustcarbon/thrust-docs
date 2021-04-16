@@ -1,7 +1,18 @@
 title: 'Segment: Hotel'
 x-tags:
   - Segments
-x-examples: {}
+x-examples:
+  Hotel Response:
+    id: 4e080d79-57df-4f4f-acc5-ba55f6d54338
+    created_at: '2021-04-16T09:30:39.000000Z'
+    updated_at: '2021-04-16T09:30:39.000000Z'
+    type: hotel
+    tonnes_of_emissions: 0.0214
+    locations:
+      - US
+    metadata:
+      PNR: AB12CD
+    rooms: 1
 description: Hotel segment.
 allOf:
   - $ref: ./segment-base.v1.yaml

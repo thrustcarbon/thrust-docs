@@ -22,3 +22,28 @@ allOf:
         $ref: ./segment-vacation-rental.v1.yaml
       - properties: {}
         $ref: ./segment-car.v1.yaml
+x-examples:
+  Flight Response:
+    id: ec34f49e-ab0c-4ffa-854f-5cdfc230cbe1
+    created_at: '2021-04-16T09:23:45.000000Z'
+    updated_at: '2021-04-16T09:23:45.000000Z'
+    type: air
+    tonnes_of_emissions: 2.4609454662444006
+    distance: 5539.377540497169
+    distance_adjusted: 5664.377540497169
+    emitted_at: '2020-01-01'
+    locations:
+      - LHR
+      - JFK
+    travel_class: business
+  Hotel Response:
+    id: 4e080d79-57df-4f4f-acc5-ba55f6d54338
+    created_at: '2021-04-16T09:30:39.000000Z'
+    updated_at: '2021-04-16T09:30:39.000000Z'
+    type: hotel
+    tonnes_of_emissions: 0.0214
+    locations:
+      - US
+    metadata:
+      PNR: AB12CD
+    rooms: 1

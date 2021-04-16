@@ -29,3 +29,11 @@ description: |-
   Hotel segment request.
 
   *Note: for hotel emissions you should only send one location in the locations array.*
+x-examples:
+  Hotel Example:
+    type: hotel
+    locations:
+      - US
+    rooms: 1
+    metadata:
+      PNR: AB12CD

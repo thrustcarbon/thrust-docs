@@ -28,3 +28,18 @@ description: |
       * [Vacation rental segment](./segment-request-vacation-rental.v1.yaml)
       
   *Note: we are constantly adding more segment request types all the time, and our documentation may lag this. Please reach out to your account manager if you believe a segment type is missing.*
+x-examples:
+  Flight Example:
+    type: air
+    locations:
+      - LHR
+      - JFK
+    travel_class: business
+    emitted_at: '2020-01-01'
+  Hotel Example:
+    type: hotel
+    locations:
+      - US
+    rooms: 1
+    metadata:
+      PNR: AB12CD

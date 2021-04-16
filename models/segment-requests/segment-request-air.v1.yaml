@@ -75,3 +75,11 @@ allOf:
 description: Air segment request.
 x-tags:
   - Segments
+x-examples:
+  Flight Example:
+    type: air
+    locations:
+      - LHR
+      - JFK
+    travel_class: business
+    emitted_at: '2020-01-01'
