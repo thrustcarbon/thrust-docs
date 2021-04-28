@@ -26,7 +26,7 @@ properties:
     example: '2019-07-09'
   locations:
     type: array
-    description: 'Array of: 2-letter ISO 3166 country code, or 3 letter IATA airport code'
+    description: 'Array of: 2-letter ISO 3166 country code, or 3 letter IATA airport code, or train station UIC code formatted as ''XXXUIC12345''.'
     items:
       type: string
   traveller_ref:

@@ -22,4 +22,12 @@ allOf:
           - rail
     required:
       - type
-description: Rail segment request
+description: |-
+  Rail segment request.
+
+  You can enter the following location types:
+
+  * Latitude and longitude pairs (e.g. "12.48393 -48.28485").
+  * IATA codes (e.g. "LHR").
+  * Country codes (e.g. "GB").
+  * Train station UIC codes. These codes must begin with 'XXXUIC'. So for example the code for London King's Cross would be 'XXXUIC7061210'.
