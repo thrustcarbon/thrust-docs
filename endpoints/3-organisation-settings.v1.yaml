@@ -198,6 +198,10 @@ paths:
                 description:
                   type: string
                   maxLength: 2000
+                department_type:
+                  type: string
+                  description: You can supply the 'api slug' name for the department type. This can be found in your Thrust Carbon organisation settings.
+                  default: default
               required:
                 - key
                 - title
@@ -333,6 +337,10 @@ paths:
                         type: string
                       description:
                         type: string
+                      department_type:
+                        type: string
+                        description: You can supply the 'api slug' name for the department type. This can be found in your Thrust Carbon organisation settings.
+                        default: default
                     required:
                       - key
                       - title
