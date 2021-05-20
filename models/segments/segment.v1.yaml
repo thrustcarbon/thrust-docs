@@ -11,17 +11,16 @@ description: |-
       * [Coach segment](./segment-coach.v1.yaml)
       * [Vacation rental (e.g. Airbnb) segment](./segment-vacation-rental.v1.yaml)
       * [Car segment](./segment-car.v1.yaml)
+      * [Taxi segment](./segment-taxi.v1.yaml)
 allOf:
   - $ref: ./segment-base.v1.yaml
   - oneOf:
       - $ref: ./segment-air.v1.yaml
       - $ref: ./segment-hotel.v1.yaml
-      - properties: {}
-        $ref: ./segment-rail.v1.yaml
-      - properties: {}
-        $ref: ./segment-vacation-rental.v1.yaml
-      - properties: {}
-        $ref: ./segment-car.v1.yaml
+      - $ref: ./segment-rail.v1.yaml
+      - $ref: ./segment-vacation-rental.v1.yaml
+      - $ref: ./segment-car.v1.yaml
+      - $ref: ./segment-taxi.v1.yaml
 x-examples:
   Flight Response:
     id: ec34f49e-ab0c-4ffa-854f-5cdfc230cbe1

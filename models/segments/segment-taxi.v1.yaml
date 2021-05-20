@@ -1,0 +1,5 @@
+title: 'Segment: Taxi'
+description: 'This contains the segment response for a taxi journey. If you are looking to add a new taxi segment, please see the Taxi Segment Request section.'
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - $ref: ../segment-requests/segment-request-taxi.v1.yaml
