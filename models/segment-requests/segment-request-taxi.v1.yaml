@@ -15,16 +15,6 @@ allOf:
         enum:
           - TAXI
           - LONDON_TAXI
-description: |-
-  In order to provide a taxi segment, please provide either:
-
-  * A distance travelled (in kilometers).
-  * Spend based data (in which case we will attempt to calculate distance based on spend).
-
-  Helpful information:
-
-  * You should provide a country code of the taxi journey in the locations array.
-  * If the journey is in London, please set `taxi_type` to `LONDON_TAXI`
 examples:
   - type: taxi
     locations:
@@ -40,3 +30,15 @@ examples:
       - GB
     price: 49
     price_currency: EUR
+description: |-
+  In order to provide a taxi segment, please provide either:
+
+  * A distance travelled (in kilometers).
+  * Spend based data (in which case we will attempt to calculate distance based on spend).
+
+  Helpful information:
+
+  * You should provide a country code of the taxi journey in the locations array.
+  * If the journey is in London, please set `taxi_type` to `LONDON_TAXI`
+
+   
