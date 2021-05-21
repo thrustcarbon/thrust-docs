@@ -1,0 +1,63 @@
+title: 'Segment Request: Meeting'
+allOf:
+  - $ref: ./segment-request-base.v1.yaml
+  - type: object
+    properties:
+      size:
+        type: number
+        description: Size of the room in square meters
+      hours:
+        type: number
+        description: Number of hours of the meeting
+      attendee_count:
+        type: number
+      laptop_count:
+        type: integer
+        description: Number of attendees that will be using a laptop
+      hot_beverages:
+        type: boolean
+        description: Will the attendees be served cold beverages?
+      cold_beverages:
+        type: boolean
+        description: Will the attendees be served cold beverages?
+      meal_count:
+        type: integer
+        description: 'How many meal portions will be served? For example, 2 meals for 10 people would be 20 portions.'
+      type:
+        type: string
+        enum:
+          - meeting
+        example: meeting
+    required:
+      - size
+      - hours
+      - type
+description: |-
+  You can accurately calculate the carbon emissions of your meeting using this segment request. Please provide as much detail as possible:
+
+  * `type` must equal _meeting_.
+  * `locations`. This should be an array containing the 2 letter country code of the meeting.
+  * `size` of the room in square meters.
+  * `hours` of the meeting.
+  * `attendee_count` for the number of meeting attendees.
+  * `laptop_count` indicating the number of laptops you expect to be in use at the meeting.
+  * `hot_beverages` and `cold_beverages` indicating whether beverages will be served. 
+  * `meal_count` indicating the number of meal portions that will be served (e.g. breakfast and lunch for 10 people will be a meal count of 20).
+examples:
+  - type: meeting
+    locations:
+      - US
+    price: 200
+    price_currency: USD
+    size: 500
+    hours: 8
+    attendee_count: 10
+    laptop_count: 5
+    hot_beverages: false
+    cold_beverages: true
+    meal_count: 30
+  - type: meeting
+    size: 100
+    hours: 2
+    attendee_count: 2
+    laptop_count: 2

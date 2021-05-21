@@ -12,6 +12,7 @@ allOf:
       - $ref: ./segment-request-coach.v1.yaml
       - $ref: ./segment-request-ferry.v1.yaml
       - $ref: ./segment-request-taxi.v1.yaml
+      - $ref: ./segment-request-meeting.v1.yaml
 description: |
   * This is the model for creating or updating a segment, *if you are getting an already created segment from the API, please the [Segment](../segments/segment.v1.yaml) documentation*
   * Every segment request extends the [same base](./segment-request-base.v1.yaml), we recommend reading the documentation for the segment type you are trying to create:
@@ -23,6 +24,7 @@ description: |
       * [Ferry segment](./segment-request-ferry.v1.yaml)
       * [Vacation rental segment](./segment-request-vacation-rental.v1.yaml)
       * [Taxi segment](./segment-request-taxi.v1.yaml)
+      * [Meeting segment](./segment-request-meeting.v1.yaml)
       
   *Note: we are constantly adding more segment request types all the time, and our documentation may lag this. Please reach out to your account manager if you believe a segment type is missing.*
 x-examples:

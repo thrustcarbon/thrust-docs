@@ -1,0 +1,5 @@
+title: 'Segment: Meeting'
+description: 'This contains the segment response for a meeting. If you are looking to add a new meeting segment, please see the Meeting Segment Request section.'
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - $ref: ../segment-requests/segment-request-meeting.v1.yaml
