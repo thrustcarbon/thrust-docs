@@ -56,8 +56,6 @@ paths:
         > Please contact your account manager for access.
 
         This endpoint will create a new sub-organisation under this organisation.
-
-        **Usage of this endpoint will cost you money.** Each new partner account is billed as a new Thrust Carbon license. Please contact your account manager for pricing.
       requestBody:
         content:
           application/json:
