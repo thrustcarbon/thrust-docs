@@ -339,7 +339,7 @@
             "name": "page"
           }
         ],
-        "description": "Gets a list of all segments belonging to a project."
+        "description": "Gets a list of all segments belonging to a project.\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
       },
       "post": {
         "summary": "Segment: Add",
@@ -352,8 +352,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "Please see segment response example payloads: https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml"
+                  "$ref": "../models/segments/segment.v1.yaml"
                 },
                 "examples": {
                   "Flight Example": {
@@ -405,8 +404,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "description": "Please see segment request example payloads: https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml"
+                "$ref": "../models/segment-requests/segment-request.v1.yaml"
               },
               "examples": {
                 "Flight Example": {
@@ -437,7 +435,7 @@
           },
           "description": "We have a wide variety of segment request types, [which can be explored here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml)."
         },
-        "description": "Adds a new segment to a project.\n\nYour request should be a 'Segment Request' payload. You can see examples of [all the segment requests here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml).\n\nYour response will be a 'Segment response. You can see examples of [all the segment responses here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml)."
+        "description": "Adds a new segment to a project.\n\nYour request should be a 'Segment Request' payload. You can see examples of [all the segment requests here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segment-requests/segment-request.v1.yaml).\n\nYour response will be a 'Segment response. You can see examples of [all the segment responses here](https://docs.thrustcarbon.com/docs/thrust-docs/models/segments/segment.v1.yaml).\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
       }
     },
     "/projects/{projectId}/segments/{segmentId}": {
@@ -492,7 +490,7 @@
             "required": true
           }
         ],
-        "description": "Gets an existing segment."
+        "description": "Gets an existing segment.\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
       },
       "delete": {
         "summary": "Segment: Delete",
@@ -547,7 +545,7 @@
           },
           "description": "Please ignore the fields that say they are required. These fields are not required on a PUT operation."
         },
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access."
+        "description": "Updates an existing segment.\n\n<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access.\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
       }
     },
     "/projects/{projectId}/offset-options": {
@@ -892,7 +890,7 @@
             }
           }
         },
-        "description": "This endpoint will batch add segments.\n\nThe fully qualified URI for this request is: `https://app.thrustcarbon.com/api/1/calculator/projects/{projectId}`"
+        "description": "This endpoint will batch add segments.\n\nThe fully qualified URI for this request is: `https://app.thrustcarbon.com/api/1/calculator/projects/{projectId}`\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
       }
     },
     "/projects/{projectId}/reports": {
@@ -1131,30 +1129,13 @@
           }
         },
         "operationId": "get-projects-projectId-statistics",
-        "description": "Fetches the 'total emission' statistics for this project.",
+        "description": "Fetches the 'total emission' statistics for this project.\n\n\n<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access.",
         "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "start_date": {
-                    "type": "string"
-                  },
-                  "end_date": {
-                    "type": "string"
-                  },
-                  "traveller_ref": {
-                    "type": "string"
-                  },
-                  "departments": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/statistics-request"
               }
             }
           }
@@ -1183,18 +1164,48 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "segment_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "segment_type": {
+                            "type": "string"
+                          },
+                          "tonnes_of_co2": {
+                            "type": "number"
+                          },
+                          "passengers": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
                   }
                 },
                 "examples": {
                   "Example of project with air, hotel and car.": {
-                    "value": [
-                      "air",
-                      "hotel",
-                      "car"
-                    ]
+                    "value": {
+                      "segment_types": [
+                        {
+                          "segment_type": "air",
+                          "tonnes_of_co2": 1.43,
+                          "passengers": 2
+                        },
+                        {
+                          "segment_type": "hotel",
+                          "tonnes_of_co2": 0.27,
+                          "passengers": 8
+                        },
+                        {
+                          "segment_type": "car",
+                          "tonnes_of_co2": 0.92,
+                          "passengers": 80
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -1202,34 +1213,16 @@
           }
         },
         "operationId": "get-projects-projectId-statistics-types",
-        "description": "Returns the metadata for a project:\n\n* Types of segments within the project\n* Start date of the earliest emission\n* End date of the latest emission"
-      }
-    },
-    "/projects/{projectId}/statistics/data/{segmentType}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "projectId",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "segmentType",
-          "in": "path",
-          "required": true
+        "description": "Returns the metadata for the segment types in a project.\n\n<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/statistics-request"
+              }
+            }
+          }
         }
-      ],
-      "get": {
-        "summary": "Statistics: GET statistics for segment type",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-projects-projectId-statistics-data-segmentType",
-        "description": "Returns detailed statistics and graph data for a segment type. \n\nPlease note that not all segment types have detailed data breakdowns. If you feel an analysis is missing, please contact your account manager."
       }
     }
   },
@@ -1241,7 +1234,60 @@
         "description": "Your API Key must be provided as a bearer token. To do this, create an 'Authorization' header with a value of 'Bearer {your-api-key}' (e.g. \"Authorization: Bearer xcvboy23idvh\")."
       }
     },
-    "schemas": {}
+    "schemas": {
+      "statistics-request": {
+        "title": "Statistics Request Body",
+        "type": "object",
+        "description": "Request format for a Thrust Calculator statistics endpoints.",
+        "x-tags": [
+          "Statistics"
+        ],
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "format": "date"
+          },
+          "employee_id": {
+            "type": "string"
+          },
+          "grouping": {
+            "type": "string"
+          },
+          "grouping_type": {
+            "type": "string",
+            "default": "default",
+            "example": "default",
+            "description": "Should be empty, 'default', or match a grouping type slug from your organisation settings."
+          },
+          "grouping_include_sub_groups": {
+            "type": "boolean",
+            "default": false,
+            "description": "If you have a hierarchy of groupings, should we include data belonging to groupings that sit under the current grouping?"
+          }
+        },
+        "x-examples": {
+          "Default grouping example": {
+            "value": {
+              "start": "2019-01-01",
+              "end": "2020-01-01",
+              "grouping": "MARKETING"
+            }
+          },
+          "Custom grouping example": {
+            "value": {
+              "grouping": "EU-MARKET-01",
+              "grouping_type": "cost-center",
+              "grouping_include_sub_groups": true
+            }
+          }
+        },
+        "x-internal": true
+      }
+    }
   },
   "security": [
     {

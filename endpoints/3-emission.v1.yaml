@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: 'Endpoints (3): Emission Calculations'
+  version: '1.0'
+  description: |-
+    Our emissions endpoints enable you to calculate both singular, and multiple emissions.
+
+    #### Emissions endpoints do not persist your data
+
+    When you use our emissions endpoints we will calculate and return emissions information. We will _not_ save your emissions information. If you are looking for your emissions information to be persisted, you should use the Thrust Calculator APIs in order to save your data to a Thrust Calculator project.
+
+    #### Each calculation is billed separately
+
+    Each emission calculation uses up an API request for billing purposes. If you create a batch calculation with 5 calculations within the batch, that will use up 5 requests. 
+
+    _If you have an active Thrust Calculator subscription you will have a set number of calculations available as part of your subscription, so you may wish to use the Thrust Calculator APIs if that applies to you._
+  summary: Calculate both single and batches of emissions.
+servers:
+  - url: 'https://app.thrustcarbon.com/api/1/emission'
+    description: Production
+paths:
+  /:
+    parameters: []
+    get:
+      summary: Get
+      tags: []
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-models/emission.v1.json
+              examples: {}
+      operationId: emission-get
+      description: |-
+        A standalone endpoint to calculate emissions.
+
+        Your request must be made up of one or more emitting segments. We recommend you explore the [segment requests](models/segment-requests/segment-request.v1.yaml) section of the documentation to become familiar with the segment types.
+
+        Full URI: https://app.thrustcarbon.com/api/1/emission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                segments:
+                  type: array
+                  items:
+                    $ref: ../models/segment-requests/segment-request.v1.yaml
+  /batch:
+    get:
+      summary: Get Batch
+      operationId: emission-batch-get
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/common-models/emission.v1.json
+              examples:
+                Example for 2 flights:
+                  value:
+                    - emissions: 0.8485803993418809
+                      equivalencies:
+                        - type: tree
+                          values:
+                            - This is equivalent to burning a forest containing
+                            - 0.56 mature oak trees.
+                        - type: video-call
+                          values:
+                            - This is equivalent to 8486 days of video conferencing.
+                        - type: moon
+                          values:
+                            - This is equivalent to driving a small car 7708 kilometers.
+                            - You could also drive 0.02% of the way to the moon.
+                    - emissions: 2.1
+                      equivalencies:
+                        - type: tree
+                          values:
+                            - This is equivalent to burning a forest containing
+                            - 0.56 mature oak trees.
+                        - type: video-call
+                          values:
+                            - This is equivalent to 8486 days of video conferencing.
+                        - type: moon
+                          values:
+                            - This is equivalent to driving a small car 7708 kilometers.
+                            - You could also drive 0.02% of the way to the moon.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                segments:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      $ref: ../models/segment-requests/segment-request.v1.yaml
+            examples: {}
+        description: ''
+      description: |-
+        A standalone endpoint to calculate a batch of emissions individually. 
+
+        You must pass in **an array of an array** of segments. Each top level array will be calculated individually.
+
+        The results will be in the same order as the request body.
+
+        This endpoint is useful when you want to compare _many separate_ emissions, for example when you want to separately compare the emissions from two different flights in one request. If you do not need the result to be separate (e.g. you want just one combined emission number), you should use the standard [Get emissions endpoint](endpoints/3-emission.v1.yaml/paths/~1).
+
+        Full URI: https://app.thrustcarbon.com/api/1/emission/batch
+    parameters: []
+components:
+  schemas: {}
+  securitySchemes:
+    apikey:
+      type: http
+      scheme: bearer

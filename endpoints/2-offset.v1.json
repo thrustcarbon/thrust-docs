@@ -1,0 +1,102 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Endpoints (2): Offset",
+    "version": "1.0",
+    "description": "Our offset APIs can be used for the purchase & management of offsets, including via our tools such as the Thrust Widget.\n\n> ### ALPHA & BETA ENDPOINTS\n> Our offset APIs are in ALPHA & BETA. \n> \n> **BETA** endpoints are currently listed in this documentation. They are tested and stable for production loads, however their documentation might be incomplete. Please reach out to the Thrust Carbon teams if you run into any issues.\n>\n> We also have currently unpublished emissions **ALPHA** endpoints. If you are looking to use our offset APIs in a particular way, then please reach out to the team and we will open up the relevant endpoints.\n",
+    "contact": {
+      "name": "Kit Brennan",
+      "email": "kit@thrustcarbon.com",
+      "url": "https://www.thrustcarbon.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://app.thrustcarbon.com/api/1/offset",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "{offsetId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "offsetId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Offset: Get",
+        "tags": [
+          "Offsets"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/offset.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-offset-offsetId",
+        "description": "Returns an offset that you have already created. This endpoint returns offsets created by both the Thrust Widget and the Thrust Calculator."
+      }
+    },
+    "{offsetId}/confirm": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "offsetId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Offset: confirm",
+        "operationId": "post-offset-offsetId-confirm",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/offset.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "description": "<!-- theme: warning -->\n\n> ### Confirming offsets may cost money\n>\n> Confirming an offset outside of the sandbox environment will result in a real offset being purchased, and your account incurring a charge. While developing, please your sandbox developer key to ensure you are only confirming sandbox offsets.\n\nConfirming an offset will result in Thrust Carbon purchasing a carbon credit on your behalf in order to reduce carbon from the atmosphere."
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "API Key ": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Your API Key must be provided as a bearer token. To do this, create an 'Authorization' header with a value of 'Bearer {your-api-key}' (e.g. \"Authorization: Bearer xcvboy23idvh\")."
+      }
+    }
+  },
+  "security": [
+    {
+      "API Key ": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Offsets"
+    }
+  ]
+}

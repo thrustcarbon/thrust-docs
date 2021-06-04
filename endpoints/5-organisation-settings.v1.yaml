@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: 'Endpoints (3): Organisation settings'
+  title: 'Endpoints (5): Organisation settings'
   version: '1.0'
   description: |-
     The organisation settings endpoints enable you to manage your Thrust Carbon's organisational settings.
