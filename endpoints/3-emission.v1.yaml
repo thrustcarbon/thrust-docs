@@ -16,10 +16,10 @@ info:
     _If you have an active Thrust Calculator subscription you will have a set number of calculations available as part of your subscription, so you may wish to use the Thrust Calculator APIs if that applies to you._
   summary: Calculate both single and batches of emissions.
 servers:
-  - url: 'https://app.thrustcarbon.com/api/1/emission'
+  - url: 'https://app.thrustcarbon.com/api/1'
     description: Production
 paths:
-  /:
+  /emission:
     parameters: []
     get:
       summary: Get
