@@ -570,10 +570,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../models/common-models/offset-option.v1.yaml"
-                  }
+                  "allOf": [
+                    {
+                      "$ref": "../models/common-models/response-paginated.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "../models/common-models/offset-project.v1.yaml"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -634,6 +646,10 @@
                     "type": "string",
                     "default": "GBP",
                     "description": "Used in conjunction with price_per_tonne"
+                  },
+                  "is_sandbox": {
+                    "type": "boolean",
+                    "description": "Defaults to false. Change to true to create real offsets in production (warning, this will incur fees if you later confirm these offsets)."
                   }
                 },
                 "required": [
@@ -644,6 +660,38 @@
             }
           }
         }
+      },
+      "get": {
+        "summary": "List project's offsets",
+        "operationId": "get-projects-projectId-offsets",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../models/common-models/response-paginated.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "../models/common-models/offset.v1.yaml"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nAttach an offset option to this project"
       }
     },
     "/projects/{projectId}/offsets/{offsetId}": {

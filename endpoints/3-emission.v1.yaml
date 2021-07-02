@@ -21,12 +21,12 @@ servers:
 paths:
   /emission:
     parameters: []
-    get:
-      summary: Get
+    post:
+      summary: Post
       tags: []
       responses:
         '200':
-          description: User Found
+          description: Emission Calculation
           content:
             application/json:
               schema:
@@ -50,9 +50,9 @@ paths:
                   items:
                     $ref: ../models/segment-requests/segment-request.v1.yaml
   /batch:
-    get:
-      summary: Get Batch
-      operationId: emission-batch-get
+    post:
+      summary: Post Batch
+      operationId: emission-batch-post
       responses:
         '200':
           description: ''

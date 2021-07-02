@@ -9,25 +9,31 @@ properties:
   description:
     type: string
   location:
-    type: string
+    type: object
     description: Location returned as a latitude/longitude pair
-  location_area:
+    properties:
+      country:
+        type: string
+      area:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+  tonnes_of_available:
     type: string
-  location_country:
-    type: string
-  price_per_tonne:
-    type: string
-    description: Returned in base units of the currency.
-  price_currency:
-    type: string
-  tonnes_of_co2_available:
+  price_before_fees:
+    type: object
+    properties:
+      price_per_tonne:
+        type: integer
+        description: Price is provided in base units.
+      currency:
+        type: string
+  image_url:
     type: string
 required:
   - id
   - name
   - description
   - location
-  - location_area
-  - location_country
-  - price_per_tonne
-  - price_currency
