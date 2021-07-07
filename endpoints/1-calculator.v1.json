@@ -635,12 +635,12 @@
                     "type": "string"
                   },
                   "tonnes_of_co2": {
-                    "type": "string",
-                    "description": "Number of tonnes of co2 you would like to purchase."
+                    "description": "Number of tonnes of co2 you would like to purchase.",
+                    "type": "number"
                   },
                   "price_per_tonne": {
-                    "type": "string",
-                    "description": "Optional. If you provide a price-per-tonne, your request will be validated against the current price-per-tonne and return an error if that price is no longer valid.\n\nWe recommend providing this parameter to verify that the price hasn't moved between requesting an offset option and attaching an offset."
+                    "description": "In base units (e.g. USD cent, GBP pennies, etc).\n\nOptional. If you provide a price-per-tonne, your request will be validated against the current price-per-tonne and return an error if that price is no longer valid.\n\nWe recommend providing this parameter to verify that the price hasn't moved between requesting an offset option and attaching an offset.",
+                    "type": "number"
                   },
                   "price_currency": {
                     "type": "string",
@@ -659,7 +659,17 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type"
+          }
+        ]
       },
       "get": {
         "summary": "List project's offsets",
