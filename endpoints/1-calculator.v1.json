@@ -548,7 +548,7 @@
         "description": "Updates an existing segment.\n\n<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access.\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
       }
     },
-    "/projects/{projectId}/options": {
+    "/projects/{projectId}/offsets/options": {
       "parameters": [
         {
           "schema": {
