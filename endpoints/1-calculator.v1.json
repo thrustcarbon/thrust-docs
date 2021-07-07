@@ -773,43 +773,6 @@
           "required": true
         }
       ],
-      "get": {
-        "summary": "Get offset",
-        "tags": [
-          "Offsets"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "../models/common-models/offset.v1.yaml"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-projects-projectId-offsets-offsetId",
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nGets an offset that you have already attached to a project."
-      },
-      "delete": {
-        "summary": "Delete offset",
-        "tags": [
-          "Offsets"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        },
-        "operationId": "delete-projects-projectId-offsets-offsetId",
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nRemoves an offset that was attached to a project. Please note, this will not refund an offset (you will need to contact Thrust Carbon support for refunds), it will also not delete the underlying offset from your account (this is "
-      },
       "put": {
         "summary": "Confirm offset",
         "operationId": "put-projects-projectId-offsets-offsetId-confirm",
