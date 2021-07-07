@@ -552,7 +552,8 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "name": "projectId",
           "in": "path",
@@ -599,7 +600,8 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "name": "projectId",
           "in": "path",
@@ -711,7 +713,8 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "name": "projectId",
           "in": "path",
@@ -719,7 +722,8 @@
         },
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "name": "offsetId",
           "in": "path",
@@ -768,7 +772,8 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "name": "projectId",
           "in": "path",
@@ -776,7 +781,8 @@
         },
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "default": "00000000-0000-0000-0000-000000000000"
           },
           "name": "offsetId",
           "in": "path",
