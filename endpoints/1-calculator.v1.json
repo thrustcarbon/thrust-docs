@@ -754,6 +754,93 @@
         "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nRemoves an offset that was attached to a project. Please note, this will not refund an offset (you will need to contact Thrust Carbon support for refunds), it will also not delete the underlying offset from your account (this is "
       }
     },
+    "/projects/{projectId}/offsets/{offsetId}/confirm": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "offsetId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get offset",
+        "tags": [
+          "Offsets"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "../models/common-models/offset.v1.yaml"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-offsets-offsetId",
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nGets an offset that you have already attached to a project."
+      },
+      "delete": {
+        "summary": "Delete offset",
+        "tags": [
+          "Offsets"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "operationId": "delete-projects-projectId-offsets-offsetId",
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nRemoves an offset that was attached to a project. Please note, this will not refund an offset (you will need to contact Thrust Carbon support for refunds), it will also not delete the underlying offset from your account (this is "
+      },
+      "put": {
+        "summary": "Confirm offset",
+        "operationId": "put-projects-projectId-offsets-offsetId-confirm",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/offset.v1.yaml"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Offsets"
+        ],
+        "description": "<!-- theme: warning -->\n\n> ### BETA ENDPOINT\n> This endpoint will cost you money in production. If you are testing, you should only use this endpoint with offsets that have `is_sandbox` set to true.\n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nThis endpoint will convert a PENDING offset into a CONFIRMED offset. When an offset is CONFIRMED, we will purchase and retire a carbon credit on your behalf; your account will then be billed for this purchase.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type"
+          }
+        ]
+      }
+    },
     "/projects/{projectId}/finalise": {
       "parameters": [
         {
