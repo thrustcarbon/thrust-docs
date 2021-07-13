@@ -154,11 +154,18 @@
                   },
                   "currency_symbol": {
                     "type": "string",
-                    "description": "Must be a valid ISO 4217 currency code."
+                    "description": "Must be a valid ISO 4217 currency code.",
+                    "example": "GBP"
+                  },
+                  "is_premium": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Premium projects will provide emissions data in API calls, and generate premium reports.\n\n**Premium projects are billable**"
                   }
                 },
                 "required": [
-                  "name"
+                  "name",
+                  "currency_symbol"
                 ]
               },
               "examples": {
@@ -191,7 +198,7 @@
             "description": "application/json"
           }
         ],
-        "description": "Creates a new project in your Thrust Calculator account."
+        "description": "Creates a new project in your Thrust Calculator account.\n\n<!-- theme: warning -->\n\n> ### PREMIUM PROJECTS ARE BILLABLE\n> If you set `is_premium` to `true`, you will be billed for this project according to your account's Thrust Calculator pricing schedule.\n>\n> Unsure about pricing, or made a mistake? Reach out to your Thrust Carbon account manager."
       }
     },
     "/projects/{projectId}": {
@@ -243,13 +250,17 @@
                     "minLength": 3,
                     "maxLength": 3,
                     "description": "Must be a 3 letter ISO currency code"
+                  },
+                  "is_premium": {
+                    "type": "boolean",
+                    "description": "Premium projects will provide emissions data in API calls, and generate premium reports.\n\n**Premium projects are billable**"
                   }
                 }
               }
             }
           }
         },
-        "description": ""
+        "description": "Updates a Thrust Carbon project.\n\n\n<!-- theme: warning -->\n\n> ### PREMIUM PROJECTS ARE BILLABLE\n> If you set `is_premium` to `true`, you will be billed for this project according to your account's Thrust Calculator pricing schedule.\n>\n> Unsure about pricing, or made a mistake? Reach out to your Thrust Carbon account manager."
       },
       "delete": {
         "summary": "Project: Delete",
@@ -807,7 +818,7 @@
         "tags": [
           "Offsets"
         ],
-        "description": "<!-- theme: warning -->\n\n> ### BETA ENDPOINT\n> This endpoint will cost you money in production. If you are testing, you should only use this endpoint with offsets that have `is_sandbox` set to true.\n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nThis endpoint will convert a PENDING offset into a CONFIRMED offset. When an offset is CONFIRMED, we will purchase and retire a carbon credit on your behalf; your account will then be billed for this purchase.",
+        "description": "<!-- theme: warning -->\n\n> ### BILLABLE ENDPOINT\n> This endpoint will cost you money in production. If you are testing, you should only use this endpoint with offsets that have `is_sandbox` set to true.\n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nThis endpoint will convert a PENDING offset into a CONFIRMED offset. When an offset is CONFIRMED, we will purchase and retire a carbon credit on your behalf; your account will then be billed for this purchase.",
         "parameters": [
           {
             "schema": {

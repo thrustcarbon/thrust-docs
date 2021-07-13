@@ -31,6 +31,10 @@
     },
     "status": {
       "type": "string"
+    },
+    "is_premium": {
+      "type": "boolean",
+      "description": "Indicates whether the project has premium reporting and will return emissions data when calculating segments. \n\n**Premium projects are billable.**"
     }
   },
   "required": [
