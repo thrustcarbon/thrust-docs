@@ -11,7 +11,7 @@ allOf:
           - hotel
       rooms:
         type: integer
-        default: '1'
+        default: 1
       nights:
         type: integer
         default: 1
@@ -23,12 +23,29 @@ allOf:
           oneOf:
             - description: 2 digit ISO 3166 country code
           type: string
+      rating:
+        type: number
+        description: 'The star rating of the hotel. 5 star being the highest. 1 star the lowest. If the hotel does not have a rating, you should leave this value null.'
+        minimum: 1
+        maximum: 5
+        example: 3
+      chain_code:
+        type: string
+        description: '2 or 3 letter chain code for the hotel. '
+        example: EM
+        maxLength: 3
+        minLength: 2
     required:
       - type
 description: |-
   Hotel segment request.
 
   *Note: for hotel emissions you should only send one location in the locations array.*
+
+  Notes:
+
+  * The provided location should be a 2-letter country code.
+  * Hotel calculation methodologies are limited in the market-place, however we expect them to substantially improve over the next 24 months. You should therefore try and provide as many details as possible (e.g. rating codes and chain codes), in order to future proof your integration.
 x-examples:
   Hotel Example:
     type: hotel
