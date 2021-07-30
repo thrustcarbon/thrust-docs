@@ -1,5 +1,5 @@
 allOf:
-  - $ref: ./segment-base.v1.yaml
   - $ref: ../segment-requests/segment-request-car.v1.yaml
+  - $ref: ./segment-base.v1.yaml
 title: 'Segment: Car'
 description: ''
