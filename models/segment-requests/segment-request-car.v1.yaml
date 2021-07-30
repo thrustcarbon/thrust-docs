@@ -10,6 +10,7 @@ allOf:
         type: string
         enum:
           - car
+        default: car
       days:
         type: number
         description: 'If distance is not supplied, we will use an average distance for the number of days travelled.'

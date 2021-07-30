@@ -12,7 +12,7 @@ allOf:
         example: vacation-rental
       travellers:
         type: integer
-        default: '1'
+        default: 1
       nights:
         type: integer
         default: 1

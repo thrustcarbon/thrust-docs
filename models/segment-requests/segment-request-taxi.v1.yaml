@@ -15,6 +15,11 @@ allOf:
         enum:
           - TAXI
           - LONDON_TAXI
+      type:
+        type: string
+        default: taxi
+        enum:
+          - taxi
 examples:
   - type: taxi
     locations:

@@ -28,6 +28,7 @@ allOf:
         enum:
           - meeting
         example: meeting
+        default: meeting
     required:
       - size
       - hours

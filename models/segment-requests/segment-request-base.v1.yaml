@@ -13,7 +13,14 @@ properties:
     type: string
     enum:
       - air
+      - car
+      - coach
+      - ferry
       - hotel
+      - meeting
+      - rail
+      - taxi
+      - vacation-rental
   departments:
     type: array
     description: Optional array of departments to assign the emission to.

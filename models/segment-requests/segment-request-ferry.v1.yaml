@@ -8,6 +8,7 @@ allOf:
         enum:
           - ferry
         description: Must be 'ferry'
+        default: ferry
       distance:
         type: number
         description: KM travelled
