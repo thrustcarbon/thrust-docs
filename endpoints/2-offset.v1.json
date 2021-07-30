@@ -75,7 +75,10 @@
             }
           }
         },
-        "description": "<!-- theme: warning -->\n\n> ### Confirming offsets may cost money\n>\n> Confirming an offset outside of the sandbox environment will result in a real offset being purchased, and your account incurring a charge. While developing, please your sandbox developer key to ensure you are only confirming sandbox offsets.\n\nConfirming an offset will result in Thrust Carbon purchasing a carbon credit on your behalf in order to reduce carbon from the atmosphere."
+        "description": "<!-- theme: warning -->\n\n> ### Confirming offsets may cost money\n>\n> Confirming an offset outside of the sandbox environment will result in a real offset being purchased, and your account incurring a charge. While developing, please your sandbox developer key to ensure you are only confirming sandbox offsets.\n\nConfirming an offset will result in Thrust Carbon purchasing a carbon credit on your behalf in order to reduce carbon from the atmosphere.",
+        "tags": [
+          "Offsets"
+        ]
       }
     }
   },
