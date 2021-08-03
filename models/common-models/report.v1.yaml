@@ -65,6 +65,21 @@ properties:
   options:
     type: object
     properties:
-      markup:
-        type: number
-        description: Only used for type `offset_options`. Markups the generated prices by the percentage provided. E.g. a value of 10 will markup the prices by 10% in the generated report.
+      start:
+        type: string
+        format: date
+        description: Displays all data *on and after* this date.
+      end:
+        type: string
+        format: date
+        description: Displays data *before* this date.
+      grouping_type:
+        type: string
+        default: default
+        description: |-
+          Only valid when used with the `grouping` parameter.
+
+          Displays segments that has a `grouping` with this `grouping_type`.
+      grouping:
+        type: string
+        description: Only returns segments that have this `grouping` attached.
