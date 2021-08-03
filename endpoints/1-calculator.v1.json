@@ -1146,10 +1146,24 @@
                   "options": {
                     "type": "object",
                     "properties": {
-                      "markup": {
-                        "type": "number",
-                        "description": "Only used on type `offset_options`. It will markup the generated prices by the requested percentage (e.g. 10 will markup the prices 10%).",
-                        "minimum": 0
+                      "start": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Displays all data *on and after* this date."
+                      },
+                      "end": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Displays data *before* this date."
+                      },
+                      "grouping_type": {
+                        "type": "string",
+                        "description": "Only valid when used with the `grouping` parameter.\n\nDisplays segments that has a `grouping` with this `grouping_type`.",
+                        "default": "default"
+                      },
+                      "grouping": {
+                        "type": "string",
+                        "description": "Only returns segments that have this `grouping` attached."
                       }
                     }
                   }
