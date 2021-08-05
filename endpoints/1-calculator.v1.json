@@ -440,6 +440,23 @@
                       "PNR": "AB12CD"
                     }
                   }
+                },
+                "Grouping Example": {
+                  "value": {
+                    "type": "air",
+                    "locations": [
+                      "LHR",
+                      "JFK"
+                    ],
+                    "groupings": {
+                      "default": [
+                        "MARKETING"
+                      ],
+                      "cost-center": [
+                        "12345"
+                      ]
+                    }
+                  }
                 }
               }
             }

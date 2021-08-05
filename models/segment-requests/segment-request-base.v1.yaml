@@ -21,11 +21,15 @@ properties:
       - rail
       - taxi
       - vacation-rental
-  departments:
-    type: array
-    description: Optional array of departments to assign the emission to.
-    items:
-      type: string
+  groupings:
+    description: 'You can associate data with a grouping in order to segment it in future reports and requests. Examples include: cost centre codes, department IDs, sub-unit IDs, etc.'
+    type: object
+    properties:
+      '{grouping-type-slug}':
+        type: array
+        description: Every organisation has a `default` grouping-type-slug. However you can create new grouping types with the organisation setting APIs.
+        items:
+          type: string
   emitted_at:
     type: string
     description: ''
