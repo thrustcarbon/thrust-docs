@@ -1,0 +1,27 @@
+title: Grouping Type
+type: object
+description: |-
+  A `Grouping Type` is a type that any grouping can be associated with. Grouping types must be setup in advance, but once they are setup you can associate as many groupings as you wish.
+
+  Examples of grouping types:
+
+  * Cost centre.
+  * Department
+  * Purpose code
+
+  Every organisation has a default grouping type called `default`. This cannot be removed, however you can rename it.
+properties:
+  slug:
+    type: string
+    example: cost-centre
+  name:
+    type: string
+    example: Cost Centre
+  description:
+    type:
+      - string
+      - 'null'
+  is_reportable:
+    type: boolean
+    description: Indicates whether this grouping type should be displayed in reports and within other Thrust Carbon products.
+    default: true

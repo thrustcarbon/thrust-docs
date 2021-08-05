@@ -1,9 +1,9 @@
-title: Department
+title: Grouping
 type: object
 description: |-
-  A department represents a descriptive name for a given department_id that is saved within the Thrust Calculator.
+  A grouping is something that a segment within the Thrust Calculator can be associated with.
 
-  When department details are saved, these will be used in reports and other Thrust Carbon products.
+  When grouping details are saved, these will be used in reports and other Thrust Carbon products.
 x-examples:
   Parent department:
     key: '123'
@@ -29,3 +29,6 @@ properties:
   description:
     type: string
     example: Human Resources for the United States
+  grouping_type:
+    type: string
+    default: default

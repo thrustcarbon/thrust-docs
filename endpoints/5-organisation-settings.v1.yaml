@@ -99,11 +99,9 @@ paths:
         description: ''
       tags:
         - Sub organisations
-  /api/1/setting/organisation/departments:
+  /api/1/setting/organisation/groupings:
     get:
-      summary: 'Departments: List'
-      tags:
-        - Departments
+      summary: 'Groupings: List'
       responses:
         '200':
           description: OK
@@ -120,24 +118,31 @@ paths:
                           $ref: ../models/common-models/department.v1.yaml
                     required:
                       - data
-      operationId: get-api-1-setting-organisation-departments
+      operationId: get-api-1-setting-organisation-groupings
       description: |-
-        This list endpoint will provide a paginated list of all departments in your organisation.
+        This list endpoint will provide a paginated list of all groupings in your organisation.
 
         ---
-        #### Description of department endpoints
+        #### Creation of groupings
 
-        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+        While you can forcefully create a grouping using the POST endpoint, groupings are typically created through segment requests. When creating a segment you may associate the segment with one or more groupings, and these will be automatically created for you.
 
-        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+        ---
+        #### Description of grouping endpoints
+
+        **Grouping endpoints let you set additional details for each grouping key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+
+        For example, a grouping with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the grouping id of '123' is not understandable to most users, the name can be used instead.
 
         --- 
         #### Online interface
 
-        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+        You may create/read/update/delete groupings manually via your account settings at https://app.thrustcarbon.com
+      tags:
+        - Groupings
     post:
-      summary: 'Departments: Add'
-      operationId: post-api-1-setting-organisation-departments
+      summary: 'Groupings: Add'
+      operationId: post-api-1-setting-organisation-groupings
       responses:
         '200':
           description: OK
@@ -159,14 +164,19 @@ paths:
                     name: US East Coast HR
                     description: Human Resources for the Eastern seaboard of the United States
       description: |-
-        This add endpoint will create or overwrite a department.
+        This add endpoint will create or overwrite a grouping.
 
         ---
-        #### Description of department endpoints
+        #### Creation of groupings
 
-        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+        While you can forcefully create a grouping using the POST endpoint, groupings are typically created through segment requests. When creating a segment you may associate the segment with one or more groupings, and these will be automatically created for you.
 
-        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+        ---
+        #### Description of grouping endpoints
+
+        **Grouping endpoints let you set additional details for each grouping key**. These additional details are use in other Thrust Carbon products, such as correct grouping names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+
+        For example, a grouping with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the grouping id of '123' is not understandable to most users, the name can be used instead.
 
         --- 
         #### Online interface
@@ -176,9 +186,9 @@ paths:
         --- 
         #### Considerations
 
-        * Please add data in chronological order (e.g. inputting parents before child departments). A child department cannot be saved against a parent_id if that parent does not exist.
+        * Please add data in chronological order (e.g. inputting parents before child groupings). A child grouping cannot be saved against a parent_id if that parent does not exist.
         * Please make requests to this endpoint sequentially, not concurrently. You otherwise risk inserting an item before its parent is fully loaded.
-        * Please use the batch endpoint if you wish to add many departments. You may otherwise hit our rate-limiter.
+        * Please use the batch endpoint if you wish to add many groupings. You may otherwise hit our rate-limiter.
       requestBody:
         content:
           application/json:
@@ -196,9 +206,9 @@ paths:
                 description:
                   type: string
                   maxLength: 2000
-                department_type:
+                grouping_type:
                   type: string
-                  description: You can supply the 'api slug' name for the department type. This can be found in your Thrust Carbon organisation settings.
+                  description: 'You can supply the ''slug'' for a grouping type (must be setup before making this request). If you do not provide a slug, the ''default'' slug is used.'
                   default: default
               required:
                 - key
@@ -216,27 +226,27 @@ paths:
                   name: US East Coast HR
                   description: Human Resources for the Eastern seaboard of the United States
       tags:
-        - Departments
+        - Groupings
     delete:
-      summary: 'Departments: Remove'
-      operationId: delete-api-1-setting-organisation-departments
+      summary: 'Groupings: Remove'
+      operationId: delete-api-1-setting-organisation-groupings
       responses:
         '204':
           description: No Content
       description: |-
-        This delete endpoint will remove a department definition. If the department has children, it will also remove those child definitions.
+        This delete endpoint will remove a grouping definition. If the grouping has children, it will also remove those child definitions.
 
         ---
-        #### Description of department endpoints
+        #### Description of grouping endpoints
 
-        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+        **Grouping endpoints let you set additional details for each grouping key**. These additional details are use in other Thrust Carbon products, such as correct grouping names on Thrust Calculator reports or in the Thrust Engage dashboard. 
 
-        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+        For example, a grouping with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the grouping id of '123' is not understandable to most users, the name can be used instead.
 
         --- 
         #### Online interface
 
-        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+        You may create/read/update/delete groupings manually via your account settings at https://app.thrustcarbon.com
       requestBody:
         content:
           application/json:
@@ -249,10 +259,11 @@ paths:
                 - key
         description: ''
       tags:
-        - Departments
+        - Groupings
+    parameters: []
   /api/1/setting/organisation/departments/batch:
     post:
-      summary: 'Departments: Batch Add'
+      summary: 'Groupings: Batch Add'
       operationId: post-api-1-setting-organisation-departments-batch
       responses:
         '200':
@@ -294,26 +305,26 @@ paths:
                           title:
                             - The title field is required.
       description: |-
-        This add endpoint will create or overwrite a batch of departments.
+        This add endpoint will create or overwrite a batch of groupings.
 
         ---
-        #### Description of department endpoints
+        #### Description of grouping endpoints
 
-        **Department endpoints let you set additional details for each department key**. These additional details are use in other Thrust Carbon products, such as correct department names on Thrust Calculator reports or in the Thrust Engage dashboard. 
+        **Grouping endpoints let you set additional details for each grouping key**. These additional details are use in other Thrust Carbon products, such as correct grouping names on Thrust Calculator reports or in the Thrust Engage dashboard. 
 
-        For example, a department with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the department id of '123' is not understandable to most users, the name can be used instead.
+        For example, a grouping with key '123' may have the name 'US HR' attached, and a description of 'Human Resources department for United States'. Since the grouping id of '123' is not understandable to most users, the name can be used instead.
 
         --- 
         #### Online interface
 
-        You may create/read/update/delete departments manually via your account settings at https://app.thrustcarbon.com
+        You may create/read/update/delete groupings manually via your account settings at https://app.thrustcarbon.com
 
         --- 
         #### Considerations
 
-        * Please add data in chronological order (e.g. inputting parents before child departments). A child department cannot be saved against a parent_id if that parent does not exist.
+        * Please add data in chronological order (e.g. inputting parents before child departments). A child grouping cannot be saved against a parent_id if that parent does not exist.
         * Please make requests to this endpoint sequentially, not concurrently. You otherwise risk inserting an item before its parent is fully loaded.
-        * Please use the batch endpoint if you wish to add many departments. You may otherwise hit our rate-limiter.
+        * Please use the batch endpoint if you wish to add many groupings. You may otherwise hit our rate-limiter.
       requestBody:
         content:
           application/json:
@@ -335,7 +346,7 @@ paths:
                         type: string
                       description:
                         type: string
-                      department_type:
+                      grouping_type:
                         type: string
                         description: You can supply the 'api slug' name for the department type. This can be found in your Thrust Carbon organisation settings.
                         default: default
@@ -355,7 +366,158 @@ paths:
                   name: US East Coast HR
                   description: Human Resources for the Eastern seaboard of the United States
       tags:
-        - Departments
+        - Groupings
+  /api/1/setting/organisation/grouping-types:
+    get:
+      summary: 'Grouping Types: List'
+      tags:
+        - Grouping Types
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../models/common-models/response-paginated.v1.json
+                  - type: object
+                    properties:
+                      data:
+                        $ref: ../models/common-models/grouping-type.yaml
+      operationId: get-api-1-setting-organisation-grouping-types
+      description: |-
+        Lists all grouping types that are associated with an organisation.
+
+        An organisation may have up to 10 grouping types. If you require more than ten grouping types, please contact your account manager for activation.
+    post:
+      summary: 'Grouping Types: Add'
+      operationId: post-api-1-setting-organisation-grouping-types
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-models/grouping-type.yaml
+      description: Adds a new grouping type to an organisation.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Cost Centre
+                description:
+                  type: string
+                slug:
+                  type: string
+                  description: |-
+                    Optional. We recommend you **do not** provide a slug, as Thrust Carbon will attempt to generate a unique valid slug for you. 
+
+                    A slug must only have lowercase letters, numbers and hypens. 
+
+                    If your slug is not valid, we will attempt to transform it into a valid slug before checking that it does not already exist.
+                  example: cost-centre
+                  pattern: '^[A-Za-z0-9-]+'
+                is_reportable:
+                  type: boolean
+                  default: true
+              required:
+                - name
+      tags:
+        - Grouping Types
+  '/api/1/setting/organisation/grouping-types/{slug}':
+    parameters:
+      - schema:
+          type: string
+          example: cost-centre
+        name: slug
+        in: path
+        required: true
+    get:
+      summary: 'Grouping Types: View'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-models/grouping-type.yaml
+              examples:
+                Cost centre:
+                  value:
+                    slug: cost-centre
+                    name: Cost Centre
+                    description: A code that indicates the cost centre responsible for a given segment
+                    is_reportable: true
+      operationId: get-api-1-setting-organisation-grouping-types-slug
+      description: Returns an individual grouping type.
+      tags:
+        - Grouping Types
+    put:
+      summary: 'Grouping Types: Update'
+      operationId: put-api-1-setting-organisation-grouping-types-slug
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/common-models/grouping-type.yaml
+      description: |-
+        Updates the settings on a given grouping type.
+
+        Please note that a slug operates as a primary key and cannot be altered after creation.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                is_reportable:
+                  type: boolean
+                  description: Indicates whether the grouping type can be seen in Thrust Calculator reports and other Thrust Carbon products.
+      tags:
+        - Grouping Types
+    delete:
+      summary: 'Grouping Types: Remove'
+      operationId: delete-api-1-setting-organisation-grouping-types-slug
+      responses:
+        '200':
+          description: OK
+        '422':
+          description: |-
+            Unprocessable Entity
+
+            Typically indicates that you are taking an action against the `default` slug, or a grouping type that has one or more groupings still attached.
+          content:
+            application/json:
+              schema:
+                $ref: ../reference/common/models/error.v1.yaml
+              examples:
+                Delete default grouping type:
+                  value:
+                    code: '422'
+                    message: Cannot delete default grouping type.
+                Grouping with attached groupings:
+                  value:
+                    code: '422'
+                    message: Cannot delete a grouping type with groupings still attached.
+      tags:
+        - Grouping Types
+      description: |-
+        Removes a given grouping type.
+
+        **Please note:** 
+
+        * No groupings can be associated with a grouping type that you want to remove. If you attempt to remove a grouping type with groupings you will receive a 422 response.
+        * The `default` slug grouping type cannot be removed. If you do not want to use this, you should update the grouping type so that `is_reportable` is false.
 components:
   schemas: {}
   securitySchemes:
