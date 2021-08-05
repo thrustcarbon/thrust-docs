@@ -2,7 +2,7 @@ title: Segment
 x-tags:
   - Segments
 description: |-
-  * This is the model for segments returned by the api, *if you are trying to make a request, please the [Segment Request](../segment-requests/segment-request.v1.yaml) documentation*
+  * This is the model for segments returned by the api, *if you are trying to POST a new segment, please the [Segment Request](../segment-requests/segment-request.v1.yaml) documentation*
   * Every segment extends the [same base](./segment-base.v1.yaml), we recommend reading the documentation for the segment type you are trying to get:
       * [Air segment](./segment-air.v1.yaml)
       * [Hotel segment](./segment-hotel.v1.yaml)
@@ -13,7 +13,6 @@ description: |-
       * [Car segment](./segment-car.v1.yaml)
       * [Taxi segment](./segment-taxi.v1.yaml)
 allOf:
-  - $ref: ./segment-base.v1.yaml
   - oneOf:
       - $ref: ./segment-air.v1.yaml
       - $ref: ./segment-hotel.v1.yaml
@@ -21,6 +20,7 @@ allOf:
       - $ref: ./segment-vacation-rental.v1.yaml
       - $ref: ./segment-car.v1.yaml
       - $ref: ./segment-taxi.v1.yaml
+  - $ref: ./segment-base.v1.yaml
 x-examples:
   Flight Response:
     id: ec34f49e-ab0c-4ffa-854f-5cdfc230cbe1
