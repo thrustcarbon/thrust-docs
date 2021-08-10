@@ -22,7 +22,7 @@ paths:
   /emission:
     parameters: []
     post:
-      summary: Post
+      summary: Calculate emission
       tags: []
       responses:
         '200':
@@ -51,7 +51,7 @@ paths:
                     $ref: ../models/segment-requests/segment-request.v1.yaml
   /batch:
     post:
-      summary: Post Batch
+      summary: Calculate emissions (batch)
       operationId: emission-batch-post
       responses:
         '200':
