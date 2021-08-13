@@ -399,7 +399,37 @@ paths:
             application/json:
               schema:
                 $ref: ../models/common-models/grouping-type.yaml
-      description: Adds a new grouping type to an organisation.
+              examples:
+                Name & Description:
+                  value:
+                    slug: cost-centre
+                    name: Cost Centre
+                    description: Our organisation's internal cost centre code
+                    is_reportable: true
+                Partner:
+                  value:
+                    slug: cost-centre
+                    name: Cost Centre
+                    description: string
+                    is_reportable: true
+                Customisation:
+                  value:
+                    name: Invoice number
+                    slug: invoice
+                    description: null
+                    is_reportable: false
+      description: |-
+        Adds a new grouping type to an organisation.
+
+        ### Slug
+        When you create a grouping type, the ‘slug’ is the key you will be using in future requests. You can enter your own slug identifier that will be used in future requests, or you can use the one we generate and return. A slug is only valid if it is lowercase letters, numbers and dashes.
+
+        If there is already a slug within the organisation, a random number will be appended to the organisation.
+
+        Example slugs:
+
+        * The name 'Cost centre' will have the slug `cost-centre`
+        * The name 'Default' will already exist, so the slug will become `default2`
       requestBody:
         content:
           application/json:
@@ -426,6 +456,20 @@ paths:
                   default: true
               required:
                 - name
+            examples:
+              Name & Description:
+                value:
+                  name: Cost Centre
+                  description: Our organisation's internal cost centre code
+              Partner:
+                value:
+                  organisation_id: 3d1682ea-6f80-3c6d-96bc-fc117947f779
+                  name: Trip purpose code
+              Customisation:
+                value:
+                  name: Invoice number
+                  slug: invoice
+                  is_reportable: false
       tags:
         - Grouping Types
   '/api/1/setting/organisation/grouping-types/{slug}':
