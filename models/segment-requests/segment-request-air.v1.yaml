@@ -58,11 +58,11 @@ allOf:
       carrier:
         type: string
         default: BA
-        description: 2 letter IATA carrier code
+        description: 2 letter IATA carrier code for the operating carrier (try to avoid using the marketing carrier if it's a code-shared flight).
       aircraft_type:
         type: string
-        description: Must be a valid ICAO/IATA type designator
-        example: B748
+        description: Must be a valid IATA aircraft type designator.
+        example: '788'
         maxLength: 4
       flight_number:
         type: string

@@ -16,7 +16,7 @@ allOf:
 description: |
   * This is the model for creating or updating a segment; *please the [Segment](../segments/segment.v1.yaml) documentation if you are retrieving an existing segment.*
   * Every segment request extends the [same base](./segment-request-base.v1.yaml), we recommend reading the documentation for the segment type you are trying to create:
-      * [Air segment](./segment-request-air.v1.yaml)
+      * [Air segment](/models/segment-requests/segment-request-air.v1.yaml)
       * [Hotel segment](./segment-request-hotel.v1.yaml)
       * [Rail segment](./segment-request-rail.v1.yaml)
       * [Car segment](./segment-request-car.v1.yaml)
