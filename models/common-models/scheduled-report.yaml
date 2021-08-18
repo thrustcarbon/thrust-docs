@@ -1,0 +1,65 @@
+title: Scheduled Report
+type: object
+description: |-
+  A scheduled report is a resource that will automatically create [reports](models/common-models/report.v1.yaml) on a scheduled basis for a given [project](models/common-models/project.v1.json).
+
+  Notes:
+
+  * Scheduled reports are generated on the first of the month and cover the previous period. For example, a monthly report will be generated on the first of the month and will cover all data in the previous month.
+properties:
+  id:
+    type: string
+    format: uuid
+  type:
+    type: string
+    enum:
+      - impact
+      - offset_options
+      - certificates
+      - export
+    default: impact
+    description: The type of report being generated.
+  frequency:
+    type: string
+    enum:
+      - monthly
+      - quarterly
+      - yearly
+    description: The frequency that the report will be generated.
+  recipients:
+    type: array
+    items:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+  project_id:
+    type: string
+    format: uuid
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
+  last_run_at:
+    type:
+      - string
+      - 'null'
+    format: date-time
+  options:
+    type: object
+    properties:
+      grouping:
+        type: string
+        description: |-
+          Will filter data so that only data tagged with the specified grouping will be returned. 
+
+          Please see the [grouping types](models/common-models/grouping-type.yaml) and groupings sections.
+      grouping_type:
+        type: string
+        description: |-
+          This will filter out data so that only data of a grouping belonging to. thisgrouping_type will be returned.
+
+          This will only function when a 'grouping' option is also provided.

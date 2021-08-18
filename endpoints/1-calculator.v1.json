@@ -1383,6 +1383,539 @@
           }
         }
       }
+    },
+    "/projects/{projectId}/scheduled-reports": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Scheduled Reports: List",
+        "tags": [
+          "Scheduled Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../models/common-models/response-paginated.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "../models/common-models/scheduled-report.yaml"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "to": 1,
+                      "from": 2,
+                      "path": "https://app.thrustcarbon.com/api/1/calculator/projects/405d8375-3514-403b-8c43-83ae74cfe0e9/scheduled-reports",
+                      "prev_page_url": null,
+                      "next_page_url": null,
+                      "last_page_url": "https://app.thrustcarbon.com/api/1/calculator/projects/405d8375-3514-403b-8c43-83ae74cfe0e9/scheduled-reports?page=1",
+                      "first_page_url": "https://app.thrustcarbon.com/api/1/calculator/projects/405d8375-3514-403b-8c43-83ae74cfe0e9/scheduled-reports?page=1",
+                      "last_page": 1,
+                      "current_page": 1,
+                      "per_page": 2,
+                      "total": 2,
+                      "data": [
+                        {
+                          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                          "type": "impact",
+                          "frequency": "monthly",
+                          "recipients": [
+                            {
+                              "email": "user@example.com"
+                            }
+                          ],
+                          "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                          "created_at": "2021-07-13 12:10:27",
+                          "updated_at": "2021-07-13 12:10:27",
+                          "last_run_at": "2021-08-01 08:00:00",
+                          "options": {}
+                        },
+                        {
+                          "id": "35842cea-7399-49ab-abbb-7e9bd0a56571",
+                          "type": "impact",
+                          "frequency": "yearly",
+                          "recipients": [
+                            {
+                              "email": "kit@thrustcarbon.com"
+                            }
+                          ],
+                          "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                          "created_at": "2019-08-24T14:15:22Z",
+                          "updated_at": "2019-08-24T14:15:22Z",
+                          "last_run_at": null,
+                          "options": {
+                            "grouping_type": "cost-centre",
+                            "grouping": "MARKETING"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-scheduled-reports",
+        "description": "Lists all of the scheduled reports setup for a project. \n\n### What is a scheduled report\nA scheduled report is a resource that will automatically create and send reports on a given frequency.\n\nUse case:\n\n* Automatically send an impact report to a client on a monthly basis about their carbon usage.\n* Automatically send a collection of offset certificates to the environment reporting department.\n* Automatically send an annual data dump of all carbon calculations to your CDP team."
+      },
+      "post": {
+        "summary": "Scheduled Reports: Add",
+        "operationId": "post-projects-projectId-scheduled-reports",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/scheduled-report.yaml"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "type": "impact",
+                      "frequency": "monthly",
+                      "recipients": [
+                        {
+                          "email": "user@example.com"
+                        }
+                      ],
+                      "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                      "created_at": "2019-08-24T14:15:22Z",
+                      "updated_at": "2019-08-24T14:15:22Z",
+                      "last_run_at": null,
+                      "options": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Sets up a new scheduled report on a project.\n\n### What is a scheduled report\nA scheduled report is a resource that will automatically create and send reports on a given frequency.\n\nUse case:\n\n* Automatically send an impact report to a client on a monthly basis about their carbon usage.\n* Automatically send a collection of offset certificates to the environment reporting department.\n* Automatically send an annual data dump of all carbon calculations to your CDP team.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "frequency": {
+                    "type": "string",
+                    "enum": [
+                      "monthly",
+                      "quarterly",
+                      "annually"
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "impact"
+                    ]
+                  },
+                  "recipients": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      }
+                    }
+                  },
+                  "options": {
+                    "type": "object",
+                    "properties": {
+                      "grouping": {
+                        "type": "string",
+                        "description": "Set a grouping filter so that only data which matches the given grouping wil be returned."
+                      },
+                      "grouping_type": {
+                        "type": "string",
+                        "description": "Will match groupings associated with the given grouping type. This is only relevant when the grouping field is provided."
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "frequency": "monthly",
+                    "type": "impact",
+                    "recipients": [
+                      {
+                        "email": "user@example.com"
+                      }
+                    ],
+                    "options": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Scheduled Reports"
+        ]
+      }
+    },
+    "/projects/{projectId}/scheduled-reports/{scheduledReportId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "scheduledReportId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Scheduled Reports: Get",
+        "tags": [
+          "Scheduled Reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../models/common-models/response-paginated.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "../models/common-models/scheduled-report.yaml"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "to": 1,
+                      "from": 2,
+                      "path": "https://app.thrustcarbon.com/api/1/calculator/projects/405d8375-3514-403b-8c43-83ae74cfe0e9/scheduled-reports",
+                      "prev_page_url": null,
+                      "next_page_url": null,
+                      "last_page_url": "https://app.thrustcarbon.com/api/1/calculator/projects/405d8375-3514-403b-8c43-83ae74cfe0e9/scheduled-reports?page=1",
+                      "first_page_url": "https://app.thrustcarbon.com/api/1/calculator/projects/405d8375-3514-403b-8c43-83ae74cfe0e9/scheduled-reports?page=1",
+                      "last_page": 1,
+                      "current_page": 1,
+                      "per_page": 2,
+                      "total": 2,
+                      "data": [
+                        {
+                          "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                          "type": "impact",
+                          "frequency": "monthly",
+                          "recipients": [
+                            {
+                              "email": "user@example.com"
+                            }
+                          ],
+                          "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                          "created_at": "2021-07-13 12:10:27",
+                          "updated_at": "2021-07-13 12:10:27",
+                          "last_run_at": "2021-08-01 08:00:00",
+                          "options": {}
+                        },
+                        {
+                          "id": "35842cea-7399-49ab-abbb-7e9bd0a56571",
+                          "type": "impact",
+                          "frequency": "yearly",
+                          "recipients": [
+                            {
+                              "email": "kit@thrustcarbon.com"
+                            }
+                          ],
+                          "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                          "created_at": "2019-08-24T14:15:22Z",
+                          "updated_at": "2019-08-24T14:15:22Z",
+                          "last_run_at": null,
+                          "options": {
+                            "grouping_type": "cost-centre",
+                            "grouping": "MARKETING"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/scheduled-report.yaml"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "type": "impact",
+                      "frequency": "monthly",
+                      "recipients": [
+                        {
+                          "email": "user@example.com"
+                        }
+                      ],
+                      "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                      "created_at": "2019-08-24T14:15:22Z",
+                      "updated_at": "2019-08-24T14:15:22Z",
+                      "last_run_at": "2021-09-01T08:00:00Z",
+                      "options": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-projects-projectId-scheduled-reports",
+        "description": "Gets a scheduled report by its ID.\n\n### What is a scheduled report\nA scheduled report is a resource that will automatically create and send reports on a given frequency.\n\nUse case:\n\n* Automatically send an impact report to a client on a monthly basis about their carbon usage.\n* Automatically send a collection of offset certificates to the environment reporting department.\n* Automatically send an annual data dump of all carbon calculations to your CDP team."
+      },
+      "delete": {
+        "summary": "Scheduled Reports: Delete",
+        "operationId": "delete-projects-projectId-scheduled-reports-scheduledReportId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Deletes a scheduled report by its ID.\n\n### What is a scheduled report\nA scheduled report is a resource that will automatically create and send reports on a given frequency.\n\nUse case:\n\n* Automatically send an impact report to a client on a monthly basis about their carbon usage.\n* Automatically send a collection of offset certificates to the environment reporting department.\n* Automatically send an annual data dump of all carbon calculations to your CDP team.",
+        "tags": [
+          "Scheduled Reports"
+        ]
+      }
+    },
+    "/projects/{projectId}/scheduled-reports/{scheduledReportId}/recipients": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "projectId",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "scheduledReportId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Scheduled Reports: Remove Recipient",
+        "operationId": "delete-projects-projectId-scheduled-reports-scheduledReportId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/scheduled-report.yaml"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "type": "impact",
+                      "frequency": "monthly",
+                      "recipients": [
+                        {
+                          "email": "bob@example.com"
+                        },
+                        {
+                          "email": "jane@example.com"
+                        }
+                      ],
+                      "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                      "created_at": "2019-08-24T14:15:22Z",
+                      "updated_at": "2019-08-24T14:15:22Z",
+                      "last_run_at": null,
+                      "options": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Removes one or more existing recipients from a scheduled report.\n\n### What is a scheduled report\nA scheduled report is a resource that will automatically create and send reports on a given frequency.\n\nUse case:\n\n* Automatically send an impact report to a client on a monthly basis about their carbon usage.\n* Automatically send a collection of offset certificates to the environment reporting department.\n* Automatically send an annual data dump of all carbon calculations to your CDP team.",
+        "tags": [
+          "Scheduled Reports"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipients": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "recipients": [
+                      {
+                        "email": "user@example.com"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Scheduled Reports: Add Recipient",
+        "operationId": "post-projects-projectId-scheduled-reports-scheduledReportId-recipients",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-models/scheduled-report.yaml"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                      "type": "impact",
+                      "frequency": "monthly",
+                      "recipients": [
+                        {
+                          "email": "user@example.com"
+                        },
+                        {
+                          "email": "bob@example.com"
+                        },
+                        {
+                          "email": "jame@example.com"
+                        }
+                      ],
+                      "project_id": "405d8375-3514-403b-8c43-83ae74cfe0e9",
+                      "created_at": "2019-08-24T14:15:22Z",
+                      "updated_at": "2019-08-24T14:15:22Z",
+                      "last_run_at": null,
+                      "options": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Scheduled Reports"
+        ],
+        "description": "Adds one or more recipients to a scheduled report.\n\n### What is a scheduled report\nA scheduled report is a resource that will automatically create and send reports on a given frequency.\n\nUse case:\n\n* Automatically send an impact report to a client on a monthly basis about their carbon usage.\n* Automatically send a collection of offset certificates to the environment reporting department.\n* Automatically send an annual data dump of all carbon calculations to your CDP team.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipients": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "recipients": [
+                      {
+                        "email": "bob@example.com"
+                      },
+                      {
+                        "email": "jane@example.com"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
