@@ -1,8 +1,24 @@
 title: Offset project
 type: object
+description: Represents an offset project. An offset project may issue offsets that may be purchased by a client.
+examples:
+  - id: d87f6a0d-693f-49d8-b96c-a1fbe85d2b4d
+    name: Soma III Wind Farm
+    description: 'Capturing wind energy is simple, efficient, and most importantly it''s very very cheap. Surprisingly, wind energy often ends up being cheaper than coal, oil and gas. The plus side is that it makes super cost effective carbon offset credits too. Quite simple, choosing wind means winning all around.'
+    location:
+      latitude: 39.18
+      longitude: 27.6
+      area: Soma
+      country: Turkey
+    price_before_fees:
+      price_per_tonne: 225
+      currency: USD
+    tonnes_available: 200
+    image_url: 'http://example.com/example.jpg'
 properties:
   id:
-    type: integer
+    type: string
+    format: uuid
   name:
     type: string
   description:
@@ -18,4 +34,19 @@ properties:
         type: string
       country:
         type: string
-description: ''
+  price_before_fees:
+    type: object
+    properties:
+      price_per_tonne:
+        type: integer
+        description: We always provide prices in base units. E.g. $1.50 would be represented as 150.
+      currency:
+        type: string
+        example: USD
+        maxLength: 3
+        minLength: 3
+  tonnes_available:
+    type: number
+  image_url:
+    type: string
+    format: uri

@@ -615,13 +615,49 @@
                       }
                     }
                   ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "to": 0,
+                      "from": 0,
+                      "path": "http://example.com",
+                      "prev_page_url": "http://example.com",
+                      "next_page_url": "http://example.com",
+                      "last_page_url": "http://example.com",
+                      "first_page_url": "http://example.com",
+                      "last_page": 0,
+                      "current_page": 0,
+                      "per_page": 0,
+                      "total": 0,
+                      "data": [
+                        {
+                          "id": "d87f6a0d-693f-49d8-b96c-a1fbe85d2b4d",
+                          "name": "Soma III Wind Farm",
+                          "description": "Capturing wind energy is simple, efficient, and most importantly it's very very cheap. Surprisingly, wind energy often ends up being cheaper than coal, oil and gas. The plus side is that it makes super cost effective carbon offset credits too. Quite simple, choosing wind means winning all around.",
+                          "location": {
+                            "latitude": 39.18,
+                            "longitude": 27.6,
+                            "area": "Soma",
+                            "country": "Turkey"
+                          },
+                          "price_before_fees": {
+                            "price_per_tonne": 225,
+                            "currency": "USD"
+                          },
+                          "tonnes_available": 200,
+                          "image_url": "http://example.com/example.jpg"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
           }
         },
         "operationId": "get-projects-projectId-offset-options",
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nProvides a list of offset options available for this project. You can use this list to:\n* Display a list of offset opportunities to your users.\n* Take a returned offset option and attach it to your project. Once an offset is attached, you can purchase the offset by finalising the project.\n\nPlease note: at this time, you will need to contact ThrustCarbon directly to purchase more than 1,000 tonnes in a single purchase."
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nProvides a list of offset options available for this project. You can use this list to:\n* Display a list of offset opportunities to your users.\n* Take a returned offset option and attach it to your project. Once an offset is attached, you can purchase the offset by finalising the project.\n\nNotes:\n\n* Prices are provided in base units (e.g. $1.50 would be represented as 150).\n* Prices are provided before fees. Unless you have a custom fee arrangement with Thrust Carbon, a 20% fee will be applied to the offset when purchasing.\n* At this time, you will need to contact ThrustCarbon directly to purchase more than 1,000 tonnes in a single purchase."
       }
     },
     "/projects/{projectId}/offsets": {
@@ -654,7 +690,7 @@
           }
         },
         "operationId": "post-projects-projectId-offsets",
-        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nAttach an offset option to this project",
+        "description": "<!-- theme: danger -->\n\n> ### BETA ENDPOINT\n> Please contact your account manager for access. \n> \n> _Please note: you can manually perform these actions via your Thrust Carbon dashboard_\n\nAttach an offset option to this project.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -662,10 +698,11 @@
                 "type": "object",
                 "properties": {
                   "offset_option_id": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "uuid"
                   },
                   "tonnes_of_co2": {
-                    "description": "Number of tonnes of co2 you would like to purchase.",
+                    "description": "Number of tonnes of co2 you would like to purchase. You can request partial tonnes (e.g. 0.001 for a 1kg offset).",
                     "type": "number"
                   },
                   "price_per_tonne": {
@@ -675,11 +712,14 @@
                   "price_currency": {
                     "type": "string",
                     "default": "GBP",
-                    "description": "Used in conjunction with price_per_tonne"
+                    "description": "Used in conjunction with price_per_tonne",
+                    "minLength": 3,
+                    "maxLength": 3
                   },
                   "is_sandbox": {
                     "type": "boolean",
-                    "description": "Defaults to false. Change to true to create real offsets in production (warning, this will incur fees if you later confirm these offsets)."
+                    "description": "Defaults to true. Change to false to create real offsets in production (warning, this will incur fees if you later confirm these offsets).",
+                    "default": true
                   }
                 },
                 "required": [
