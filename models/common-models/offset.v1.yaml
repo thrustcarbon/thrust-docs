@@ -35,3 +35,17 @@ properties:
       - PAID
   offset_project:
     $ref: ./offset-project.v1.yaml
+  certificate_url:
+    type:
+      - string
+      - 'null'
+    format: uri
+    description: |-
+      URL of a PDF certificate that can be provided to a customer. If you would like to customise the name that appears on the certificate, you should set the `beneficiary_name` attribute.
+
+      Please note, the certificate_url will only be available if the offset has been confirmed.
+  beneficiary_name:
+    type:
+      - string
+      - 'null'
+    description: An optional name that will appear on the offset certificate instead of the organisation name.

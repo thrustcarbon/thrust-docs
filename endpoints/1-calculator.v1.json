@@ -720,6 +720,11 @@
                     "type": "boolean",
                     "description": "Defaults to true. Change to false to create real offsets in production (warning, this will incur fees if you later confirm these offsets).",
                     "default": true
+                  },
+                  "beneficiary_name": {
+                    "type": "string",
+                    "description": "An optional name that you would like to appear on the offset certificate to represent the purchasor of the offset.",
+                    "nullable": true
                   }
                 },
                 "required": [
