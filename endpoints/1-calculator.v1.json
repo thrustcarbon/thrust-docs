@@ -348,6 +348,24 @@
             },
             "in": "query",
             "name": "page"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "in": "query",
+            "name": "created_on_or_after",
+            "description": "Optionally only request segments created on the Thrust Carbon system on or after the given datetime."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "in": "query",
+            "name": "created_before",
+            "description": "Optionally only request segments created on the Thrust Carbon system before the given datetime."
           }
         ],
         "description": "Gets a list of all segments belonging to a project.\n\n<!-- theme: warning -->\n> ### Only premium accounts can see the `tonnes_of_emissions` data\n>\n> If you are using a free Thrust Calculator account, you can use our APIs to manage your project data, however you will not be able to access the `tonnes_of_emissions` key without upgrading to a premium account.\n>\n> Want access to emissions data without a Thrust Calculator subscription? You should use our [emissions API](endpoints/3-emission.v1.yaml) instead, which is a cheaper, non-persistent way to access emissions."
