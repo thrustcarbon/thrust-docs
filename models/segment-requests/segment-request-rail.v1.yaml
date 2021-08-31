@@ -32,3 +32,5 @@ description: |-
   * IATA codes (e.g. "LHR").
   * Country codes (e.g. "GB").
   * Train station UIC codes. These codes must begin with 'XXXUIC'. So for example the code for London King's Cross would be 'XXXUIC7061210'.
+x-tags:
+  - Segment Requests

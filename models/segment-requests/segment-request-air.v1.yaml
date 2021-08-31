@@ -75,8 +75,6 @@ allOf:
       - locations
   - $ref: ./segment-request-base.v1.yaml
 description: Air segment request.
-x-tags:
-  - Segments
 x-examples:
   Flight Example:
     type: air
@@ -85,3 +83,5 @@ x-examples:
       - JFK
     travel_class: business
     emitted_at: '2020-01-01'
+x-tags:
+  - Segment Requests

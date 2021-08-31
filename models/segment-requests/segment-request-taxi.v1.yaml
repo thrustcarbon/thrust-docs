@@ -47,3 +47,5 @@ description: |-
   * If the journey is in London, please set `taxi_type` to `LONDON_TAXI`
 
    
+x-tags:
+  - Segment Requests

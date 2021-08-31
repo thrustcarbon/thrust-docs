@@ -3,3 +3,5 @@ allOf:
   - $ref: ./segment-base.v1.yaml
 title: 'Segment: Car'
 description: ''
+x-tags:
+  - Segments

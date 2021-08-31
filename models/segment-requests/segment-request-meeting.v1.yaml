@@ -62,3 +62,5 @@ examples:
     hours: 2
     attendee_count: 2
     laptop_count: 2
+x-tags:
+  - Segment Requests

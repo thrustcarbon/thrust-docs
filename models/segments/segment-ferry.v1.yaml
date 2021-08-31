@@ -2,3 +2,5 @@ allOf:
   - $ref: ../segment-requests/segment-request-ferry.v1.yaml
   - $ref: ./segment-base.v1.yaml
 title: 'Segment: Ferry'
+x-tags:
+  - Segments

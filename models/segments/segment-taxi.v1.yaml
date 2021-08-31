@@ -3,3 +3,5 @@ description: 'This contains the segment response for a taxi journey. If you are 
 allOf:
   - $ref: ./segment-base.v1.yaml
   - $ref: ../segment-requests/segment-request-taxi.v1.yaml
+x-tags:
+  - Segments

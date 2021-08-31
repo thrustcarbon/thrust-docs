@@ -1,7 +1,5 @@
 title: 'Segment Request: Base'
 type: object
-x-tags:
-  - Segments
 description: |-
   A segment is a thing that can have a carbon impact, for example this might be a flight, a hotel stay, or a delivery.
 
@@ -62,3 +60,5 @@ properties:
     default: GBP
 required:
   - type
+x-tags:
+  - Segment Requests

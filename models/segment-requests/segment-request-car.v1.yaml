@@ -84,3 +84,5 @@ examples:
       - US
     car_type: MPV
     distance: 203
+x-tags:
+  - Segment Requests

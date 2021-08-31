@@ -1,6 +1,4 @@
 title: 'Segment Request: Vacation Rental (e.g. Airbnb)'
-x-tags:
-  - Segments
 allOf:
   - $ref: ./segment-request-base.v1.yaml
   - type: object
@@ -39,3 +37,5 @@ x-examples:
       - US
     travellers: 2
     nights: 4
+x-tags:
+  - Segment Requests

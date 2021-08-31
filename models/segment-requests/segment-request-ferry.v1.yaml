@@ -25,3 +25,5 @@ allOf:
     required:
       - type
 description: Ferry segment request
+x-tags:
+  - Segment Requests

@@ -1,6 +1,4 @@
 title: 'Segment Request: Hotel'
-x-tags:
-  - Segments
 allOf:
   - $ref: ./segment-request-base.v1.yaml
   - type: object
@@ -54,3 +52,5 @@ x-examples:
     rooms: 1
     metadata:
       PNR: AB12CD
+x-tags:
+  - Segment Requests

@@ -1,6 +1,4 @@
 title: Segment Request
-x-tags:
-  - Segments
 allOf:
   - oneOf:
       - $ref: ./segment-request-air.v1.yaml
@@ -42,3 +40,5 @@ x-examples:
     rooms: 1
     metadata:
       PNR: AB12CD
+x-tags:
+  - Segment Requests

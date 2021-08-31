@@ -3,3 +3,5 @@ allOf:
   - $ref: ../segment-requests/segment-request-rail.v1.yaml
 title: 'Segment: Rail'
 description: ''
+x-tags:
+  - Segments
