@@ -1,0 +1,10 @@
+title: 'Segment: Carbon Dioxide (CO2)'
+allOf:
+  - $ref: ./segment-base.v1.yaml
+  - $ref: ../segment-requests/segment-request-carbon.v1.yaml
+description: |-
+  A segment that simply contains a quantity of carbon dioxide (in tonnes of CO2).
+
+  This is useful if you already have a known amount of carbon dioxide that you would like included in the Thrust Calculator or in Thrust Offset.
+x-tags:
+  - Segments

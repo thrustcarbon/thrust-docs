@@ -10,6 +10,7 @@ allOf:
       - $ref: ./segment-request-ferry.v1.yaml
       - $ref: ./segment-request-taxi.v1.yaml
       - $ref: ./segment-request-meeting.v1.yaml
+      - $ref: ./segment-request-carbon.v1.yaml
   - $ref: ./segment-request-base.v1.yaml
 description: |
   * This is the model for creating or updating a segment; *please the [Segment](../segments/segment.v1.yaml) documentation if you are retrieving an existing segment.*
@@ -23,6 +24,7 @@ description: |
       * [Vacation rental segment](./segment-request-vacation-rental.v1.yaml)
       * [Taxi segment](./segment-request-taxi.v1.yaml)
       * [Meeting segment](./segment-request-meeting.v1.yaml)
+      * [Carbon dioxide segment](models/segment-requests/segment-request-coach.v1.yaml)
       
   *Note: we are constantly adding more segment request types all the time, and our documentation may lag this. Please reach out to your account manager if you believe a segment type is missing.*
 x-examples:
