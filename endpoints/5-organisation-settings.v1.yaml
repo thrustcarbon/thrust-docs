@@ -41,6 +41,13 @@ paths:
         > Please contact your account manager for access.
 
         This endpoint will list all the sub-organisation's belonging to this organisation. 
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: query
+          name: organisation_id
+          description: 'Optional. Used by partner accounts to take an action against another account that they manage. If not provided it will list sub-organisations belonging to the root partner account; if value is provided, it will show sub-organisations that belong to the given organisation_id (i.e. it will display sub-sub-organisations).'
     post:
       summary: 'Sub organisation: add'
       operationId: post-organisationId-organisations
@@ -68,10 +75,9 @@ paths:
                   type: boolean
                   description: 'If this organisation is a partner account, it will be able to have further sub-organisations below it. *Note: you will be billed for these sub-organisations*.'
                 organisation_id:
-                  type:
-                    - string
-                    - 'null'
-                  description: 'Organisation that the sub-organisation will be placed under. If not supplied, it will default to your root organisation.'
+                  type: string
+                  description: 'Organisation that the sub-organisation will be placed under. If not supplied, it will default to your root organisation. If supplied, it will create a sub-sub-organisation.'
+                  nullable: true
               required:
                 - name
       tags:
@@ -140,6 +146,13 @@ paths:
         You may create/read/update/delete groupings manually via your account settings at https://app.thrustcarbon.com
       tags:
         - Groupings
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: query
+          name: organisation_id
+          description: Optional. Used by partner accounts to take an action against another account that they manage.
     post:
       summary: 'Groupings: Add'
       operationId: post-api-1-setting-organisation-groupings
@@ -210,6 +223,10 @@ paths:
                   type: string
                   description: 'You can supply the ''slug'' for a grouping type (must be setup before making this request). If you do not provide a slug, the ''default'' slug is used.'
                   default: default
+                organisation_id:
+                  type: string
+                  format: uuid
+                  description: Optional. Used by partner accounts to take an action against another account that they manage.
               required:
                 - key
                 - title
@@ -255,6 +272,10 @@ paths:
               properties:
                 key:
                   type: string
+                organisation_id:
+                  type: string
+                  description: Optional. Used by partner accounts to take an action against another account that they manage.
+                  format: uuid
               required:
                 - key
         description: ''
@@ -353,6 +374,10 @@ paths:
                     required:
                       - key
                       - title
+                organisation_id:
+                  type: string
+                  format: uuid
+                  description: Used by partner accounts to take an action against another account that they manage.
             examples:
               Parent department:
                 value:
@@ -367,6 +392,7 @@ paths:
                   description: Human Resources for the Eastern seaboard of the United States
       tags:
         - Groupings
+      parameters: []
   /api/1/setting/organisation/grouping-types:
     get:
       summary: 'Grouping Types: List'
@@ -389,6 +415,13 @@ paths:
         Lists all grouping types that are associated with an organisation.
 
         An organisation may have up to 10 grouping types. If you require more than ten grouping types, please contact your account manager for activation.
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: query
+          name: organisation_id
+          description: Used by partner accounts to take an action against another account that they manage.
     post:
       summary: 'Grouping Types: Add'
       operationId: post-api-1-setting-organisation-grouping-types
@@ -454,6 +487,10 @@ paths:
                 is_reportable:
                   type: boolean
                   default: true
+                organisation_id:
+                  type: string
+                  format: uuid
+                  description: Used by partner accounts to take an action against another account that they manage.
               required:
                 - name
             examples:
@@ -500,6 +537,13 @@ paths:
       description: Returns an individual grouping type.
       tags:
         - Grouping Types
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: query
+          name: organisation_id
+          description: Used by partner accounts to take an action against another account that they manage.
     put:
       summary: 'Grouping Types: Update'
       operationId: put-api-1-setting-organisation-grouping-types-slug
@@ -527,6 +571,10 @@ paths:
                 is_reportable:
                   type: boolean
                   description: Indicates whether the grouping type can be seen in Thrust Calculator reports and other Thrust Carbon products.
+                organisation_id:
+                  type: string
+                  description: Used by partner accounts to take an action against another account that they manage.
+                  format: uuid
       tags:
         - Grouping Types
     delete:
@@ -562,6 +610,16 @@ paths:
 
         * No groupings can be associated with a grouping type that you want to remove. If you attempt to remove a grouping type with groupings you will receive a 422 response.
         * The `default` slug grouping type cannot be removed. If you do not want to use this, you should update the grouping type so that `is_reportable` is false.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organisation_id:
+                  type: string
+                  format: uri
+                  description: Used by partner accounts to take an action against another account that they manage.
 components:
   schemas: {}
   securitySchemes:
