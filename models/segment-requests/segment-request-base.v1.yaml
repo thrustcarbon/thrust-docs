@@ -6,6 +6,8 @@ description: |-
   This base is extended by each segment request...
 
   **We suggest looking at the documentation for each segment request to learn the correct structure for that segment.**
+x-tags:
+  - Segment Requests
 properties:
   type:
     type: string
@@ -19,7 +21,7 @@ properties:
       - rail
       - taxi
       - vacation-rental
-  groupings:
+  grouping:
     description: 'You can associate data with a grouping in order to segment it in future reports and requests. Examples include: cost centre codes, department IDs, sub-unit IDs, etc.'
     type: object
     properties:
@@ -60,5 +62,3 @@ properties:
     default: GBP
 required:
   - type
-x-tags:
-  - Segment Requests
