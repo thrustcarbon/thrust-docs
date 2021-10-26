@@ -57,7 +57,8 @@ allOf:
           - 'Y'
           - Z
         default: AVERAGE_CAR
-        description: Accepts a car type enum or car rental agency code
+        description: Accepts a car type enum or a car rental agency code.
+        example: CDAR
     required:
       - type
 description: |-
@@ -66,8 +67,7 @@ description: |-
   Notes for requesting a car segment:
 
   * You must provide either a `distance` or number of `days` that the car is in use (e.g. for a car rental). When you provide `days`, we will estimate the distance travelled.
-  * Hover over `car_type` **+1** to see the car types supported.
-  * If you have a four letter car rental agency code (e.g. _IDAR_), you should provide the first letter to the `car_type` parameter.
+  * The car type can either be a SMMT market segment code, or a 4 letter ACRISS code (i.e. a car rental agency code; e.g. CDAR for a Compact car).
   * You should only provide the location of the car at the start of the journey. This can either be a 3 letter IATA code (e.g. _NYC_), or a 2 letter country code (e.g. _US_)
 examples:
   - type: car
