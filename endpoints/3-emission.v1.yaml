@@ -143,7 +143,7 @@ paths:
       description: |
         A standalone endpoint to calculate a batch of emissions individually. 
 
-        This endpoint is useful when you want to compare _many separate_ emissions, for example when you want to separately compare the emissions from two different flights in one request. If you do not need the result to be separate (e.g. you want just one combined emission number), you should use the standard [Get emissions endpoint](endpoints/3-emission.v1.yaml/paths/~1).
+        This endpoint is useful when you want to **compare many separate emissions**. For example when you want to separately compare the emissions from two different flights in one request. If you do not need the result to be separate (e.g. you want just one combined emission number), you should use the standard [emissions endpoint](endpoints/3-emission.v1.yaml/paths/~1).
 
         You must pass in **an array of an array** of segments. The top level array will be calculated separately, and will return a separate response; the second level of each array will be calculated as part of the same journey and will have it's emissions combined.
 
@@ -151,9 +151,14 @@ paths:
 
         Full URI: https://app.thrustcarbon.com/api/1/emission/batch
 
+        ## Use-cases
+
+        1. **Point of sale display of flights/hotels/car-hire**. This endpoint is frequently used by businesses that wish to display individual carbon results & comparisons next to each result in a list of flights/hotel/car-hire.
+        2. **Efficiently calculating many items in a database**. Businesses that have databases of thousands of segments might use the batch emissions API to efficiently perform 100 calculations at a time.
+
         ## Comparison of results
 
-        The batch endpoint currently supports two comparisons of data:
+        You can compare the results of each item in a batch directly. However, you can save time by using pre-computed comparisons provided by Thrust Carbon:
         1. Comparing against the results in the batch. This is where you can compare against the highest, lowest and average result in a batch.
         2. Comparing against a comparison search that you provide. This is useful for large batches where you wish to compare against an 'average' search (e.g. compare all the specific flights between LHR->JFK against a theoretical average flight).
 
