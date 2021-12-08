@@ -154,10 +154,10 @@ paths:
         ## Comparison of results
 
         The batch endpoint currently supports two comparisons of data:
-        1. Comparing against a comparison search that you provide. This is useful for large batches where you wish to compare against an 'average' search (e.g. compare all the specific flights between LHR->JFK against a theoretical average flight).
-        2. Comparing against the results in the batch. This is where you can compare against the highest, lowest and average result in a batch.
+        1. Comparing against the results in the batch. This is where you can compare against the highest, lowest and average result in a batch.
+        2. Comparing against a comparison search that you provide. This is useful for large batches where you wish to compare against an 'average' search (e.g. compare all the specific flights between LHR->JFK against a theoretical average flight).
 
-        #### Comparing against result set
+        #### Comparing against the results in the batch
 
         Every result set will return a `compare` payload, which can be used when comparing your results against each other (for example, you may wish to highlight a result to indicate that it has _'X% lower emissions than average'_).
 
@@ -181,7 +181,7 @@ paths:
         ]
         ```
 
-        #### Comparing against comparison search
+        #### Comparing against a comparison search that you provide
 
         To use a comparison search, you should fill the `compare` key in your request. The batch endpoint will then calculate these emissions, and in the response the `compare.comparison-emissions` and the `compare.comparison-invalid-segments` payload will be returned.
 
