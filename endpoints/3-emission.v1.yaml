@@ -63,58 +63,182 @@ paths:
                 items:
                   $ref: ../models/common-models/emission.v1.json
               examples:
-                Example for 2 flights:
+                Air + compare:
                   value:
-                    - emissions: 0.8485803993418809
+                    '0':
+                      tonnes_of_emissions: 0.8521272153582307
+                      invalid_segments: []
                       equivalencies:
-                        - type: tree
-                          values:
-                            - This is equivalent to burning a forest containing
-                            - 0.56 mature oak trees.
                         - type: video-call
                           values:
-                            - This is equivalent to 8486 days of video conferencing.
+                            - 'This is equivalent to 8,521 days of video conferencing.'
                         - type: moon
                           values:
-                            - This is equivalent to driving a small car 7708 kilometers.
-                            - You could also drive 0.02% of the way to the moon.
-                    - emissions: 2.1
-                      equivalencies:
-                        - type: tree
+                            - 'This is equivalent to driving a small car 7,740 kilometers.'
+                            - You could also drive 2.01% of the way to the moon.
+                        - type: plastic-bag
                           values:
-                            - This is equivalent to burning a forest containing
-                            - 0.56 mature oak trees.
+                            - This is equivalent to producing 18742 plastic bags.
+                    '1':
+                      tonnes_of_emissions: 0.6768148785477451
+                      invalid_segments: []
+                      equivalencies:
                         - type: video-call
                           values:
-                            - This is equivalent to 8486 days of video conferencing.
+                            - 'This is equivalent to 6,768 days of video conferencing.'
                         - type: moon
                           values:
-                            - This is equivalent to driving a small car 7708 kilometers.
-                            - You could also drive 0.02% of the way to the moon.
+                            - 'This is equivalent to driving a small car 6,148 kilometers.'
+                            - You could also drive 1.6% of the way to the moon.
+                        - type: plastic-bag
+                          values:
+                            - This is equivalent to producing 14886 plastic bags.
+                    compare:
+                      highest_emissions: 0.8521272153582307
+                      lowest_emissions: 0.6768148785477451
+                      average_emissions: 0.7644710469529878
+                      comparison_emissions: 0.8191077569133164
+                      comparison_invalid_segments:
+                        '1':
+                          locations:
+                            - The locations field is required.
+                          travel_class:
+                            - The selected travel class is invalid.
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
+                compare:
+                  type: array
+                  items:
+                    $ref: ../models/segment-requests/segment-request.v1.yaml
                 segments:
                   type: array
                   items:
                     type: array
                     items:
                       $ref: ../models/segment-requests/segment-request.v1.yaml
-            examples: {}
+            examples:
+              Air + compare:
+                value:
+                  compare:
+                    - type: air
+                      locations:
+                        - LHR
+                        - JFK
+                  segments:
+                    - - type: air
+                        locations:
+                          - LHR
+                          - JFK
+                        aircraft_type: 744
+                    - - type: air
+                        locations:
+                          - LHR
+                          - JFK
+                        aircraft_type: 787
         description: ''
-      description: |-
+      description: |
         A standalone endpoint to calculate a batch of emissions individually. 
-
-        You must pass in **an array of an array** of segments. Each top level array will be calculated individually.
-
-        The results will be in the same order as the request body.
 
         This endpoint is useful when you want to compare _many separate_ emissions, for example when you want to separately compare the emissions from two different flights in one request. If you do not need the result to be separate (e.g. you want just one combined emission number), you should use the standard [Get emissions endpoint](endpoints/3-emission.v1.yaml/paths/~1).
 
+        You must pass in **an array of an array** of segments. The top level array will be calculated separately, and will return a separate response; the second level of each array will be calculated as part of the same journey and will have it's emissions combined.
+
+        The results will be in the same order as the request body. For example, the first item in your request array will be the first item in the response array, the second item in the request array will be the second item in the response array, and so on.
+
         Full URI: https://app.thrustcarbon.com/api/1/emission/batch
+
+        ## Comparison of results
+
+        The batch endpoint currently supports two comparisons of data:
+        1. Comparing against a comparison search that you provide. This is useful for large batches where you wish to compare against an 'average' search (e.g. compare all the specific flights between LHR->JFK against a theoretical average flight).
+        2. Comparing against the results in the batch. This is where you can compare against the highest, lowest and average result in a batch.
+
+        #### Comparing against result set
+
+        Every result set will return a `compare` payload, which can be used when comparing your results against each other (for example, you may wish to highlight a result to indicate that it has _'X% lower emissions than average'_).
+
+        Simplified example response:
+        ```JSON
+        [
+          "0": {
+            "tonnes_of_emissions": 1.5,
+            ...
+          },
+          "1": {
+            "tonnes_of_emissions": 0.5,
+            ...
+          },
+          "compare": {
+            "highest-emissions": 1.5,
+            "lowest-emissions": 0.5,
+            "average_emissions": 1.0,
+            ...
+          }
+        ]
+        ```
+
+        #### Comparing against comparison search
+
+        To use a comparison search, you should fill the `compare` key in your request. The batch endpoint will then calculate these emissions, and in the response the `compare.comparison-emissions` and the `compare.comparison-invalid-segments` payload will be returned.
+
+        _Please note: like any other emissions calculation, your comparison searches will be billed as standard Thrust Carbon emission calculations._
+
+        Example comparison search request body (in this example, you would be billed for three calculations):
+        ```JSON
+        {
+          "compare": [
+            {
+              "type": "air",
+              "locations": ["LHR", "JFK"]
+            }
+          ],
+          "segments": [
+            [
+              {
+                "type": "air",
+                "locations": ["LHR", "JFK"],
+                "aircraft_type": "744"
+              }
+            ],
+            [
+              {
+                "type": "air",
+                "locations": ["LHR", "JFK"],
+                "aircraft_type": "788"
+              }
+            ]
+          ]
+        }
+        ```
+        Example comparison search response body:
+        ```JSON
+        {
+          "0": {
+            "tonnes_of_emissions": 1.2,
+            ...
+          },
+          "1": {
+            "tonnes_of_emissions": 0.7,
+            ...
+          }
+          "compare": {
+            "comparison_emissions": 0.8,
+            ...
+          }
+        }
+        ```
+
+        ## Limitations of batch requests
+
+        * We currently support a maximum of 100 calculations in a batch.
+          * Each calculation may have a maximum of 20 underlying segments.
+          * Please discuss with your account manager if you wish to lookup more than 100 calculations in a batch.
+        * Due to latency of external providers, Thrust Carbon will not perform flight number lookups on batch requests. If you wish for your flights to incorporate the aircraft type into emissions, you should provide the `aircraft_type` parameter on the segment, rather than relying on a Thrust Carbon lookup.
+          * If you wish for Thrust Carbon to conduct a flight number lookup to find out aircraft type, please using the singular [emission calculation endpoint](https://docs.thrustcarbon.com/docs/thrust-docs/b3A6MTQ5ODAyMjE-calculate-emission).
     parameters: []
 components:
   schemas: {}
