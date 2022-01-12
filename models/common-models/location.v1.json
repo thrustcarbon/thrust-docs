@@ -1,0 +1,30 @@
+{
+  "title": "location.v1",
+  "type": "object",
+  "properties": {
+    "city_code": {
+      "type": "string"
+    },
+    "country_code": {
+      "type": "string"
+    },
+    "city_name": {
+      "type": "string"
+    },
+    "iata": {
+      "type": "string"
+    },
+    "uic": {
+      "type": "string"
+    },
+    "sncf": {
+      "type": "string"
+    },
+    "coordinates": {
+      "$ref": "./coordinates.json"
+    },
+    "phone_number": {
+      "type": "string"
+    }
+  }
+}

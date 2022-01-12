@@ -60,5 +60,7 @@ properties:
     description: 3 letter ISO currency code.
     example: 'USD,GBP'
     default: GBP
+  origin:
+    type: string
 required:
   - type
