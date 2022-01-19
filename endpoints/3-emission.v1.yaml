@@ -19,7 +19,7 @@ servers:
   - url: 'https://app.thrustcarbon.com/api/1/emission'
     description: Production
 paths:
-  /emission:
+  /:
     parameters: []
     post:
       summary: Calculate emission
