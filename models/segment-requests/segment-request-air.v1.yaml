@@ -68,8 +68,6 @@ allOf:
         type: string
         example: BA 112
         description: 'If a flight number is provided, we will attempt to find the aircraft type for the purpose of calculating emissions.'
-      '':
-        type: string
     required:
       - type
       - locations
