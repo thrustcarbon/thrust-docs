@@ -276,6 +276,10 @@ paths:
                   type: string
                   description: Optional. Used by partner accounts to take an action against another account that they manage.
                   format: uuid
+                grouping_type:
+                  type: string
+                  description: You can supply the 'api slug' name for the department type. This can be found in your Thrust Carbon organisation settings.
+                  default: default
               required:
                 - key
         description: ''
