@@ -24,7 +24,7 @@
     "currency_symbol": {
       "type": "string",
       "default": "usd",
-      "description": "Must be a valid ISO 4217 currency code."
+      "description": "Must be a valid ISO 4217 currency code. \n\nThis currency must be enabled on the Thrust Carbon system, as you will be quoted and billed in this currency for offset purchases. You can view the list of supported currencies in your Thrust Carbon account by manaully adding a new project; please speak to your account manager if you need a new currency enabled."
     },
     "name": {
       "type": "string"
