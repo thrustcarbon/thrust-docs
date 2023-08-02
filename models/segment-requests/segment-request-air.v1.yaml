@@ -57,7 +57,7 @@ allOf:
         description: 'Travel class as a string. You can either enter the name of the class (e.g. `economy`), or a fare basis code (e.g. `Y`). If you have both pieces of data you should use the name of the class instead of the fare basis code, as fare basis codes can vary by airline.'
       carrier:
         type: string
-        default: BA
+        example: BA
         description: 2 letter IATA carrier code for the operating carrier (try to avoid using the marketing carrier if it's a code-shared flight).
       aircraft_type:
         type: string

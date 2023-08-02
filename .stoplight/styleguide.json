@@ -1,0 +1,24 @@
+{
+  "name": "Thrust Docs v1",
+  "description": "",
+  "spectralExtends": [],
+  "extends": [],
+  "formats": [
+    "oas2",
+    "oas3",
+    "oas3.0",
+    "oas3.1"
+  ],
+  "aliases": {},
+  "rules": {
+    "operation-description": {
+      "given": [],
+      "severity": "info",
+      "then": {
+        "function": ""
+      },
+      "name": "operation-description"
+    }
+  },
+  "extendedDefault": false
+}
