@@ -109,6 +109,14 @@
           },
           {
             "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "page_size",
+            "description": "Number of segments per page. 15 by default, max of 50."
+          },          
+          {
+            "schema": {
               "type": "string",
               "enum": [
                 "application/json"
