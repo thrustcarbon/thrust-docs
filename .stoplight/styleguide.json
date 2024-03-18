@@ -12,6 +12,7 @@
   "aliases": {},
   "rules": {
     "operation-description": {
+      "id": "A1WqP-BBCA_HTkfjnV6B_",
       "given": [],
       "severity": "info",
       "then": {
