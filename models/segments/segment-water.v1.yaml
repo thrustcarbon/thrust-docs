@@ -21,3 +21,4 @@ allOf:
   - $ref: ./segment-base.v1.yaml
     x-stoplight:
       id: j8wmp42cp8uwk
+x-internal: true

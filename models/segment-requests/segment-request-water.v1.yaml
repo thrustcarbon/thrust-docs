@@ -44,3 +44,4 @@ x-examples:
     volume: 100
 x-tags:
   - Segment Requests
+x-internal: true
