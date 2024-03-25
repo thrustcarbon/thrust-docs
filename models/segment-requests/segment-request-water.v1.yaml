@@ -1,0 +1,46 @@
+title: 'Segment Request: Water'
+x-stoplight:
+  id: 5aurx8fjmnfyt
+allOf:
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - water
+        description: ''
+        x-stoplight:
+          id: mimihf78mjmzy
+      volume_unit:
+        type: string
+        enum:
+          - gallons
+          - litres
+          - cubic_meters
+          - cubic_feet
+        x-stoplight:
+          id: 28ewhbxs1c5y4
+      volume:
+        type: number
+        description: The volume of water usage.
+        example: 1.3
+        x-stoplight:
+          id: d4lrkvskhihwf
+    required:
+      - type
+      - volume_unit
+      - volume
+    x-stoplight:
+      id: 1jumff1rhqcb4
+  - $ref: ./segment-request-base.v1.yaml
+    x-stoplight:
+      id: fm7ip849bwg8b
+description: Water segment request.
+x-examples:
+  Water Example:
+    type: water
+    emitted_at: '2020-01-01'
+    volume_unit: litres
+    volume: 100
+x-tags:
+  - Segment Requests
