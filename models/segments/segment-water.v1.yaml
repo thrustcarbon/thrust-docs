@@ -18,7 +18,7 @@ allOf:
   - $ref: ../segment-requests/segment-request-water.v1.yaml
     x-stoplight:
       id: cyv7qxx9986va
-  - $ref: ./segment-base.v1.yaml
+  - $ref: ./segment-base-no-location-price.v1.yaml
     x-stoplight:
       id: j8wmp42cp8uwk
-x-internal: true
+x-internal: false
