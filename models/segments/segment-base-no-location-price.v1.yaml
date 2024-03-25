@@ -1,0 +1,58 @@
+title: 'Segment: Base'
+x-stoplight:
+  id: ydydsu7l7wsj5
+description: |-
+  A segment is a thing that can have a carbon impact, for example this might be a flight, a hotel stay, or a delivery.
+
+  This base is extended by each segment type...
+
+  <!-- theme: warning -->
+  > **We suggest looking at the documentation for each segment type to learn the correct structure for that segment.**
+x-tags:
+  - Segments
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        x-stoplight:
+          id: 2l2dzjqbxbly4
+      created_at:
+        type: string
+        format: date-time
+        x-stoplight:
+          id: 34a0kk8r3sni1
+      updated_at:
+        type: string
+        format: date-time
+        x-stoplight:
+          id: nnswxps080z3j
+      tonnes_of_emissions:
+        type: number
+        x-stoplight:
+          id: g0txlfpd2c9l4
+    required:
+      - id
+      - created_at
+      - updated_at
+      - tonnes_of_emissions
+    x-stoplight:
+      id: 4bkl41iwpfob3
+  - $ref: ../segment-requests/segment-request-base-no-location-price.v1.yaml
+    x-stoplight:
+      id: 3o5z7menu6tll
+x-examples:
+  Flight Response:
+    id: ec34f49e-ab0c-4ffa-854f-5cdfc230cbe1
+    created_at: '2021-04-16T09:23:45.000000Z'
+    updated_at: '2021-04-16T09:23:45.000000Z'
+    type: air
+    tonnes_of_emissions: 2.4609454662444006
+    distance: 5539.377540497169
+    distance_adjusted: 5664.377540497169
+    emitted_at: '2020-01-01'
+    locations:
+      - LHR
+      - JFK
+    travel_class: business
+examples: []

@@ -1,0 +1,69 @@
+title: 'Segment Request: Base'
+x-stoplight:
+  id: dbvxrwq6v273s
+type: object
+description: |-
+  A segment is a thing that can have a carbon impact, for example this might be a flight, a hotel stay, or a delivery.
+
+  This base is extended by each segment request...
+
+  **We suggest looking at the documentation for each segment request to learn the correct structure for that segment.**
+x-tags:
+  - Segment Requests
+properties:
+  type:
+    type: string
+    enum:
+      - air
+      - car
+      - coach
+      - ferry
+      - hotel
+      - meeting
+      - rail
+      - taxi
+      - vacation-rental
+    x-stoplight:
+      id: 9zg7puocq5a4b
+  grouping:
+    description: 'You can associate data with a grouping in order to segment it in future reports and requests. Examples include: cost centre codes, department IDs, sub-unit IDs, etc.'
+    type: object
+    properties:
+      '{grouping-type-slug}':
+        type: array
+        description: Every organisation has a `default` grouping-type-slug. However you can create new grouping types with the organisation setting APIs.
+        items:
+          type: string
+          x-stoplight:
+            id: lvq4ajicd8mgq
+        x-stoplight:
+          id: amue9xnzqiajc
+    x-stoplight:
+      id: sgsyux7aytbca
+  emitted_at:
+    type: string
+    description: ''
+    format: date
+    example: '2019-07-09'
+    x-stoplight:
+      id: pa35bg3ajugtx
+  traveller_ref:
+    type: string
+    description: Optional reference identifying the traveller in the segment.
+    x-stoplight:
+      id: utnyfb1gcfebf
+  metadata:
+    type: object
+    description: |-
+      Metadata enables you to pass in custom values which will be stored with the dataset and returned to you on every request. Thrust Carbon does not use or modify your metadata.
+
+      A use-case may be passing in the ID for the record within your own database.
+    properties:
+      key:
+        type: string
+        x-stoplight:
+          id: e3oapdcymp3r8
+    x-stoplight:
+      id: 139ufman2fml0
+required:
+  - type

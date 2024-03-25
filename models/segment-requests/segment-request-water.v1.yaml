@@ -32,7 +32,7 @@ allOf:
       - volume
     x-stoplight:
       id: 1jumff1rhqcb4
-  - $ref: ./segment-request-base.v1.yaml
+  - $ref: ./segment-request-base-no-location-price.v1.yaml
     x-stoplight:
       id: fm7ip849bwg8b
 description: Water segment request.
