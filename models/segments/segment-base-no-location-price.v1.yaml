@@ -56,3 +56,4 @@ x-examples:
       - JFK
     travel_class: business
 examples: []
+x-internal: true

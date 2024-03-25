@@ -62,3 +62,4 @@ properties:
     default: GBP
 required:
   - type
+x-internal: false
